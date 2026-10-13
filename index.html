@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#05060b" />
+  <title>Samuel Čižmár — Osobné portfólio</title>
+  <meta name="description" content="Osobné portfólio Samuela Čižmára — fotografia, grafika, video, 3D a technológie." />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Samuel Čižmár — Osobné portfólio" />
+  <meta property="og:description" content="Fotografia · Grafika · Video · 3D · Technológie" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css?v=1" />
+</head>
+<body>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+  <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+
+  <!-- ===================== HLAVIČKA ===================== -->
+  <header class="hud" id="hud">
+    <a class="hud__brand" href="#home">
+      <span class="hud__mark">Samuel<em>.</em></span>
+      <span class="hud__sub">Portfólio</span>
+    </a>
+
+    <nav class="hud__nav" id="nav" aria-label="Hlavná navigácia">
+      <a href="#home">Domov</a>
+      <a href="#o-mne">O mne</a>
+      <a href="#zrucnosti">Zručnosti</a>
+      <a href="#projekty">Projekty</a>
+      <a href="#vzdelanie">Vzdelanie</a>
+      <a href="#kontakt">Kontakt</a>
+      <a class="btn btn--neon" href="https://samustang1.github.io/cizmar-photography/" target="_blank" rel="noopener">Fotoportfólio ↗</a>
+    </nav>
+
+    <button class="burger" id="burger" aria-label="Otvoriť menu" aria-expanded="false" aria-controls="nav">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero" id="home">
+    <div class="hero__grid">
+      <div class="hero__text">
+        <span class="pill"><i></i> 17 rokov · tvorím a učím sa</span>
+        <h1 class="hero__title">Ahoj, som<br><em>Samuel Čižmár.</em></h1>
+        <p class="hero__lead">
+          Baví ma zachytávať svet okolo seba — fotoaparátom, kamerou aj kódom.
+          Fotím autá, tvorím grafiku a videá, skúšam 3D tlač a učím sa programovať.
+          Toto je môj svet v skratke.
+        </p>
+        <div class="actions">
+          <a class="btn btn--neon" href="#projekty">Pozrieť projekty</a>
+          <a class="btn btn--ghost" href="#kontakt">Napíš mi</a>
+        </div>
+
+        <div class="stats">
+          <div>
+            <strong>Fotografia</strong>
+            <span>Autá a atmosféra v prirodzenom svetle</span>
+          </div>
+          <div>
+            <strong>Kreatíva</strong>
+            <span>Grafika, video a strih</span>
+          </div>
+          <div>
+            <strong>Technika</strong>
+            <span>3D tlač, web a programovanie</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__visual" id="tilt">
+        <div class="orb" aria-hidden="true"></div>
+        <div class="frame">
+          <span class="corner corner--tl"></span><span class="corner corner--tr"></span>
+          <span class="corner corner--bl"></span><span class="corner corner--br"></span>
+          <div class="frame__photo" aria-hidden="true">
+            <span class="frame__initials">SČ</span>
+          </div>
+          <span class="frame__hud">SAMUEL · ČIŽMÁR</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== TICKER ===================== -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <div class="marquee__group">
+        <span>Fotografia</span><span>·</span>
+        <span>Grafika</span><span>·</span>
+        <span>Video</span><span>·</span>
+        <span>3D tlač</span><span>·</span>
+        <span>Web</span><span>·</span>
+        <span>Hudba</span><span>·</span>
+        <span>Dron</span><span>·</span>
+      </div>
+      <div class="marquee__group">
+        <span>Fotografia</span><span>·</span>
+        <span>Grafika</span><span>·</span>
+        <span>Video</span><span>·</span>
+        <span>3D tlač</span><span>·</span>
+        <span>Web</span><span>·</span>
+        <span>Hudba</span><span>·</span>
+        <span>Dron</span><span>·</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== O MNE ===================== -->
+  <section class="section" id="o-mne">
+    <div class="wrap split">
+      <div class="split__media reveal">
+        <div class="portrait" aria-hidden="true">
+          <span class="portrait__initials">SČ</span>
+        </div>
+      </div>
+      <div class="split__text reveal">
+        <p class="tag"><i></i> O mne</p>
+        <h2 class="h2">Tvorím to, čo ma <em>baví.</em></h2>
+        <p>
+          Mám 17 rokov a som študent. Najviac času trávim pri veciach, kde sa snúbi
+          kreativita s technikou — od fotenia áut až po strih videa či 3D tlač.
+        </p>
+        <p>
+          Rád sa učím nové nástroje a veci dotiahnem do konca. Nebaví ma robiť
+          veci na polovicu — keď ma niečo chytí, chcem to pochopiť naozaj do hĺbky.
+        </p>
+        <p>
+          Toto portfólio je moja vizitka: ukazuje, čo som sa naučil, na čom pracujem
+          a čo ma poháňa ďalej.
+        </p>
+        <div class="chips">
+          <span class="chip">Fotografia</span>
+          <span class="chip">Figma / Photoshop</span>
+          <span class="chip">Lightroom</span>
+          <span class="chip">CapCut</span>
+          <span class="chip">Blender</span>
+          <span class="chip">PHP</span>
+          <span class="chip">HTML &amp; CSS</span>
+          <span class="chip">DJI dron</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ZRUČNOSTI ===================== -->
+  <section class="section section--alt" id="zrucnosti">
+    <div class="wrap">
+      <div class="head reveal">
+        <p class="tag"><i></i> Zručnosti a skúsenosti</p>
+        <h2 class="h2">Čo viem a s čím <em>pracujem.</em></h2>
+        <p class="lead">Prehľad oblastí, ktorým sa venujem — od fotenia až po technológie.</p>
+      </div>
+
+      <div class="skill-grid">
+        <article class="skill reveal">
+          <span class="skill__ico">📷</span>
+          <h3>Fotografia</h3>
+          <p>Fotenie áut a atmosférických záberov v prirodzenom svetle. Práca s kompozíciou, svetlom a detailom.</p>
+          <div class="bar"><span style="--w: 85%"></span></div>
+        </article>
+
+        <article class="skill reveal">
+          <span class="skill__ico">🎨</span>
+          <h3>Grafika &amp; dizajn</h3>
+          <p>Úprava fotiek a tvorba grafiky v Lightroome a Photoshope — farby, retuš, vizuálna identita.</p>
+          <div class="bar"><span style="--w: 80%"></span></div>
+        </article>
+
+        <article class="skill reveal">
+          <span class="skill__ico">🎬</span>
+          <h3>Video &amp; strih</h3>
+          <p>Strih a úprava videí v CapCute — hudba, prechody, titulky a výsledný feeling.</p>
+          <div class="bar"><span style="--w: 75%"></span></div>
+        </article>
+
+        <article class="skill reveal">
+          <span class="skill__ico">🧊</span>
+          <h3>3D &amp; tlač</h3>
+          <p>Modelovanie v Blenderi a 3D tlač vlastných návrhov — od nápadu k hotovému objektu.</p>
+          <div class="bar"><span style="--w: 70%"></span></div>
+        </article>
+
+        <article class="skill reveal">
+          <span class="skill__ico">💻</span>
+          <h3>Web &amp; kód</h3>
+          <p>Základy HTML, CSS a PHP. Tvorba jednoduchých webov a neustále učenie sa nových vecí.</p>
+          <div class="bar"><span style="--w: 65%"></span></div>
+        </article>
+
+        <article class="skill reveal">
+          <span class="skill__ico">🎧</span>
+          <h3>Hudba &amp; zvuk</h3>
+          <p>Práca so zvukom a mixom, tvorbu skladám pre vlastnú radosť aj ako kulisu k videám.</p>
+          <div class="bar"><span style="--w: 60%"></span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PROJEKTY ===================== -->
+  <section class="section" id="projekty">
+    <div class="wrap">
+      <div class="head reveal">
+        <p class="tag"><i></i> Projekty</p>
+        <h2 class="h2">Na čom som <em>pracoval.</em></h2>
+        <p class="lead">Výber z toho, čo som vytvoril — klikni na kartu a pozri si viac.</p>
+      </div>
+
+      <div class="projects">
+        <article class="project reveal">
+          <div class="project__top" style="--g1:#1e3a5f;--g2:#0b1220">📷</div>
+          <div class="project__body">
+            <h3>Fotoportfólio áut</h3>
+            <p>Vlastný web s galériou automobilových fotiek, filtrami a lightboxom. Živá ukážka mojej práce.</p>
+            <div class="project__tags"><span>HTML</span><span>CSS</span><span>JS</span></div>
+            <a class="project__link" href="https://samustang1.github.io/cizmar-photography/" target="_blank" rel="noopener">Zobraziť ↗</a>
+          </div>
+        </article>
+
+        <article class="project reveal">
+          <div class="project__top" style="--g1:#3a1e5f;--g2:#0b1220">🎨</div>
+          <div class="project__body">
+            <h3>Grafické práce</h3>
+            <p>Plagáty, plagátiky a úpravy fotiek — od nápadu až po hotový vizuál v Lightroome a Photoshope.</p>
+            <div class="project__tags"><span>Photoshop</span><span>Lightroom</span></div>
+            <a class="project__link" href="#kontakt">Mám záujem →</a>
+          </div>
+        </article>
+
+        <article class="project reveal">
+          <div class="project__top" style="--g1:#1e5f4a;--g2:#0b1220">🧊</div>
+          <div class="project__body">
+            <h3>3D modely a tlač</h3>
+            <p>Návrhy v Blenderi pripravené na 3D tlač — od dekorácií až po funkčné diely.</p>
+            <div class="project__tags"><span>Blender</span><span>3D tlač</span></div>
+            <a class="project__link" href="#kontakt">Mám záujem →</a>
+          </div>
+        </article>
+
+        <article class="project reveal">
+          <div class="project__top" style="--g1:#5f3a1e;--g2:#0b1220">🎬</div>
+          <div class="project__body">
+            <h3>Video &amp; strih</h3>
+            <p>Krátke videá a zostrihy — pohyb, hudba a strih, ktorý drží tempo.</p>
+            <div class="project__tags"><span>CapCut</span><span>Dron</span></div>
+            <a class="project__link" href="#kontakt">Mám záujem →</a>
+          </div>
+        </article>
+
+        <article class="project reveal">
+          <div class="project__top" style="--g1:#1e4f5f;--g2:#0b1220">💻</div>
+          <div class="project__body">
+            <h3>Weby a PHP</h3>
+            <p>Školské a vlastné projekty v HTML, CSS a PHP — učím sa tvoriť funkčné stránky od nuly.</p>
+            <div class="project__tags"><span>PHP</span><span>HTML</span><span>CSS</span></div>
+            <a class="project__link" href="https://github.com/Samustang1" target="_blank" rel="noopener">GitHub ↗</a>
+          </div>
+        </article>
+
+        <article class="project reveal">
+          <div class="project__top" style="--g1:#5f1e3a;--g2:#0b1220">🎧</div>
+          <div class="project__body">
+            <h3>Hudba &amp; zvuk</h3>
+            <p>Experimenty s mixom a zvukom — tvorba podkladov a nahrávok pre vlastné projekty.</p>
+            <div class="project__tags"><span>Mix</span><span>Zvuk</span></div>
+            <a class="project__link" href="#kontakt">Mám záujem →</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== VZDELANIE ===================== -->
+  <section class="section section--alt" id="vzdelanie">
+    <div class="wrap">
+      <div class="head reveal">
+        <p class="tag"><i></i> Vzdelanie &amp; kurzy</p>
+        <h2 class="h2">Kde sa <em>učím.</em></h2>
+      </div>
+
+      <ol class="timeline">
+        <li class="timeline__item reveal">
+          <span class="timeline__dot"></span>
+          <span class="timeline__year">Teraz</span>
+          <h3>Stredná škola</h3>
+          <p>Štúdium so zameraním na informatiku a technológie — programovanie, web a práca s dátami.</p>
+        </li>
+        <li class="timeline__item reveal">
+          <span class="timeline__dot"></span>
+          <span class="timeline__year">Priebežne</span>
+          <h3>Fotografia &amp; grafika</h3>
+          <p>Samovzdelávanie vo fotení áut, úprave fotiek a tvorbe vizuálu. Vlastné projekty a fotenia na dohodu.</p>
+        </li>
+        <li class="timeline__item reveal">
+          <span class="timeline__dot"></span>
+          <span class="timeline__year">Priebežne</span>
+          <h3>Video, zvuk a 3D</h3>
+          <p>Strih videa, práca so zvukom, modelovanie a 3D tlač. Nástroje: CapCut, Blender, DJI.</p>
+        </li>
+        <li class="timeline__item reveal">
+          <span class="timeline__dot"></span>
+          <span class="timeline__year">Priebežne</span>
+          <h3>Web &amp; programovanie</h3>
+          <p>HTML, CSS a PHP — tvorba vlastných stránok a školské projekty. Neustále sa posúvam ďalej.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ===================== KONTAKT ===================== -->
+  <section class="section" id="kontakt">
+    <div class="wrap">
+      <div class="head reveal">
+        <p class="tag"><i></i> Kontakt</p>
+        <h2 class="h2">Poďme niečo <em>vytvoriť.</em></h2>
+        <p class="lead">Máš nápad, projekt alebo otázku? Napíš mi — ozvem sa čo najskôr.</p>
+      </div>
+
+      <div class="contact">
+        <div class="contact__info reveal">
+          <a class="info" href="mailto:cizsamko@gmail.com">
+            <span>E-mail</span>
+            <b>cizsamko@gmail.com</b>
+          </a>
+          <a class="info" href="tel:+421910186170">
+            <span>Telefón</span>
+            <b>+421 910 186 170</b>
+          </a>
+          <a class="info" href="https://github.com/Samustang1" target="_blank" rel="noopener">
+            <span>GitHub</span>
+            <b>github.com/Samustang1</b>
+          </a>
+          <a class="info" href="https://samustang1.github.io/cizmar-photography/" target="_blank" rel="noopener">
+            <span>Fotoportfólio</span>
+            <b>Automobilová fotografia ↗</b>
+          </a>
+        </div>
+
+        <!-- Formulár (funguje cez FormSubmit — treba raz aktivovať) -->
+        <form class="form reveal" id="contactForm" action="https://formsubmit.co/cizsamko@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="Nová správa z portfólia" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+          <div class="form__row">
+            <div class="field">
+              <label for="name">Meno *</label>
+              <input type="text" id="name" name="Meno" required />
+            </div>
+            <div class="field">
+              <label for="email">E-mail *</label>
+              <input type="email" id="email" name="E-mail" required />
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="subject">Predmet</label>
+            <input type="text" id="subject" name="Predmet" placeholder="Např. spolupráca, fotenie, web..." />
+          </div>
+
+          <div class="field">
+            <label for="message">Správa *</label>
+            <textarea id="message" name="Správa" rows="6" required placeholder="Napíš mi, čo máš na mysli..."></textarea>
+          </div>
+
+          <button class="btn btn--neon form__submit" type="submit">Odoslať správu</button>
+          <p class="form__note" id="formNote" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CTA ===================== -->
+  <section class="cta-band">
+    <div class="wrap cta-band__inner">
+      <div>
+        <p class="tag"><i></i> Rád fotím</p>
+        <h2 class="h2">Nafotím aj <em>tvoje auto.</em></h2>
+      </div>
+      <a class="btn btn--neon" href="https://samustang1.github.io/cizmar-photography/" target="_blank" rel="noopener">Pozrieť fotoportfólio ↗</a>
+    </div>
+  </section>
+
+  <!-- ===================== PÄTIČKA ===================== -->
+  <footer class="footer">
+    <div class="wrap footer__inner">
+      <div class="footer__mark">Samuel<em>.</em></div>
+      <p class="footer__txt">Osobné portfólio — fotografia, grafika, video, 3D a technológie.</p>
+      <div class="footer__meta">
+        <span>© <span id="year"></span> Samuel Čižmár</span>
+        <a href="mailto:cizsamko@gmail.com">cizsamko@gmail.com</a>
+        <a href="https://github.com/Samustang1" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <button class="to-top" id="toTop" aria-label="Nahor">↑</button>
+
+  <script src="assets/js/main.js?v=1"></script>
+</body>
+</html>
