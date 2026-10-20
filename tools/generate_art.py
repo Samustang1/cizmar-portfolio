@@ -388,9 +388,9 @@ MOTIFS = [
 
 def main():
     print("hero ...")
-    compose_hero().save(os.path.join(OUT, "hero.png"), optimize=True)
+    compose_hero().save(os.path.join(OUT, "hero.webp"), "WEBP", quality=84, method=6)
     print("about ...")
-    compose_about().save(os.path.join(OUT, "about.png"), optimize=True)
+    compose_about().save(os.path.join(OUT, "about.webp"), "WEBP", quality=84, method=6)
     for idx, (num, name, c1, c2, motif) in enumerate(MOTIFS, start=1):
         print("tile %s ..." % num)
         img, W, H = tile_base(1200, 675, c1, c2, seed=100 + idx)
@@ -398,7 +398,7 @@ def main():
         motif(d, W, H, c1)
         img = blur_add(img, lay, 0.5)
         img = tile_finish(img, 1200, 675, W, H, num, name, c1)
-        img.save(os.path.join(OUT, "tile-%02d.png" % idx), optimize=True)
+        img.save(os.path.join(OUT, "tile-%02d.webp" % idx), "WEBP", quality=82, method=6)
     print("hotovo ->", OUT)
 
 

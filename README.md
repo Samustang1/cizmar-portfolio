@@ -34,7 +34,7 @@ fotky z internetu; generuje ich vlastný skript aditívnym neonovým svetlom
 index.html                 # celá stránka
 assets/css/style.css       # dizajn
 assets/js/main.js          # interakcie, animácie, formulár
-assets/img/                # vygenerované vizuály (hero, about, tile-01..06)
+assets/img/                # vygenerované vizuály (hero, about, tile-01..06) — WebP
 tools/generate_art.py      # generátor vizuálov (Pillow)
 tools/fonts/               # fonty pre generátor (OFL)
 DESIGN-PHILOSOPHY.md       # dizajnová filozofia
