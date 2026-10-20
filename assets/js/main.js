@@ -84,7 +84,7 @@
   /* ---------- rotujúce povolanie (typewriter) ---------- */
   var rot = $("#rotate");
   if (rot) {
-    var words = ["fotograf.", "kreatívec.", "tvorca videa.", "3D modelár.", "webový nadšenec."];
+    var words = ["fotograf.", "kreatívec.", "retušér.", "webový nadšenec."];
     if (reduce) {
       rot.textContent = words[0];
     } else {
@@ -176,87 +176,6 @@
     }, { threshold: 0.5 });
     counters.forEach(function (c) { cio.observe(c); });
   }
-
-  /* ---------- lightbox (obrazok / video / youtube) ---------- */
-  var lb = $("#lightbox");
-  var lbImg = $("#lightboxImg");
-  var lbVid = $("#lightboxVideo");
-  var lbFrame = $("#lightboxFrame");
-  var lbNote = $("#lightboxNote");
-  var lbCap = $("#lightboxCap");
-  var lbClose = $("#lightboxClose");
-  var lastFocus = null;
-
-  function clearMedia() {
-    if (lbImg) { lbImg.hidden = true; lbImg.removeAttribute("src"); lbImg.alt = ""; }
-    if (lbVid) { lbVid.pause(); lbVid.hidden = true; lbVid.removeAttribute("src"); }
-    if (lbFrame) { lbFrame.hidden = true; lbFrame.removeAttribute("src"); }
-    if (lbNote) lbNote.hidden = true;
-  }
-
-  function openLb() {
-    if (!lb) return;
-    lastFocus = doc.activeElement;
-    lb.hidden = false;
-    requestAnimationFrame(function () { lb.classList.add("is-open"); });
-    doc.body.style.overflow = "hidden";
-    if (lbClose) lbClose.focus();
-  }
-
-  function closeLb() {
-    if (!lb || lb.hidden) return;
-    lb.classList.remove("is-open");
-    doc.body.style.overflow = "";
-    if (lbVid) lbVid.pause();
-    window.setTimeout(function () { lb.hidden = true; clearMedia(); }, reduce ? 0 : 300);
-    if (lastFocus && lastFocus.focus) lastFocus.focus();
-  }
-
-  function showImage(src, caption, alt) {
-    clearMedia();
-    if (lbCap) lbCap.textContent = caption || "";
-    if (lbImg) { lbImg.hidden = false; lbImg.src = src; lbImg.alt = alt || caption || ""; }
-    openLb();
-  }
-
-  function showVideo(src, caption) {
-    clearMedia();
-    if (lbCap) lbCap.textContent = caption || "";
-    var yt = /(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/|live\/))([\w-]{6,})/.exec(src);
-    var vm = /vimeo\.com\/(?:video\/)?(\d+)/.exec(src);
-    if (yt && lbFrame) {
-      lbFrame.hidden = false;
-      lbFrame.src = "https://www.youtube.com/embed/" + yt[1] + "?autoplay=1&rel=0";
-    } else if (vm && lbFrame) {
-      lbFrame.hidden = false;
-      lbFrame.src = "https://player.vimeo.com/video/" + vm[1] + "?autoplay=1";
-    } else if (lbVid) {
-      lbVid.hidden = false;
-      lbVid.addEventListener("error", function () {
-        lbVid.hidden = true;
-        if (lbNote) lbNote.hidden = false;
-      }, { once: true });
-      lbVid.src = src;
-      var p = lbVid.play();
-      if (p && p.catch) p.catch(function () {});
-    }
-    openLb();
-  }
-
-  $$("[data-lightbox]").forEach(function (btn) {
-    btn.addEventListener("click", function () {
-      var img = $("img", btn);
-      showImage(btn.getAttribute("data-lightbox"), btn.getAttribute("data-caption"), img ? img.alt : "");
-    });
-  });
-  $$("[data-video]").forEach(function (btn) {
-    btn.addEventListener("click", function () {
-      showVideo(btn.getAttribute("data-video"), btn.getAttribute("data-caption"));
-    });
-  });
-  if (lbClose) lbClose.addEventListener("click", closeLb);
-  if (lb) lb.addEventListener("click", function (e) { if (e.target === lb) closeLb(); });
-  doc.addEventListener("keydown", function (e) { if (e.key === "Escape") closeLb(); });
 
   onScroll();
 })();

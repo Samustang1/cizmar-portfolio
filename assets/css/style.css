@@ -396,7 +396,7 @@ a.info:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--ink
   .spin text { font-size: 8px; }
 }
 
-/* ===================== v3 — fotka, projekty, lightbox ===================== */
+/* ===================== fotka v hero + sekcia Projekty ===================== */
 
 /* hero fotka */
 .photo { position: relative; margin: 0 0 1.8rem; }
@@ -423,38 +423,24 @@ a.info:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--ink
 .works__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1rem, 2.5vw, 1.6rem); margin-top: clamp(2.5rem, 5vw, 3.5rem); }
 .work { margin: 0; }
 .work__btn {
-  display: block; width: 100%; padding: 0; cursor: zoom-in; background: var(--paper);
-  border: 2px solid var(--ink); border-radius: var(--radius); box-shadow: var(--shadow-sm);
+  position: relative; display: block; width: 100%; padding: 0; cursor: pointer; text-decoration: none; color: inherit;
+  background: var(--paper); border: 2px solid var(--ink); border-radius: var(--radius); box-shadow: var(--shadow-sm);
   overflow: hidden; transition: transform .2s var(--ease), box-shadow .2s var(--ease);
 }
 .work__btn img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; transition: transform .5s var(--ease); }
 .work__btn:hover { transform: translate(-3px, -3px); box-shadow: 9px 9px 0 var(--ink); }
 .work__btn:hover img { transform: scale(1.06); }
+.work__go {
+  position: absolute; right: .8rem; bottom: .8rem; z-index: 2;
+  display: grid; place-items: center; width: 42px; height: 42px; border-radius: 50%;
+  background: var(--amber); color: var(--ink); border: 2px solid var(--ink); box-shadow: 3px 3px 0 var(--ink);
+  font-family: var(--font-mono); font-weight: 700; font-size: 1rem;
+  transition: transform .25s var(--ease), background .25s var(--ease), color .25s var(--ease);
+}
+.work__btn:hover .work__go { transform: translate(3px, -3px) rotate(8deg); background: var(--red); color: var(--paper); }
 .work figcaption { display: flex; justify-content: space-between; gap: 1rem; align-items: baseline; margin-top: .7rem; }
 .work figcaption b { font-family: var(--font-display); font-weight: 400; text-transform: uppercase; letter-spacing: .01em; }
 .work figcaption span { font-family: var(--font-mono); font-size: .68rem; color: var(--muted); }
-
-/* lightbox */
-.lightbox {
-  position: fixed; inset: 0; z-index: 200; display: grid; place-items: center;
-  padding: clamp(1rem, 4vw, 3rem); background: rgba(20, 24, 31, .92);
-  opacity: 0; transition: opacity .3s var(--ease);
-}
-.lightbox[hidden] { display: none; }
-.lightbox.is-open { opacity: 1; }
-.lightbox__figure { max-width: min(1100px, 94vw); max-height: 90vh; display: flex; flex-direction: column; align-items: center; gap: 1rem; }
-.lightbox__figure img {
-  max-width: 100%; max-height: 80vh; object-fit: contain; border: 3px solid var(--paper); border-radius: 6px;
-  box-shadow: 0 40px 90px -30px #000; transform: scale(.96); transition: transform .35s var(--ease);
-}
-.lightbox.is-open .lightbox__figure img { transform: none; }
-.lightbox__figure figcaption { font-family: var(--font-mono); font-size: .76rem; letter-spacing: .14em; text-transform: uppercase; color: var(--paper); }
-.lightbox__close {
-  position: absolute; top: 1.2rem; right: 1.2rem; width: 48px; height: 48px;
-  background: var(--paper); color: var(--ink); border: 2px solid var(--ink); border-radius: var(--radius);
-  box-shadow: 3px 3px 0 var(--ink); font-size: 1.1rem; cursor: pointer; transition: transform .25s;
-}
-.lightbox__close:hover { transform: rotate(90deg); }
 
 @media (max-width: 980px) {
   .photo { max-width: 440px; margin-inline: auto; }
@@ -465,7 +451,7 @@ a.info:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--ink
   .photo__cap { padding: .4rem .7rem; }
 }
 
-/* ===================== v4 — video v sekcii Projekty ===================== */
+/* ===================== podsekcia "Fotky projektov" ===================== */
 
 .works__sub {
   margin: clamp(2.4rem, 5vw, 3.2rem) 0 1.2rem;
@@ -475,52 +461,7 @@ a.info:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--ink
 }
 .works__sub::after { content: ""; flex: 1; height: 2px; background: var(--ink); opacity: .18; }
 
-.video { margin-top: clamp(2rem, 4vw, 3rem); }
-.video__btn {
-  position: relative; display: block; width: 100%; padding: 0; cursor: pointer;
-  background: var(--navy); border: 2px solid var(--ink); border-radius: var(--radius);
-  box-shadow: var(--shadow); overflow: hidden;
-  transition: transform .2s var(--ease), box-shadow .2s var(--ease);
-}
-.video__btn img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
-.video__btn:hover { transform: translate(-3px, -3px); box-shadow: 11px 11px 0 var(--ink); }
-.video__play {
-  position: absolute; inset: 0; margin: auto; width: clamp(64px, 8vw, 96px); aspect-ratio: 1; border-radius: 50%;
-  background: var(--red); border: 3px solid var(--paper); box-shadow: 0 12px 34px rgba(0, 0, 0, .45);
-  transition: transform .25s var(--ease), background .25s var(--ease);
-}
-.video__play::after {
-  content: ""; position: absolute; left: 54%; top: 50%; transform: translate(-50%, -50%);
-  border-style: solid; border-width: 15px 0 15px 25px;
-  border-color: transparent transparent transparent var(--paper);
-}
-.video__btn:hover .video__play { transform: scale(1.1); background: var(--amber); }
-.video__btn:hover .video__play::after { border-left-color: var(--ink); }
-.video__label {
-  position: absolute; left: 1rem; top: 1rem;
-  font-family: var(--font-mono); font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
-  background: var(--amber); color: var(--ink); border: 2px solid var(--ink); padding: .3rem .6rem;
-}
-.video__meta { display: flex; justify-content: space-between; gap: 1rem; align-items: baseline; margin-top: .8rem; }
-.video__meta b { font-family: var(--font-display); font-weight: 400; text-transform: uppercase; letter-spacing: .01em; }
-.video__meta span { font-family: var(--font-mono); font-size: .68rem; color: var(--muted); }
-
-/* lightbox — obrazok / video / embed */
-.lightbox__figure img[hidden],
-.lightbox__figure video[hidden],
-.lightbox__figure iframe[hidden] { display: none !important; }
-.lightbox__figure video,
-.lightbox__figure iframe {
-  width: min(1000px, 92vw); max-width: 100%; aspect-ratio: 16 / 9; max-height: 80vh;
-  background: #000; border: 3px solid var(--paper); border-radius: 6px;
-  box-shadow: 0 40px 90px -30px #000;
-}
-.lightbox__note { font-family: var(--font-mono); font-size: .76rem; color: var(--paper); text-align: center; max-width: 46ch; }
-.lightbox__note[hidden] { display: none; }
-.lightbox__note b { color: var(--amber); }
-
 @media (max-width: 560px) {
-  .video__label { left: .7rem; top: .7rem; }
-  .lightbox__figure video, .lightbox__figure iframe { width: 94vw; }
+  .works__sub { font-size: 1.15rem; }
 }
 

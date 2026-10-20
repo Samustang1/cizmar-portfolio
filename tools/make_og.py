@@ -54,7 +54,7 @@ def main():
     d.text((66, 452), "ČIŽMÁR", font=f("BigShoulders-Bold.ttf", 190), fill=RED, anchor="lm")
 
     # tagy vpravo dole
-    d.text((1136, 470), "FOTOGRAFIA · GRAFIKA · VIDEO", font=f("GeistMono-Regular.ttf", 22), fill=(92, 98, 112), anchor="rm")
+    d.text((1136, 470), "FOTOGRAFIA · GRAFIKA", font=f("GeistMono-Regular.ttf", 22), fill=(92, 98, 112), anchor="rm")
     d.text((1136, 508), "WEB · KÓD", font=f("GeistMono-Regular.ttf", 22), fill=(92, 98, 112), anchor="rm")
 
     os.makedirs(OUT, exist_ok=True)
