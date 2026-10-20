@@ -19,11 +19,11 @@ box-shadow), pestrou paletou a animovaným (aurora) pozadím.
 
 | # | Sekcia | Obsah |
 |---|--------|-------|
-| — | Hero | meno, rotujúce povolanie, predstavenie, **fotka (odkaz na fotoportfólio)**, počítadlá, bežiaci pás |
+| — | Hero | meno, rotujúce povolanie, predstavenie, fotka, počítadlá, bežiaci pás |
 | 01 | O mne | krátke bio + fakty (vek, lokalita, zameranie, jazyky, dostupnosť) |
 | — | Statement | veľký tmavý pás s mottom |
-| 02 | Projekty | mriežka 6 fotiek — **klik otvorí fotoportfólio** |
-| 03 | Zručnosti | 3 karty s animovanými pruhmi |
+| 02 | Projekty | mriežka 6 fotiek |
+| 03 | Zručnosti | 3 karty s animovanými pruhmi — **karta „Fotografia" je odkaz na fotoportfólio** |
 | 04 | Vzdelanie | časová os |
 | 05 | Kontakt | e-mail, telefón, GitHub + kontaktný formulár |
 
@@ -38,9 +38,7 @@ Tlačidlá **„Napíš mi"** vedú na kontaktný formulár (`#kontakt`), nie na
 2. Hotovo — veľkosť a orezanie rieši CSS (`object-fit: cover`).
 
 > Teraz je tam placeholder `assets/img/foto.webp` s nápisom „TVOJA FOTKA".
-> Fotka je zároveň **odkaz na fotoportfólio** (https://samustang1.github.io/cizmar-photography/) —
-> na hover sa jemne nadvihne (rovnako ako karty zručností) a v rohu sa rozsvieti „Fotoportfólio ↗".
-> Odkaz zmeníš/vyhodíš v `index.html` na `<a class="photo__frame" href="…">`.
+> Fotka nie je odkaz — odkaz na fotoportfólio je na karte „Fotografia" v sekcii Zručnosti.
 
 ## Ako vložiť projekty / fotky
 
@@ -56,25 +54,29 @@ assets/img/prace/prace-6.webp   →  Projekt 06
 ```
 
 Nahraď ich vlastnými fotkami (**rovnaký názov**, odporúčaný pomer **4 : 3**).
-Popisky („Projekt 01", „fotoportfólio ↗") prepíšeš v `index.html` v `<figcaption>`.
+Popisky („Projekt 01", „2026") prepíšeš v `index.html` v `<figcaption>`.
+
+Fotky v Projektoch **nie sú odkazy** — slúžia len ako ukážka.
 
 Ak chceš **viac alebo menej** projektov, skopíruj/uber `<figure class="work">` blok.
 
-## Odkazy na fotoportfólio
+## Odkaz na fotoportfólio
 
-Každá fotka v sekcii Projekty je odkaz — po kliknutí sa otvorí
+Na fotoportfólio vedie **jediný odkaz** — karta **„Fotografia"** v sekcii Zručnosti:
 
 ```
 https://samustang1.github.io/cizmar-photography/
 ```
 
-v novej karte. Odkaz zmeníš v `index.html` v atribúte `href`:
+Otvára sa v novej karte, na hover sa karta nadvihne a v rohu sa rozsvieti „↗".
+Odkaz zmeníš v `index.html` v atribúte `href`:
 
 ```html
-<a class="work__btn" href="https://samustang1.github.io/cizmar-photography/" target="_blank" rel="noopener" …>
+<a class="card card--link" href="https://samustang1.github.io/cizmar-photography/" target="_blank" rel="noopener" …>
 ```
 
-> Ak niektorá fotka nemá nikam viesť, jednoducho z `href` sprav `href="#"`.
+> Ak odkaz nechceš, vymeň `<a class="card card--link" …>` za `<article class="card" …>`
+> a zmaž `<span class="card__go">↗</span>`.
 
 ---
 
@@ -98,7 +100,7 @@ tools/fonts/                   # fonty pre generátory (OFL)
 1. **Texty** prepíšeš v `index.html`.
 2. **Farby** v `assets/css/style.css` v časti `:root` (`--red`, `--blue`, `--amber`, …).
 3. **Rotujúce slová** v `assets/js/main.js` (pole `words`).
-4. Po zmene CSS/JS zvýš `?v=7` → `?v=8` v `index.html` (cache-busting).
+4. Po zmene CSS/JS zvýš `?v=8` → `?v=9` v `index.html` (cache-busting).
 5. Nahraj:
 
 ```bash
