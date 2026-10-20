@@ -396,3 +396,72 @@ a.info:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--ink
   .spin text { font-size: 8px; }
 }
 
+/* ===================== v3 — fotka, projekty, lightbox ===================== */
+
+/* hero fotka */
+.photo { position: relative; margin: 0 0 1.8rem; }
+.photo__frame {
+  border: 3px solid var(--ink); border-radius: var(--radius); background: var(--paper);
+  box-shadow: var(--shadow); overflow: hidden; transform: rotate(-2deg);
+}
+.photo__frame img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover; }
+.photo__tag {
+  position: absolute; top: -14px; left: -14px; z-index: 3;
+  font-family: var(--font-mono); font-size: .68rem; font-weight: 700; letter-spacing: .14em;
+  background: var(--amber); color: var(--ink); border: 2px solid var(--ink);
+  padding: .35rem .7rem; box-shadow: 3px 3px 0 var(--ink); transform: rotate(-3deg);
+}
+.photo__cap {
+  position: absolute; left: 50%; bottom: -22px; z-index: 3; transform: translateX(-50%) rotate(-1.5deg);
+  display: flex; align-items: baseline; gap: .6rem; white-space: nowrap;
+  background: var(--paper); border: 2px solid var(--ink); padding: .5rem .9rem; box-shadow: 4px 4px 0 var(--ink);
+}
+.photo__cap b { font-family: var(--font-display); font-weight: 400; text-transform: uppercase; font-size: 1.15rem; letter-spacing: .02em; }
+.photo__cap span { font-family: var(--font-mono); font-size: .7rem; color: var(--muted); }
+
+/* mriezka projektov */
+.works__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1rem, 2.5vw, 1.6rem); margin-top: clamp(2.5rem, 5vw, 3.5rem); }
+.work { margin: 0; }
+.work__btn {
+  display: block; width: 100%; padding: 0; cursor: zoom-in; background: var(--paper);
+  border: 2px solid var(--ink); border-radius: var(--radius); box-shadow: var(--shadow-sm);
+  overflow: hidden; transition: transform .2s var(--ease), box-shadow .2s var(--ease);
+}
+.work__btn img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; transition: transform .5s var(--ease); }
+.work__btn:hover { transform: translate(-3px, -3px); box-shadow: 9px 9px 0 var(--ink); }
+.work__btn:hover img { transform: scale(1.06); }
+.work figcaption { display: flex; justify-content: space-between; gap: 1rem; align-items: baseline; margin-top: .7rem; }
+.work figcaption b { font-family: var(--font-display); font-weight: 400; text-transform: uppercase; letter-spacing: .01em; }
+.work figcaption span { font-family: var(--font-mono); font-size: .68rem; color: var(--muted); }
+
+/* lightbox */
+.lightbox {
+  position: fixed; inset: 0; z-index: 200; display: grid; place-items: center;
+  padding: clamp(1rem, 4vw, 3rem); background: rgba(20, 24, 31, .92);
+  opacity: 0; transition: opacity .3s var(--ease);
+}
+.lightbox[hidden] { display: none; }
+.lightbox.is-open { opacity: 1; }
+.lightbox__figure { max-width: min(1100px, 94vw); max-height: 90vh; display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+.lightbox__figure img {
+  max-width: 100%; max-height: 80vh; object-fit: contain; border: 3px solid var(--paper); border-radius: 6px;
+  box-shadow: 0 40px 90px -30px #000; transform: scale(.96); transition: transform .35s var(--ease);
+}
+.lightbox.is-open .lightbox__figure img { transform: none; }
+.lightbox__figure figcaption { font-family: var(--font-mono); font-size: .76rem; letter-spacing: .14em; text-transform: uppercase; color: var(--paper); }
+.lightbox__close {
+  position: absolute; top: 1.2rem; right: 1.2rem; width: 48px; height: 48px;
+  background: var(--paper); color: var(--ink); border: 2px solid var(--ink); border-radius: var(--radius);
+  box-shadow: 3px 3px 0 var(--ink); font-size: 1.1rem; cursor: pointer; transition: transform .25s;
+}
+.lightbox__close:hover { transform: rotate(90deg); }
+
+@media (max-width: 980px) {
+  .photo { max-width: 440px; margin-inline: auto; }
+  .works__grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  .works__grid { grid-template-columns: 1fr; }
+  .photo__cap { padding: .4rem .7rem; }
+}
+

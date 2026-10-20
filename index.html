@@ -18,7 +18,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/style.css?v=2" />
+  <link rel="stylesheet" href="assets/css/style.css?v=3" />
   <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 </head>
 
@@ -37,10 +37,11 @@
 
       <nav class="nav" id="nav" aria-label="Hlavná navigácia">
         <a href="#o-mne">O mne</a>
+        <a href="#projekty">Projekty</a>
         <a href="#zrucnosti">Zručnosti</a>
         <a href="#vzdelanie">Vzdelanie</a>
         <a href="#kontakt">Kontakt</a>
-        <a class="btn btn--sm" href="mailto:cizsamko@gmail.com">Napíš mi</a>
+        <a class="btn btn--sm" href="#kontakt">Napíš mi</a>
       </nav>
 
       <button class="burger" id="burger" type="button" aria-label="Otvoriť menu" aria-expanded="false" aria-controls="nav">
@@ -77,7 +78,7 @@
           </p>
 
           <div class="hero__actions reveal">
-            <a class="btn" href="mailto:cizsamko@gmail.com" data-magnet>Napíš mi</a>
+            <a class="btn" href="#kontakt" data-magnet>Napíš mi</a>
             <a class="btn btn--outline" href="#zrucnosti" data-magnet>Čo viem</a>
           </div>
 
@@ -88,19 +89,15 @@
           </dl>
         </div>
 
-        <figure class="poster reveal" aria-label="Portfólio 2026">
-          <div class="poster__dots" aria-hidden="true"></div>
-          <span class="poster__tag">PORTFÓLIO · 2026</span>
-          <span class="poster__mark">SČ</span>
-          <ul class="poster__list">
-            <li><b>01</b> Fotografia</li>
-            <li><b>02</b> Grafika</li>
-            <li><b>03</b> Video</li>
-            <li><b>04</b> 3D &amp; tlač</li>
-            <li><b>05</b> Web &amp; kód</li>
-            <li><b>06</b> Zvuk</li>
-          </ul>
-          <span class="poster__stamp">EST · 2026</span>
+        <figure class="photo reveal" aria-label="Portrét — Samuel Čižmár">
+          <span class="photo__tag">PORTFÓLIO · 2026</span>
+          <div class="photo__frame">
+            <img src="assets/img/foto.webp" alt="Samuel Čižmár" width="900" height="1200" />
+          </div>
+          <figcaption class="photo__cap">
+            <b>Samuel Čižmár</b>
+            <span>17 · Slovensko</span>
+          </figcaption>
           <span class="spin" aria-hidden="true">
             <svg viewBox="0 0 100 100">
               <defs><path id="spinpath" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0" /></defs>
@@ -157,11 +154,66 @@
       </div>
     </section>
 
+    <!-- ================= PROJEKTY ================= -->
+    <section class="section works" id="projekty">
+      <div class="wrap">
+        <div class="sec-head">
+          <p class="label reveal" data-tone="green"><span>02</span> Projekty</p>
+          <h2 class="h2 reveal">Miesto pre moje <em>práce.</em></h2>
+          <p class="lead reveal">Výber mojich projektov a fotiek — klikni na obrázok pre zväčšenie.</p>
+        </div>
+
+        <div class="works__grid">
+          <figure class="work reveal">
+            <button class="work__btn" type="button" data-lightbox="assets/img/prace/prace-1.webp" data-caption="Projekt 01" aria-label="Zväčšiť — Projekt 01">
+              <img src="assets/img/prace/prace-1.webp" alt="Projekt 01" width="1200" height="900" loading="lazy" />
+            </button>
+            <figcaption><b>Projekt 01</b><span>popis · rok</span></figcaption>
+          </figure>
+
+          <figure class="work reveal">
+            <button class="work__btn" type="button" data-lightbox="assets/img/prace/prace-2.webp" data-caption="Projekt 02" aria-label="Zväčšiť — Projekt 02">
+              <img src="assets/img/prace/prace-2.webp" alt="Projekt 02" width="1200" height="900" loading="lazy" />
+            </button>
+            <figcaption><b>Projekt 02</b><span>popis · rok</span></figcaption>
+          </figure>
+
+          <figure class="work reveal">
+            <button class="work__btn" type="button" data-lightbox="assets/img/prace/prace-3.webp" data-caption="Projekt 03" aria-label="Zväčšiť — Projekt 03">
+              <img src="assets/img/prace/prace-3.webp" alt="Projekt 03" width="1200" height="900" loading="lazy" />
+            </button>
+            <figcaption><b>Projekt 03</b><span>popis · rok</span></figcaption>
+          </figure>
+
+          <figure class="work reveal">
+            <button class="work__btn" type="button" data-lightbox="assets/img/prace/prace-4.webp" data-caption="Projekt 04" aria-label="Zväčšiť — Projekt 04">
+              <img src="assets/img/prace/prace-4.webp" alt="Projekt 04" width="1200" height="900" loading="lazy" />
+            </button>
+            <figcaption><b>Projekt 04</b><span>popis · rok</span></figcaption>
+          </figure>
+
+          <figure class="work reveal">
+            <button class="work__btn" type="button" data-lightbox="assets/img/prace/prace-5.webp" data-caption="Projekt 05" aria-label="Zväčšiť — Projekt 05">
+              <img src="assets/img/prace/prace-5.webp" alt="Projekt 05" width="1200" height="900" loading="lazy" />
+            </button>
+            <figcaption><b>Projekt 05</b><span>popis · rok</span></figcaption>
+          </figure>
+
+          <figure class="work reveal">
+            <button class="work__btn" type="button" data-lightbox="assets/img/prace/prace-6.webp" data-caption="Projekt 06" aria-label="Zväčšiť — Projekt 06">
+              <img src="assets/img/prace/prace-6.webp" alt="Projekt 06" width="1200" height="900" loading="lazy" />
+            </button>
+            <figcaption><b>Projekt 06</b><span>popis · rok</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
     <!-- ================= ZRUČNOSTI ================= -->
     <section class="section skills" id="zrucnosti">
       <div class="wrap">
         <div class="sec-head">
-          <p class="label reveal" data-tone="blue"><span>02</span> Zručnosti</p>
+          <p class="label reveal" data-tone="blue"><span>03</span> Zručnosti</p>
           <h2 class="h2 reveal">S čím viem<br /><em>pracovať.</em></h2>
           <p class="lead reveal">Šesť oblastí, ktoré ovládam — od zámku fotoaparátu po riadok kódu.</p>
         </div>
@@ -222,7 +274,7 @@
     <section class="section edu" id="vzdelanie">
       <div class="wrap edu__grid">
         <div class="edu__head">
-          <p class="label reveal" data-tone="amber"><span>03</span> Vzdelanie &amp; smerovanie</p>
+          <p class="label reveal" data-tone="amber"><span>04</span> Vzdelanie &amp; smerovanie</p>
           <h2 class="h2 reveal">Kde sa<br /><em>posúvam.</em></h2>
         </div>
 
@@ -255,7 +307,7 @@
     <section class="section contact" id="kontakt">
       <div class="wrap">
         <div class="sec-head">
-          <p class="label reveal" data-tone="blue"><span>04</span> Kontakt</p>
+          <p class="label reveal" data-tone="blue"><span>05</span> Kontakt</p>
           <h2 class="h2 reveal">Poďme niečo<br /><em>spraviť.</em></h2>
           <p class="lead reveal">Hľadáš brigádnika, praktikanta alebo parťáka na projekt? Napíš mi — ozvem sa čo najskôr.</p>
         </div>
@@ -302,6 +354,7 @@
       <span class="footer__mark">SČ</span>
       <nav class="footer__nav" aria-label="Pätičná navigácia">
         <a href="#o-mne">O mne</a>
+        <a href="#projekty">Projekty</a>
         <a href="#zrucnosti">Zručnosti</a>
         <a href="#vzdelanie">Vzdelanie</a>
         <a href="#kontakt">Kontakt</a>
@@ -312,6 +365,15 @@
 
   <button class="totop" id="totop" type="button" aria-label="Späť nahor">↑</button>
 
-  <script src="assets/js/main.js?v=2"></script>
+  <!-- ================= LIGHTBOX ================= -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Zväčšený obrázok" hidden>
+    <button class="lightbox__close" id="lightboxClose" type="button" aria-label="Zavrieť">✕</button>
+    <figure class="lightbox__figure">
+      <img id="lightboxImg" src="" alt="" />
+      <figcaption id="lightboxCap"></figcaption>
+    </figure>
+  </div>
+
+  <script src="assets/js/main.js?v=3"></script>
 </body>
 </html>
