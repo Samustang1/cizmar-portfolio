@@ -1,76 +1,60 @@
-# Samuel Čižmár — PROJEKTY
+# Samuel Čižmár — Portfólio
 
-Statická webová stránka (HTML + CSS + JS, bez servera) so **semantickou štruktúrou**
-podľa zadania. Beží na **GitHub Pages**.
+Moderné osobné **portfólio** postavené od nuly v čistom **HTML, CSS a JavaScripte**
+(žiadny framework). Slúži na ukázanie zamestnávateľovi — brigáda, prax alebo spolupráca.
 
 - **Live:** https://samustang1.github.io/cizmar-portfolio/
-- **Fotoportfólio (druhá stránka):** https://samustang1.github.io/cizmar-photography/
+- **Repo:** https://github.com/Samustang1/cizmar-portfolio
 
-## Zadanie
+## Štýl
 
-Stránka vychádza zo školského zadania (priečinok `Downloads`):
+Svetlý „print / editorial" dizajn s výraznou typografiou, tvrdými tieňmi (offset
+box-shadow) a pestrou paletou — mix varsity, editorialu a retra. Žiadny odkaz na iné stránky.
 
-- `Čižmár_projekty.docx` — texty projektov (Zadanie + Vypracovanie a hodnotenie)
-- `Čižmár_projekty_wireframe.png` — náčrt rozloženia
-- `Čižmár_projekty_semantika.zip` — `spg podstránka/podstranka.html` + obrázky projektov
+- **Písmo:** Anton (nadpisy), Inter (text), Space Mono (technické popisky)
+- **Farby:** krémová, atramentová, červená, modrá, jantárová, zelená, fialová
+- Jednoduchý, rýchly, responzívny, bez externých knižníc (len Google Fonts)
 
-Štruktúra podľa zadania:
+## Sekcie
 
-```
-<header>   logo + navigačné menu + profil (obrázok + meno)
-<main>     <section class="projects">
-             <h1>PROJEKTY</h1>
-             <article class="project"> … obrázok + text (Zadanie / Vypracovanie a hodnotenie)
-             (5×, striedavo s triedou .reverse)
-<footer>   päta (kontakt, odkazy)
-```
+| # | Sekcia | Obsah |
+|---|--------|-------|
+| — | Hero | meno, rotujúce povolanie, predstavenie, tlačidlá, plagát, bežiaci pás |
+| 01 | O mne | krátke bio + fakty (vek, lokalita, zameranie, jazyky, dostupnosť) |
+| 02 | Zručnosti | 6 kariet s animovanými pruhmi (foto, grafika, video, 3D, web, zvuk) |
+| 03 | Vzdelanie | časová os vzdelania a smerovania |
+| 04 | Kontakt | e-mail, telefón, GitHub + kontaktný formulár |
 
-## Obsah — 5 projektov
-
-| # | Projekt | Obrázok |
-|---|---------|---------|
-| 01 | Kreatívny životopis | `assets/img/projekty/projekt-1.webp` |
-| 02 | Glow up effect | `assets/img/projekty/projekt-2.webp` |
-| 03 | Prvá webová stránka | `assets/img/projekty/projekt-3.webp` |
-| 04 | Webová stránka pre šikanu | `assets/img/projekty/projekt-4.webp` *(placeholder)* |
-| 05 | Web hosting z Raspberry Pi | `assets/img/projekty/projekt-5.webp` |
-
-> **Poznámka:** Zadanie neobsahovalo obrázok pre Projekt 4 ani profilovú fotku.
-> Projekt 4 má preto neutrálny placeholder — nahraď ho reálnym obrázkom
-> (ulož ho ako `assets/img/projekty/projekt-4.webp`). Profilový avatar
-> `assets/img/profil.webp` nahradíš svojou fotkou (napr. `profil.jpg`).
-
-## Štruktúra projektu
+## Súbory
 
 ```
-index.html                    # celá stránka
-assets/css/style.css          # dizajn (premium tmavá téma)
-assets/js/main.js             # navigácia, reveal, počítadlá, lightbox
-assets/img/profil.webp        # profilový avatar
-assets/img/og.webp            # náhľad pre sociálne siete
-assets/img/projekty/*.webp    # obrázky projektov
-tools/generate_art.py         # generátor vizuálov (Pillow)
-tools/page_assets.py          # konverzia obrázkov + avatar + placeholder + OG
-tools/fonts/                  # fonty pre generátor (OFL)
-DESIGN-PHILOSOPHY.md          # dizajnová filozofia
-.nojekyll                     # vypne Jekyll na Pages
+index.html               # celá stránka
+assets/css/style.css     # dizajn (svetlá téma)
+assets/js/main.js        # menu, reveal, pruhy, rotujúce texty, formulár
+assets/img/og.webp       # náhľad pre sociálne siete
+tools/make_og.py         # generátor OG obrázka (Pillow)
+tools/fonts/             # fonty pre generátor (OFL)
+.nojekyll                # vypne Jekyll na GitHub Pages
 ```
 
-## Ako upraviť obsah
+## Úpravy
 
-1. Texty projektov prepíšeš v `index.html` (v `article.project`).
-2. Farby v `assets/css/style.css` v časti `:root`.
-3. Obrázky: nahraď `assets/img/projekty/*.webp` (WebP, prípadne uprav `tools/page_assets.py`).
+1. **Texty** prepíšeš priamo v `index.html`.
+2. **Farby** v `assets/css/style.css` v časti `:root` (`--red`, `--blue`, `--amber`, …).
+3. **Rotujúce slová** v `assets/js/main.js` (pole `words`).
 4. Po zmene CSS/JS zvýš `?v=1` → `?v=2` v `index.html` (cache-busting).
 5. Nahraj:
 
 ```bash
 git add -A
-git commit -m "úprava obsahu"
+git commit -m "úprava portfólia"
 git push
 ```
 
 GitHub Pages sa prebuildí automaticky do minúty.
+
+> **Formulár:** používa FormSubmit (`formsubmit.co`). Pri prvej odoslanej správe
+> treba raz potvrdiť e-mail, ktorý príde na `cizsamko@gmail.com`.
 
 ## Kontakt
 

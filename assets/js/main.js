@@ -1,5 +1,5 @@
 /* ============================================================
-   Samuel Čižmár — PROJEKTY · main.js
+   Samuel Čižmár — Portfólio · main.js
    ============================================================ */
 (function () {
   "use strict";
@@ -13,7 +13,7 @@
   var yearEl = $("#year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  /* ---------- menu (mobil) ---------- */
+  /* ---------- mobilné menu ---------- */
   var burger = $("#burger");
   var nav = $("#nav");
   if (burger && nav) {
@@ -33,7 +33,7 @@
 
   /* ---------- scroll: progress, hlavička, totop ---------- */
   var progress = $("#progress");
-  var header = $("#siteHeader");
+  var header = $("#header");
   var totop = $("#totop");
 
   function onScroll() {
@@ -42,7 +42,7 @@
     var y = window.scrollY || h.scrollTop;
     if (progress) progress.style.transform = "scaleX(" + (max > 0 ? y / max : 0) + ")";
     if (header) header.classList.toggle("is-scrolled", y > 24);
-    if (totop) totop.classList.toggle("is-visible", y > 700);
+    if (totop) totop.classList.toggle("is-visible", y > 600);
   }
   var ticking = false;
   window.addEventListener("scroll", function () {
@@ -50,6 +50,7 @@
     ticking = true;
     requestAnimationFrame(function () { onScroll(); ticking = false; });
   }, { passive: true });
+
   if (totop) totop.addEventListener("click", function () {
     window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
   });
@@ -61,88 +62,99 @@
       entries.forEach(function (e) {
         if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); }
       });
-    }, { threshold: 0.12, rootMargin: "0px 0px -60px 0px" });
+    }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
     revealEls.forEach(function (el) { io.observe(el); });
   } else {
     revealEls.forEach(function (el) { el.classList.add("is-in"); });
   }
 
+  /* ---------- animácia pruhov ---------- */
+  var bars = $$(".bar");
+  if (bars.length && "IntersectionObserver" in window && !reduce) {
+    var bio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add("is-anim"); bio.unobserve(e.target); }
+      });
+    }, { threshold: 0.4 });
+    bars.forEach(function (b) { bio.observe(b); });
+  } else {
+    bars.forEach(function (b) { b.classList.add("is-anim"); });
+  }
+
+  /* ---------- rotujúce povolanie (typewriter) ---------- */
+  var rot = $("#rotate");
+  if (rot) {
+    var words = ["fotograf.", "kreatívec.", "tvorca videa.", "3D modelár.", "webový nadšenec."];
+    if (reduce) {
+      rot.textContent = words[0];
+    } else {
+      var wi = 0, ci = 0, deleting = false;
+      (function tick() {
+        var w = words[wi];
+        ci += deleting ? -1 : 1;
+        rot.textContent = w.slice(0, ci);
+        var delay = deleting ? 45 : 95;
+        if (!deleting && ci === w.length) { deleting = true; delay = 1500; }
+        else if (deleting && ci === 0) { deleting = false; wi = (wi + 1) % words.length; delay = 300; }
+        window.setTimeout(tick, delay);
+      })();
+    }
+  }
+
   /* ---------- scrollspy ---------- */
-  var navAnchors = $$('#nav a[href^="#"]:not(.nav__cta)');
-  var watched = navAnchors.map(function (a) { return doc.getElementById(a.getAttribute("href").slice(1)); })
-                          .filter(Boolean);
-  if ("IntersectionObserver" in window && watched.length) {
+  var anchors = $$('#nav a[href^="#"]:not(.btn)');
+  var sections = anchors.map(function (a) { return doc.getElementById(a.getAttribute("href").slice(1)); }).filter(Boolean);
+  if ("IntersectionObserver" in window && sections.length) {
     var spy = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         if (!e.isIntersecting) return;
-        var id = e.target.getAttribute("id");
-        navAnchors.forEach(function (a) {
-          a.classList.toggle("is-current", a.getAttribute("href") === "#" + id);
-        });
+        var id = e.target.id;
+        anchors.forEach(function (a) { a.classList.toggle("is-current", a.getAttribute("href") === "#" + id); });
       });
-    }, { threshold: 0.4, rootMargin: "-30% 0px -55% 0px" });
-    watched.forEach(function (s) { spy.observe(s); });
+    }, { rootMargin: "-45% 0px -50% 0px", threshold: 0 });
+    sections.forEach(function (s) { spy.observe(s); });
   }
 
-  /* ---------- počítadlá ---------- */
-  var counters = $$("[data-count]");
-  if (counters.length && "IntersectionObserver" in window && !reduce) {
-    var cio = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (!e.isIntersecting) return;
-        var el = e.target;
-        var target = parseInt(el.getAttribute("data-count"), 10);
-        cio.unobserve(el);
-        if (isNaN(target) || target > 100) { el.textContent = String(target); return; }
-        var start = performance.now(), dur = 1100;
-        (function step(now) {
-          var p = Math.min(1, (now - start) / dur);
-          el.textContent = String(Math.round(target * (1 - Math.pow(1 - p, 3))));
-          if (p < 1) requestAnimationFrame(step);
-        })(start);
+  /* ---------- magnetické tlačidlá ---------- */
+  if (!reduce && window.matchMedia("(hover: hover)").matches) {
+    $$("[data-magnet]").forEach(function (el) {
+      el.addEventListener("mousemove", function (e) {
+        var r = el.getBoundingClientRect();
+        var x = (e.clientX - r.left - r.width / 2) / r.width;
+        var y = (e.clientY - r.top - r.height / 2) / r.height;
+        el.style.transform = "translate(" + (x * 6 - 2) + "px," + (y * 6 - 2) + "px)";
       });
-    }, { threshold: 0.6 });
-    counters.forEach(function (c) { cio.observe(c); });
-  }
-
-  /* ---------- lightbox ---------- */
-  var lb = $("#lightbox");
-  var lbImg = $("#lightboxImg");
-  var lbCap = $("#lightboxCap");
-  var lbClose = $("#lightboxClose");
-  var lastFocus = null;
-
-  function openLb(src, caption, alt) {
-    if (!lb || !lbImg) return;
-    lastFocus = doc.activeElement;
-    lbImg.src = src;
-    lbImg.alt = alt || caption || "";
-    if (lbCap) lbCap.textContent = caption || "";
-    lb.hidden = false;
-    requestAnimationFrame(function () { lb.classList.add("is-open"); });
-    doc.body.style.overflow = "hidden";
-    if (lbClose) lbClose.focus();
-  }
-  function closeLb() {
-    if (!lb || lb.hidden) return;
-    lb.classList.remove("is-open");
-    doc.body.style.overflow = "";
-    window.setTimeout(function () {
-      lb.hidden = true;
-      lbImg.src = "";
-    }, reduce ? 0 : 300);
-    if (lastFocus && lastFocus.focus) lastFocus.focus();
-  }
-
-  $$(".shot").forEach(function (btn) {
-    btn.addEventListener("click", function () {
-      var img = $("img", btn);
-      openLb(btn.getAttribute("data-lightbox"), btn.getAttribute("data-caption"), img ? img.alt : "");
+      el.addEventListener("mouseleave", function () { el.style.transform = ""; });
     });
-  });
-  if (lbClose) lbClose.addEventListener("click", closeLb);
-  if (lb) lb.addEventListener("click", function (e) { if (e.target === lb) closeLb(); });
-  doc.addEventListener("keydown", function (e) { if (e.key === "Escape") closeLb(); });
+  }
+
+  /* ---------- kontaktný formulár (AJAX) ---------- */
+  var form = $("#contactForm");
+  var note = $("#formNote");
+  if (form) {
+    form.addEventListener("submit", function (e) {
+      var hp = $(".hp", form);
+      if (hp && hp.value) { e.preventDefault(); return; }
+      if (!("fetch" in window)) return;
+
+      e.preventDefault();
+      var btn = $(".form__submit", form);
+      var label = btn ? btn.textContent : "";
+      if (btn) { btn.disabled = true; btn.textContent = "Odosielam…"; }
+      if (note) { note.className = "form__note"; note.textContent = ""; }
+
+      fetch(form.action, { method: "POST", body: new FormData(form), headers: { Accept: "application/json" } })
+        .then(function (r) {
+          if (!r.ok) throw new Error("bad");
+          if (note) { note.className = "form__note is-ok"; note.textContent = "Ďakujem! Správa odišla — ozvem sa čo najskôr."; }
+          form.reset();
+        })
+        .catch(function () {
+          if (note) { note.className = "form__note is-err"; note.textContent = "Nepodarilo sa odoslať. Napíš mi priamo na cizsamko@gmail.com."; }
+        })
+        .then(function () { if (btn) { btn.disabled = false; btn.textContent = label; } });
+    });
+  }
 
   onScroll();
 })();
