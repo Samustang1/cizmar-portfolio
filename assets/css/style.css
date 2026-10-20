@@ -237,7 +237,7 @@ button { font: inherit; color: inherit; }
 .facts dd { font-weight: 700; margin-top: .25rem; }
 
 /* ---- karty zručností ---- */
-.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; margin-top: clamp(2.5rem, 5vw, 3.5rem); }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: 1.4rem; margin-top: clamp(2.5rem, 5vw, 3.5rem); }
 .card {
   position: relative; padding: 1.6rem 1.4rem 1.4rem; background: var(--paper);
   border: 2px solid var(--ink); border-radius: var(--radius); box-shadow: var(--shadow-sm);
@@ -463,5 +463,64 @@ a.info:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--ink
 @media (max-width: 560px) {
   .works__grid { grid-template-columns: 1fr; }
   .photo__cap { padding: .4rem .7rem; }
+}
+
+/* ===================== v4 — video v sekcii Projekty ===================== */
+
+.works__sub {
+  margin: clamp(2.4rem, 5vw, 3.2rem) 0 1.2rem;
+  font-family: var(--font-display); font-weight: 400; text-transform: uppercase;
+  font-size: clamp(1.25rem, 2.4vw, 1.8rem); letter-spacing: .01em;
+  display: flex; align-items: center; gap: .9rem;
+}
+.works__sub::after { content: ""; flex: 1; height: 2px; background: var(--ink); opacity: .18; }
+
+.video { margin-top: clamp(2rem, 4vw, 3rem); }
+.video__btn {
+  position: relative; display: block; width: 100%; padding: 0; cursor: pointer;
+  background: var(--navy); border: 2px solid var(--ink); border-radius: var(--radius);
+  box-shadow: var(--shadow); overflow: hidden;
+  transition: transform .2s var(--ease), box-shadow .2s var(--ease);
+}
+.video__btn img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
+.video__btn:hover { transform: translate(-3px, -3px); box-shadow: 11px 11px 0 var(--ink); }
+.video__play {
+  position: absolute; inset: 0; margin: auto; width: clamp(64px, 8vw, 96px); aspect-ratio: 1; border-radius: 50%;
+  background: var(--red); border: 3px solid var(--paper); box-shadow: 0 12px 34px rgba(0, 0, 0, .45);
+  transition: transform .25s var(--ease), background .25s var(--ease);
+}
+.video__play::after {
+  content: ""; position: absolute; left: 54%; top: 50%; transform: translate(-50%, -50%);
+  border-style: solid; border-width: 15px 0 15px 25px;
+  border-color: transparent transparent transparent var(--paper);
+}
+.video__btn:hover .video__play { transform: scale(1.1); background: var(--amber); }
+.video__btn:hover .video__play::after { border-left-color: var(--ink); }
+.video__label {
+  position: absolute; left: 1rem; top: 1rem;
+  font-family: var(--font-mono); font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  background: var(--amber); color: var(--ink); border: 2px solid var(--ink); padding: .3rem .6rem;
+}
+.video__meta { display: flex; justify-content: space-between; gap: 1rem; align-items: baseline; margin-top: .8rem; }
+.video__meta b { font-family: var(--font-display); font-weight: 400; text-transform: uppercase; letter-spacing: .01em; }
+.video__meta span { font-family: var(--font-mono); font-size: .68rem; color: var(--muted); }
+
+/* lightbox — obrazok / video / embed */
+.lightbox__figure img[hidden],
+.lightbox__figure video[hidden],
+.lightbox__figure iframe[hidden] { display: none !important; }
+.lightbox__figure video,
+.lightbox__figure iframe {
+  width: min(1000px, 92vw); max-width: 100%; aspect-ratio: 16 / 9; max-height: 80vh;
+  background: #000; border: 3px solid var(--paper); border-radius: 6px;
+  box-shadow: 0 40px 90px -30px #000;
+}
+.lightbox__note { font-family: var(--font-mono); font-size: .76rem; color: var(--paper); text-align: center; max-width: 46ch; }
+.lightbox__note[hidden] { display: none; }
+.lightbox__note b { color: var(--amber); }
+
+@media (max-width: 560px) {
+  .video__label { left: .7rem; top: .7rem; }
+  .lightbox__figure video, .lightbox__figure iframe { width: 94vw; }
 }
 

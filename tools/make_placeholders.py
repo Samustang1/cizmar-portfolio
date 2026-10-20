@@ -84,6 +84,30 @@ def make_prace():
         print("ulozene:", out, os.path.getsize(out) // 1024, "KB")
 
 
+def make_video_poster():
+    W, H = 1600, 900
+    img = Image.new("RGB", (W, H), NAVY)
+    d = ImageDraw.Draw(img)
+    for y in range(0, H, 24):
+        for x in range(0, W, 24):
+            d.point((x, y), fill=(40, 54, 84))
+
+    d.rectangle([40, 40, W - 40, H - 40], outline=PAPER, width=5)
+
+    cx, cy, r = W / 2, H / 2 - 40, 110
+    d.ellipse([cx - r, cy - r, cx + r, cy + r], fill=AMBER, outline=INK, width=7)
+    d.polygon([(cx - 32, cy - 54), (cx - 32, cy + 54), (cx + 58, cy)], fill=INK)
+
+    d.text((cx, cy + 190), "SEM PRIDAJ VIDEO", font=f("GeistMono-Bold.ttf", 36), fill=PAPER, anchor="mm")
+    d.text((cx, cy + 236), "assets/video/video-1.mp4   ·   alebo YouTube / Vimeo odkaz",
+           font=f("GeistMono-Regular.ttf", 22), fill=(160, 175, 205), anchor="mm")
+
+    out = os.path.join(IMG, "video-poster.webp")
+    img.save(out, "WEBP", quality=86, method=6)
+    print("ulozene:", out, os.path.getsize(out) // 1024, "KB")
+
+
 if __name__ == "__main__":
     make_foto()
     make_prace()
+    make_video_poster()
