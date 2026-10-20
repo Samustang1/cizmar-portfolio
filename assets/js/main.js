@@ -1,175 +1,184 @@
 /* ============================================================
-   Samuel Čižmár — Osobné portfólio · main.js
+   Samuel Čižmár — Portfólio v2 · main.js
    ============================================================ */
 (function () {
   "use strict";
 
   var doc = document;
-  var $ = function (sel, ctx) { return (ctx || doc).querySelector(sel); };
-  var $$ = function (sel, ctx) { return Array.prototype.slice.call((ctx || doc).querySelectorAll(sel)); };
+  var $ = function (s, c) { return (c || doc).querySelector(s); };
+  var $$ = function (s, c) { return Array.prototype.slice.call((c || doc).querySelectorAll(s)); };
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var fine = window.matchMedia("(pointer: fine)").matches;
 
-  /* ---------- Rok v pätičke ---------- */
+  /* ---------- rok ---------- */
   var yearEl = $("#year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  /* ---------- Mobilné menu ---------- */
+  /* ---------- loader ---------- */
+  var loader = $("#loader");
+  function hideLoader() { if (loader) loader.classList.add("is-done"); }
+  window.addEventListener("load", function () { setTimeout(hideLoader, 350); });
+  setTimeout(hideLoader, 2600); // poistka
+
+  /* ---------- menu ---------- */
   var burger = $("#burger");
-  var nav = $("#nav");
-  if (burger && nav) {
+  var links = $("#navLinks");
+  if (burger && links) {
     burger.addEventListener("click", function () {
-      var open = nav.classList.toggle("is-open");
+      var open = links.classList.toggle("is-open");
       burger.classList.toggle("is-open", open);
       burger.setAttribute("aria-expanded", open ? "true" : "false");
     });
-    $$("#nav a").forEach(function (link) {
-      link.addEventListener("click", function () {
-        nav.classList.remove("is-open");
+    $$("a", links).forEach(function (a) {
+      a.addEventListener("click", function () {
+        links.classList.remove("is-open");
         burger.classList.remove("is-open");
         burger.setAttribute("aria-expanded", "false");
       });
     });
   }
 
-  /* ---------- Progress bar ---------- */
+  /* ---------- scroll: progress, nav, totop ---------- */
   var progress = $("#progress");
-  function onScrollProgress() {
-    if (!progress) return;
+  var nav = $("#nav");
+  var totop = $("#totop");
+  function onScroll() {
     var h = doc.documentElement;
     var max = h.scrollHeight - h.clientHeight;
-    var p = max > 0 ? h.scrollTop / max : 0;
-    progress.style.transform = "scaleX(" + p + ")";
+    if (progress) progress.style.transform = "scaleX(" + (max > 0 ? h.scrollTop / max : 0) + ")";
+    var y = window.scrollY || h.scrollTop;
+    if (nav) nav.classList.toggle("is-scrolled", y > 24);
+    if (totop) totop.classList.toggle("is-visible", y > 640);
   }
+  var ticking = false;
+  window.addEventListener("scroll", function () {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function () { onScroll(); ticking = false; });
+  }, { passive: true });
+  if (totop) totop.addEventListener("click", function () { window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" }); });
 
-  /* ---------- Tlačidlo nahor + tieň hlavičky ---------- */
-  var toTop = $("#toTop");
-  var hud = $("#hud");
-  function onScrollMisc() {
-    var y = window.scrollY || doc.documentElement.scrollTop;
-    if (toTop) toTop.classList.toggle("is-visible", y > 500);
-    if (hud) hud.style.boxShadow = y > 10 ? "0 10px 30px rgba(0,0,0,.45)" : "none";
-  }
-
-  /* ---------- Reveal on scroll ---------- */
+  /* ---------- reveal ---------- */
   var revealEls = $$(".reveal");
-  if ("IntersectionObserver" in window) {
+  if ("IntersectionObserver" in window && !reduce) {
     var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) {
-          e.target.classList.add("is-in");
-          io.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.14, rootMargin: "0px 0px -40px 0px" });
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); } });
+    }, { threshold: 0.15, rootMargin: "0px 0px -50px 0px" });
     revealEls.forEach(function (el) { io.observe(el); });
   } else {
     revealEls.forEach(function (el) { el.classList.add("is-in"); });
   }
 
-  /* ---------- Aktívny odkaz v menu ---------- */
-  var sections = $$("section[id]");
-  var navLinks = $$('#nav a[href^="#"]');
+  /* ---------- scrollspy ---------- */
+  var sections = $$("main section[id]");
+  var navAnchors = $$('#navLinks a[href^="#"]');
   if ("IntersectionObserver" in window && sections.length) {
     var spy = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         if (!e.isIntersecting) return;
         var id = e.target.getAttribute("id");
-        navLinks.forEach(function (l) {
-          l.classList.toggle("is-current", l.getAttribute("href") === "#" + id);
-        });
+        navAnchors.forEach(function (a) { a.classList.toggle("is-current", a.getAttribute("href") === "#" + id); });
       });
-    }, { threshold: 0.4, rootMargin: "-20% 0px -55% 0px" });
+    }, { threshold: 0.35, rootMargin: "-22% 0px -55% 0px" });
     sections.forEach(function (s) { spy.observe(s); });
   }
 
-  /* ---------- Cursor glow + hero parallax ---------- */
-  var glow = $("#cursorGlow");
-  var tilt = $("#tilt");
-  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var fine = window.matchMedia("(pointer: fine)").matches;
-
+  /* ---------- glow cursor ---------- */
+  var glow = $("#glowCursor");
   if (glow && fine && !reduce) {
-    var gx = 0, gy = 0, cx = 0, cy = 0, running = false;
-    var render = function () {
-      cx += (gx - cx) * 0.12;
-      cy += (gy - cy) * 0.12;
+    var gx = 0, gy = 0, cx = 0, cy = 0, run = false;
+    var loop = function () {
+      cx += (gx - cx) * 0.12; cy += (gy - cy) * 0.12;
       glow.style.transform = "translate(" + cx + "px," + cy + "px)";
       glow.style.opacity = "1";
-      if (Math.abs(gx - cx) > 0.5 || Math.abs(gy - cy) > 0.5) {
-        requestAnimationFrame(render);
-      } else {
-        running = false;
-      }
+      if (Math.abs(gx - cx) > 0.5 || Math.abs(gy - cy) > 0.5) requestAnimationFrame(loop); else run = false;
     };
-    doc.addEventListener("mousemove", function (e) {
-      gx = e.clientX; gy = e.clientY;
-      if (!running) { running = true; requestAnimationFrame(render); }
-    });
-    doc.addEventListener("mouseleave", function () { if (glow) glow.style.opacity = "0"; });
+    doc.addEventListener("mousemove", function (e) { gx = e.clientX; gy = e.clientY; if (!run) { run = true; requestAnimationFrame(loop); } });
+    doc.addEventListener("mouseleave", function () { glow.style.opacity = "0"; });
   }
 
-  if (tilt && fine && !reduce) {
-    var host = tilt.closest(".hero__grid") || doc;
-    host.addEventListener("mousemove", function (e) {
-      var r = host.getBoundingClientRect();
+  /* ---------- hero tilt ---------- */
+  var heroImg = $("#heroVisual");
+  if (heroImg && fine && !reduce) {
+    var frame = $(".hero__frame", heroImg);
+    heroImg.addEventListener("mousemove", function (e) {
+      var r = heroImg.getBoundingClientRect();
       var nx = (e.clientX - r.left) / r.width - 0.5;
       var ny = (e.clientY - r.top) / r.height - 0.5;
-      tilt.style.transform = "translate3d(" + (-nx * 16) + "px," + (-ny * 16) + "px,0) rotate(" + (nx * 1.5) + "deg)";
+      frame.style.transform = "rotateY(" + (nx * 8) + "deg) rotateX(" + (-ny * 8) + "deg) translateZ(18px)";
     });
-    host.addEventListener("mouseleave", function () { tilt.style.transform = "none"; });
+    heroImg.addEventListener("mouseleave", function () { frame.style.transform = "none"; });
   }
 
-  /* ---------- Scroll listeners ---------- */
-  var ticking = false;
-  window.addEventListener("scroll", function () {
-    if (ticking) return;
-    ticking = true;
-    requestAnimationFrame(function () {
-      onScrollProgress();
-      onScrollMisc();
-      ticking = false;
+  /* ---------- magnetické tlačidlá ---------- */
+  if (fine && !reduce) {
+    $$("[data-magnetic]").forEach(function (el) {
+      el.addEventListener("mousemove", function (e) {
+        var r = el.getBoundingClientRect();
+        var mx = e.clientX - r.left - r.width / 2;
+        var my = e.clientY - r.top - r.height / 2;
+        el.style.transform = "translate(" + (mx * 0.28) + "px," + (my * 0.45) + "px)";
+      });
+      el.addEventListener("mouseleave", function () { el.style.transform = "none"; });
     });
-  }, { passive: true });
-  onScrollProgress();
-  onScrollMisc();
+  }
 
-  /* ---------- Formulár (AJAX → FormSubmit) ---------- */
+  /* ---------- spotlight v kartách zručností ---------- */
+  if (fine) {
+    $$(".skill").forEach(function (el) {
+      el.addEventListener("mousemove", function (e) {
+        var r = el.getBoundingClientRect();
+        el.style.setProperty("--mx", (e.clientX - r.left) + "px");
+        el.style.setProperty("--my", (e.clientY - r.top) + "px");
+      });
+    });
+  }
+
+  /* ---------- počítadlá ---------- */
+  var counters = $$("[data-count]");
+  if (counters.length && "IntersectionObserver" in window && !reduce) {
+    var cio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        var el = e.target;
+        var target = parseInt(el.getAttribute("data-count"), 10);
+        cio.unobserve(el);
+        if (isNaN(target) || target > 100) { el.textContent = String(target); return; }
+        var start = performance.now(), dur = 1200;
+        (function step(now) {
+          var p = Math.min(1, (now - start) / dur);
+          el.textContent = String(Math.round(target * (1 - Math.pow(1 - p, 3))));
+          if (p < 1) requestAnimationFrame(step);
+        })(start);
+      });
+    }, { threshold: 0.6 });
+    counters.forEach(function (c) { cio.observe(c); });
+  }
+
+  /* ---------- formulár ---------- */
   var form = $("#contactForm");
   if (form) {
     var note = $("#formNote");
-    var submitBtn = $(".form__submit", form);
-
+    var btn = $(".form__submit", form);
     form.addEventListener("submit", function (e) {
       e.preventDefault();
-      if (!form.checkValidity()) {
-        form.reportValidity();
-        return;
-      }
+      if (!form.checkValidity()) { form.reportValidity(); return; }
       if (note) { note.textContent = "Odosielam…"; note.className = "form__note"; }
-      if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = "Odosielam…"; }
-
-      // AJAX endpoint pre FormSubmit
+      if (btn) { btn.disabled = true; btn.textContent = "Odosielam…"; }
       var endpoint = form.getAttribute("action").replace("formsubmit.co/", "formsubmit.co/ajax/");
-
-      fetch(endpoint, {
-        method: "POST",
-        headers: { "Accept": "application/json" },
-        body: new FormData(form)
-      })
-        .then(function (res) { return res.json().catch(function () { return {}; }).then(function (d) { return { ok: res.ok, data: d }; }); })
+      fetch(endpoint, { method: "POST", headers: { "Accept": "application/json" }, body: new FormData(form) })
+        .then(function (r) { return r.json().catch(function () { return {}; }).then(function (d) { return { ok: r.ok, data: d }; }); })
         .then(function (r) {
-          if (r.ok) {
-            if (note) { note.textContent = "Hotovo! Správa odoslaná — ozvem sa čo najskôr. ✅"; note.className = "form__note is-success"; }
-            form.reset();
-          } else {
-            throw new Error((r.data && r.data.message) || "Chyba");
-          }
+          if (!r.ok) throw new Error("chyba");
+          if (note) { note.textContent = "Hotovo — správa odoslaná. Ozvem sa čo najskôr. ✅"; note.className = "form__note is-success"; }
+          form.reset();
         })
         .catch(function () {
-          if (note) { note.textContent = "Nepodarilo sa odoslať. Skús to znova alebo napíš na cizsamko@gmail.com."; note.className = "form__note is-error"; }
+          if (note) { note.textContent = "Nepodarilo sa odoslať. Skús znova alebo napíš na cizsamko@gmail.com."; note.className = "form__note is-error"; }
         })
-        .then(function () {
-          if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = "Odoslať správu"; }
-        });
+        .then(function () { if (btn) { btn.disabled = false; btn.textContent = "Odoslať správu"; } });
     });
   }
+
+  onScroll();
 })();
