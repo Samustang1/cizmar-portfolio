@@ -19,7 +19,7 @@ box-shadow), pestrou paletou a animovaným (aurora) pozadím.
 
 | # | Sekcia | Obsah |
 |---|--------|-------|
-| — | Hero | meno, rotujúce povolanie, predstavenie, **fotka**, počítadlá, bežiaci pás |
+| — | Hero | meno, rotujúce povolanie, predstavenie, **fotka (odkaz na fotoportfólio)**, počítadlá, bežiaci pás |
 | 01 | O mne | krátke bio + fakty (vek, lokalita, zameranie, jazyky, dostupnosť) |
 | — | Statement | veľký tmavý pás s mottom |
 | 02 | Projekty | mriežka 6 fotiek — **klik otvorí fotoportfólio** |
@@ -38,6 +38,9 @@ Tlačidlá **„Napíš mi"** vedú na kontaktný formulár (`#kontakt`), nie na
 2. Hotovo — veľkosť a orezanie rieši CSS (`object-fit: cover`).
 
 > Teraz je tam placeholder `assets/img/foto.webp` s nápisom „TVOJA FOTKA".
+> Fotka je zároveň **odkaz na fotoportfólio** (https://samustang1.github.io/cizmar-photography/) —
+> na hover sa jemne nadvihne (rovnako ako karty zručností) a v rohu sa rozsvieti „Fotoportfólio ↗".
+> Odkaz zmeníš/vyhodíš v `index.html` na `<a class="photo__frame" href="…">`.
 
 ## Ako vložiť projekty / fotky
 
@@ -95,7 +98,7 @@ tools/fonts/                   # fonty pre generátory (OFL)
 1. **Texty** prepíšeš v `index.html`.
 2. **Farby** v `assets/css/style.css` v časti `:root` (`--red`, `--blue`, `--amber`, …).
 3. **Rotujúce slová** v `assets/js/main.js` (pole `words`).
-4. Po zmene CSS/JS zvýš `?v=5` → `?v=6` v `index.html` (cache-busting).
+4. Po zmene CSS/JS zvýš `?v=7` → `?v=8` v `index.html` (cache-busting).
 5. Nahraj:
 
 ```bash
