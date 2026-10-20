@@ -4,376 +4,227 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#05070d" />
-  <title>Samuel Čižmár — Portfólio</title>
-  <meta name="description" content="Osobné portfólio Samuela Čižmára — fotografia, grafika, video, 3D tlač a technológie. 17 rokov, vlastné projekty." />
+  <title>Projekty — Samuel Čižmár</title>
+  <meta name="description" content="Projekty Samuela Čižmára — kreatívny životopis, glow up effect, webové stránky a vlastný hosting na Raspberry Pi." />
 
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Samuel Čižmár — Portfólio" />
-  <meta property="og:description" content="Fotografia · Grafika · Video · 3D · Technológie" />
-  <meta property="og:image" content="assets/img/hero.webp" />
+  <meta property="og:title" content="Projekty — Samuel Čižmár" />
+  <meta property="og:description" content="Výber prác zo školy aj mimo nej." />
+  <meta property="og:image" content="assets/img/og.webp" />
+  <meta name="twitter:card" content="summary_large_image" />
 
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2305070d'/%3E%3Ctext x='32' y='45' font-family='monospace' font-size='34' font-weight='700' fill='%2346f0ff' text-anchor='middle'%3ESC%3C/text%3E%3C/svg%3E" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/style.css?v=3" />
+  <link rel="stylesheet" href="assets/css/style.css?v=1" />
 </head>
-<body>
 
-  <!-- ===================== LOADER ===================== -->
-  <div class="loader" id="loader" aria-hidden="true">
-    <div class="loader__inner">
-      <span class="loader__mark">SC</span>
-      <span class="loader__bar"><i></i></span>
-      <span class="loader__txt">VELOCITY CARTOGRAPHY</span>
-    </div>
-  </div>
+<body id="top">
 
+  <a class="skip" href="#main">Preskočiť na obsah</a>
+
+  <!-- ================= pozadie + progress ================= -->
+  <div class="bg" aria-hidden="true"></div>
   <div class="progress" id="progress" aria-hidden="true"></div>
-  <div class="glow-cursor" id="glowCursor" aria-hidden="true"></div>
 
-  <!-- ===================== NAV ===================== -->
-  <header class="nav" id="nav">
-    <a class="nav__brand" href="#home" aria-label="Samuel Čižmár — domov">
-      <span class="nav__mark">S<span>Č</span></span>
-      <span class="nav__sub">Portfólio · 2026</span>
-    </a>
+  <!-- ================= HLAVIČKA ================= -->
+  <header class="site-header" id="siteHeader">
+    <div class="site-header__inner wrap">
 
-    <nav class="nav__links" id="navLinks" aria-label="Hlavná navigácia">
-      <a href="#o-mne">O mne</a>
-      <a href="#zrucnosti">Zručnosti</a>
-      <a href="#projekty">Projekty</a>
-      <a href="#vzdelanie">Vzdelanie</a>
-      <a href="#kontakt">Kontakt</a>
-      <a class="btn btn--ghost nav__cta" href="https://samustang1.github.io/cizmar-photography/" target="_blank" rel="noopener">Fotoportfólio ↗</a>
-    </nav>
+      <a class="brand" href="#top" aria-label="Samuel Čižmár — portfólio">
+        <span class="brand__mark">S<em>Č</em></span>
+        <span class="brand__txt">
+          <b>Samuel Čižmár</b>
+          <small>Portfólio · 2026</small>
+        </span>
+      </a>
 
-    <button class="burger" id="burger" type="button" aria-label="Otvoriť menu" aria-expanded="false" aria-controls="navLinks">
-      <span></span><span></span><span></span>
-    </button>
+      <nav class="nav" id="nav" aria-label="Hlavná navigácia">
+        <a href="#projekty">Projekty</a>
+        <a href="#kontakt">Kontakt</a>
+        <a href="https://github.com/Samustang1" target="_blank" rel="noopener">GitHub</a>
+        <a class="nav__cta" href="https://samustang1.github.io/cizmar-photography/" target="_blank" rel="noopener">Fotoportfólio ↗</a>
+      </nav>
+
+      <div class="profile" aria-label="Profil">
+        <img src="assets/img/profil.webp" alt="Profil — Samuel Čižmár" width="760" height="760" />
+        <span class="profile__name">Samuel Čižmár</span>
+      </div>
+
+      <button class="burger" id="burger" type="button" aria-label="Otvoriť menu" aria-expanded="false" aria-controls="nav">
+        <span></span><span></span><span></span>
+      </button>
+
+    </div>
   </header>
 
   <main id="main">
 
-    <!-- ===================== HERO ===================== -->
-    <section class="hero" id="home">
-      <div class="hero__grid wrap">
-        <div class="hero__text">
-          <span class="pill"><i></i> Dostupný pre spolupráce · Slovensko</span>
-          <h1 class="hero__title">
-            <span class="hero__line">Samuel</span>
-            <span class="hero__line hero__line--grad">Čižmár</span>
-          </h1>
-          <p class="hero__lead">
-            Sedemnásťročný tvorca. Zachytávam autá objektívom, skladám grafiky,
-            strihám videá a učím sa programovať. Robím veci naplno — od prvého
-            nápadu po hotový výsledok.
+    <!-- ================= PROJEKTY ================= -->
+    <section class="projects" id="projekty" aria-labelledby="projekty-title">
+      <div class="wrap">
+
+        <header class="projects__head">
+          <p class="kicker reveal"><span>Portfólio</span> · výber prác</p>
+          <h1 class="projects__title reveal" id="projekty-title">PROJEKTY</h1>
+          <p class="projects__lead reveal">
+            Práce, ktoré som spravil v škole aj mimo nej — od kreatívneho životopisu
+            a úpravy fotografií až po webové stránky a vlastný hosting na Raspberry Pi.
           </p>
-          <div class="hero__actions">
-            <a class="btn btn--solid" href="#projekty" data-magnetic>Pozrieť projekty</a>
-            <a class="btn btn--ghost" href="#kontakt" data-magnetic>Napíš mi</a>
-          </div>
 
-          <dl class="hero__stats">
-            <div><dt data-count="17">17</dt><dd>rokov</dd></div>
-            <div><dt data-count="6">6</dt><dd>oblastí tvorby</dd></div>
-            <div><dt data-count="2026">2026</dt><dd>nové portfólio</dd></div>
+          <dl class="stats reveal">
+            <div><dt data-count="5">5</dt><dd>projektov</dd></div>
+            <div><dt data-count="3">3</dt><dd>web &amp; hosting</dd></div>
+            <div><dt data-count="2">2</dt><dd>grafika &amp; foto</dd></div>
           </dl>
-        </div>
+        </header>
 
-        <figure class="hero__visual" id="heroVisual">
-          <div class="hero__frame">
-            <img src="assets/img/hero.webp" alt="Abstraktný vizuál — velocity cartography" width="1200" height="1500" />
-            <span class="hero__tag">FIG. 01</span>
-          </div>
-          <figcaption class="hero__cap">Velocity Cartography · 2026</figcaption>
-        </figure>
-      </div>
-    </section>
+        <div class="projects__list">
 
-    <!-- ===================== TICKER ===================== -->
-    <div class="ticker" aria-hidden="true">
-      <div class="ticker__track">
-        <div class="ticker__group">
-          <span>Fotografia</span><span>·</span><span>Grafika &amp; dizajn</span><span>·</span>
-          <span>Video &amp; strih</span><span>·</span><span>3D &amp; tlač</span><span>·</span>
-          <span>Web &amp; PHP</span><span>·</span><span>Hudba &amp; zvuk</span><span>·</span><span>Dron</span><span>·</span>
-        </div>
-        <div class="ticker__group">
-          <span>Fotografia</span><span>·</span><span>Grafika &amp; dizajn</span><span>·</span>
-          <span>Video &amp; strih</span><span>·</span><span>3D &amp; tlač</span><span>·</span>
-          <span>Web &amp; PHP</span><span>·</span><span>Hudba &amp; zvuk</span><span>·</span><span>Dron</span><span>·</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- ===================== O MNE ===================== -->
-    <section class="section about" id="o-mne">
-      <div class="wrap about__grid">
-        <figure class="about__media reveal">
-          <img src="assets/img/about.webp" alt="Abstraktný profilový vizuál" width="1100" height="1375" loading="lazy" />
-        </figure>
-        <div class="about__text">
-          <p class="sec-label reveal"><span>01</span> O mne</p>
-          <h2 class="h2 reveal">Tvorím to,<br />čo ma <em>baví.</em></h2>
-          <p class="reveal">Mám 17 rokov a som študent. Najviac ma napĺňa spojenie kreativity
-            a techniky — od fotenia áut až po strih videa, grafiku či 3D tlač.</p>
-          <p class="reveal">Rád sa učím nové nástroje a veci dotiahnem do konca. Keď ma niečo
-            chytí, chcem to pochopiť naozaj do hĺbky — nie len „aby to akože bolo".</p>
-          <ul class="chips reveal">
-            <li>Fotografia</li><li>Lightroom</li><li>Photoshop</li><li>Figma</li>
-            <li>CapCut</li><li>Blender</li><li>3D tlač</li><li>Dron DJI</li>
-            <li>HTML</li><li>CSS</li><li>PHP</li><li>Zvuk &amp; mix</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===================== ZRUČNOSTI ===================== -->
-    <section class="section skills" id="zrucnosti">
-      <div class="wrap">
-        <div class="head">
-          <p class="sec-label reveal"><span>02</span> Zručnosti</p>
-          <h2 class="h2 reveal">Čo viem a s čím<br /><em>pracujem.</em></h2>
-          <p class="lead reveal">Šesť oblastí, ktorým sa venujem — od zámku fotoaparátu po riadok kódu.</p>
-        </div>
-
-        <div class="skill-grid">
-          <article class="skill reveal">
-            <span class="skill__num">01</span>
-            <h3>Fotografia</h3>
-            <p>Fotenie áut a atmosférických záberov v prirodzenom svetle. Kompozícia, svetlo, detail.</p>
-            <div class="bar"><i style="--w:88%"></i></div>
+          <!-- 01 -->
+          <article class="project reveal" id="projekt-1">
+            <figure class="project__media">
+              <button class="shot" type="button"
+                      data-lightbox="assets/img/projekty/projekt-1.webp"
+                      data-caption="Kreatívny životopis"
+                      aria-label="Zväčšiť obrázok – Kreatívny životopis">
+                <img src="assets/img/projekty/projekt-1.webp" alt="Náhľad projektu Kreatívny životopis"
+                     width="627" height="881" loading="lazy" decoding="async" />
+                <span class="shot__zoom" aria-hidden="true">Zväčšiť ⤢</span>
+              </button>
+            </figure>
+            <div class="project__text">
+              <span class="project__num">01</span>
+              <h2 class="project__title">Kreatívny životopis</h2>
+              <ul class="tags"><li>Grafika</li><li>DTP</li><li>Personal branding</li></ul>
+              <p class="meta"><strong>Zadanie:</strong> vytvorenie kreatívneho životopisu.</p>
+              <p class="body"><strong>Vypracovanie a hodnotenie:</strong> Pri tvorbe tohto pozitívne hodnotím prehľadnú kompozíciu, farebnú harmóniu a vizuálnu originalitu, ktorá dokument odlišuje od bežných a pôsobí moderne a profesionálne. Na druhej strane si uvedomujem, že niektoré grafické prvky a infografiky môžu byť pre formálnejších zamestnávateľov menej čitateľné, preto by som do budúcna zvážil aj jednoduchšiu, viac textovo orientovanú verziu.</p>
+            </div>
           </article>
-          <article class="skill reveal">
-            <span class="skill__num">02</span>
-            <h3>Grafika &amp; dizajn</h3>
-            <p>Úprava fotiek a tvorba vizuálu v Lightroome a Photoshope — farby, retuš, identita.</p>
-            <div class="bar"><i style="--w:82%"></i></div>
+
+          <!-- 02 -->
+          <article class="project reverse reveal" id="projekt-2">
+            <figure class="project__media">
+              <button class="shot" type="button"
+                      data-lightbox="assets/img/projekty/projekt-2.webp"
+                      data-caption="Glow up effect"
+                      aria-label="Zväčšiť obrázok – Glow up effect">
+                <img src="assets/img/projekty/projekt-2.webp" alt="Náhľad projektu Glow up effect"
+                     width="280" height="451" loading="lazy" decoding="async" />
+                <span class="shot__zoom" aria-hidden="true">Zväčšiť ⤢</span>
+              </button>
+            </figure>
+            <div class="project__text">
+              <span class="project__num">02</span>
+              <h2 class="project__title">Glow up effect</h2>
+              <ul class="tags"><li>Adobe Photoshop</li><li>Retuš</li><li>Prezentácia</li></ul>
+              <p class="meta"><strong>Zadanie:</strong> naučiť spolužiakov pracovať s glow efektom.</p>
+              <p class="body"><strong>Vypracovanie a hodnotenie:</strong> Pri tomto projekte som okrem samotnej úpravy fotografie zároveň vysvetľoval a učil spolužiakov, ako v Adobe Photoshop vytvoriť glow efekt pomocou vrstiev, režimov prelínania a práce so svetlom. Za pozitívum považujem nielen vizuálne spracovanie výsledku, ale aj rozvoj komunikačných a prezentačných zručností, pričom rezervu vidím v ešte detailnejšom vysvetlení jednotlivých krokov pre úplných začiatočníkov.</p>
+            </div>
           </article>
-          <article class="skill reveal">
-            <span class="skill__num">03</span>
-            <h3>Video &amp; strih</h3>
-            <p>Strih a úprava videí v CapCute — rytmus, hudba, prechody a výsledný feeling.</p>
-            <div class="bar"><i style="--w:76%"></i></div>
+
+          <!-- 03 -->
+          <article class="project reveal" id="projekt-3">
+            <figure class="project__media">
+              <button class="shot" type="button"
+                      data-lightbox="assets/img/projekty/projekt-3.webp"
+                      data-caption="Prvá webová stránka"
+                      aria-label="Zväčšiť obrázok – Prvá webová stránka">
+                <img src="assets/img/projekty/projekt-3.webp" alt="Náhľad projektu Prvá webová stránka"
+                     width="354" height="743" loading="lazy" decoding="async" />
+                <span class="shot__zoom" aria-hidden="true">Zväčšiť ⤢</span>
+              </button>
+            </figure>
+            <div class="project__text">
+              <span class="project__num">03</span>
+              <h2 class="project__title">Prvá webová stránka</h2>
+              <ul class="tags"><li>HTML</li><li>CSS</li><li>Finančné poradenstvo</li></ul>
+              <p class="meta"><strong>Zadanie:</strong> spraviť stránku pre finančné poradenstvo.</p>
+              <p class="body"><strong>Vypracovanie a hodnotenie:</strong> Pri tvorbe tejto webovej stránky som sa zameral na prehľadnú štruktúru, čistý dizajn a zrozumiteľné vysvetlenie základných foriem investovania, aby bola stránka vhodná aj pre začiatočníkov. Ako priestor na zlepšenie vnímam možnosť doplniť viac interaktívnych prvkov alebo konkrétnych príkladov, ktoré by používateľovi ešte viac uľahčili pochopenie problematiky.</p>
+            </div>
           </article>
-          <article class="skill reveal">
-            <span class="skill__num">04</span>
-            <h3>3D &amp; tlač</h3>
-            <p>Modelovanie v Blenderi a 3D tlač vlastných návrhov — od nápadu k hotovému objektu.</p>
-            <div class="bar"><i style="--w:72%"></i></div>
+
+          <!-- 04 -->
+          <article class="project reverse reveal" id="projekt-4">
+            <figure class="project__media">
+              <button class="shot" type="button"
+                      data-lightbox="assets/img/projekty/projekt-4.webp"
+                      data-caption="Webová stránka pre šikanu"
+                      aria-label="Zväčšiť obrázok – Webová stránka pre šikanu">
+                <img src="assets/img/projekty/projekt-4.webp" alt="Náhľad projektu Webová stránka pre šikanu"
+                     width="1600" height="900" loading="lazy" decoding="async" />
+                <span class="shot__zoom" aria-hidden="true">Zväčšiť ⤢</span>
+              </button>
+            </figure>
+            <div class="project__text">
+              <span class="project__num">04</span>
+              <h2 class="project__title">Webová stránka pre šikanu</h2>
+              <ul class="tags"><li>HTML</li><li>CSS</li><li>Angličtina</li></ul>
+              <p class="meta"><strong>Zadanie:</strong> spraviť stránku k prezentácii o šikane.</p>
+              <p class="body"><strong>Vypracovanie a hodnotenie:</strong> Pri tvorbe tejto webovej stránky o šikanovaní, ktorá je spracovaná v anglickom jazyku, som sa zameral na prehľadný dizajn, modré navigačné pozadie a jasnú štruktúru obsahu, aby pôsobila pokojne a dôveryhodne. Za hlavné pozitívum považujem zrozumiteľnosť a vizuálnu jednoduchosť stránky, pričom do budúcna by som zvážil doplnenie interaktívnych prvkov pre lepšie zapojenie návštevníkov.</p>
+            </div>
           </article>
-          <article class="skill reveal">
-            <span class="skill__num">05</span>
-            <h3>Web &amp; kód</h3>
-            <p>Základy HTML, CSS a PHP. Tvorba jednoduchých webov a neustále učenie sa nových vecí.</p>
-            <div class="bar"><i style="--w:66%"></i></div>
+
+          <!-- 05 -->
+          <article class="project reveal" id="projekt-5">
+            <figure class="project__media">
+              <button class="shot" type="button"
+                      data-lightbox="assets/img/projekty/projekt-5.webp"
+                      data-caption="Web hosting z Raspberry Pi"
+                      aria-label="Zväčšiť obrázok – Web hosting z Raspberry Pi">
+                <img src="assets/img/projekty/projekt-5.webp" alt="Náhľad projektu Web hosting z Raspberry Pi"
+                     width="555" height="839" loading="lazy" decoding="async" />
+                <span class="shot__zoom" aria-hidden="true">Zväčšiť ⤢</span>
+              </button>
+            </figure>
+            <div class="project__text">
+              <span class="project__num">05</span>
+              <h2 class="project__title">Web hosting z Raspberry Pi</h2>
+              <ul class="tags"><li>Raspberry Pi</li><li>Linux</li><li>Siete</li></ul>
+              <p class="meta"><strong>Zadanie:</strong> spraviť si domáci webový hosting.</p>
+              <p class="body"><strong>Vypracovanie a hodnotenie:</strong> Pri realizácii web hostingu na Raspberry Pi som sa naučil základné princípy fungovania servera, konfiguráciu služieb a nasadenie webovej stránky v reálnom prostredí. Ako pozitívum vnímam praktickú skúsenosť s hardvérom a sieťami, pričom nevýhodou bola vyššia časová náročnosť a potreba riešiť technické problémy spojené so stabilitou a zabezpečením.</p>
+            </div>
           </article>
-          <article class="skill reveal">
-            <span class="skill__num">06</span>
-            <h3>Hudba &amp; zvuk</h3>
-            <p>Práca so zvukom a mixom — podklady pre vlastné videá aj pre radosť.</p>
-            <div class="bar"><i style="--w:60%"></i></div>
-          </article>
+
         </div>
-      </div>
-    </section>
-
-    <!-- ===================== PROJEKTY ===================== -->
-    <section class="section work" id="projekty">
-      <div class="wrap">
-        <div class="head">
-          <p class="sec-label reveal"><span>03</span> Projekty</p>
-          <h2 class="h2 reveal">Vybrané <em>práce.</em></h2>
-          <p class="lead reveal">Priečinok toho, čo som vytvoril — každá dlaždica je jedna oblasť.</p>
-        </div>
-
-        <div class="work-grid">
-          <a class="card reveal" href="https://samustang1.github.io/cizmar-photography/" target="_blank" rel="noopener">
-            <div class="card__media"><img src="assets/img/tile-01.webp" alt="Fotografia" width="1200" height="675" loading="lazy" /></div>
-            <div class="card__body">
-              <span class="card__num">01</span>
-              <h3>Fotoportfólio áut</h3>
-              <p>Vlastný web s galériou automobilových fotiek, filtrami a lightboxom.</p>
-              <span class="card__link">Zobraziť ↗</span>
-            </div>
-          </a>
-
-          <a class="card reveal" href="#kontakt">
-            <div class="card__media"><img src="assets/img/tile-02.webp" alt="Grafika" width="1200" height="675" loading="lazy" /></div>
-            <div class="card__body">
-              <span class="card__num">02</span>
-              <h3>Grafické práce</h3>
-              <p>Plagáty, plagátiky a úpravy fotiek — od nápadu po hotový vizuál.</p>
-              <span class="card__link">Mám záujem →</span>
-            </div>
-          </a>
-
-          <a class="card reveal" href="#kontakt">
-            <div class="card__media"><img src="assets/img/tile-03.webp" alt="3D a tlač" width="1200" height="675" loading="lazy" /></div>
-            <div class="card__body">
-              <span class="card__num">03</span>
-              <h3>3D modely &amp; tlač</h3>
-              <p>Návrhy v Blenderi pripravené na 3D tlač — dekorácie aj funkčné diely.</p>
-              <span class="card__link">Mám záujem →</span>
-            </div>
-          </a>
-
-          <a class="card reveal" href="#kontakt">
-            <div class="card__media"><img src="assets/img/tile-04.webp" alt="Video" width="1200" height="675" loading="lazy" /></div>
-            <div class="card__body">
-              <span class="card__num">04</span>
-              <h3>Video &amp; strih</h3>
-              <p>Krátke videá a zostrihy — pohyb, hudba a strih, ktorý drží tempo.</p>
-              <span class="card__link">Mám záujem →</span>
-            </div>
-          </a>
-
-          <a class="card reveal" href="https://github.com/Samustang1" target="_blank" rel="noopener">
-            <div class="card__media"><img src="assets/img/tile-05.webp" alt="Web a PHP" width="1200" height="675" loading="lazy" /></div>
-            <div class="card__body">
-              <span class="card__num">05</span>
-              <h3>Weby &amp; PHP</h3>
-              <p>Školské a vlastné projekty v HTML, CSS a PHP — tvorba stránok od nuly.</p>
-              <span class="card__link">GitHub ↗</span>
-            </div>
-          </a>
-
-          <a class="card reveal" href="#kontakt">
-            <div class="card__media"><img src="assets/img/tile-06.webp" alt="Hudba" width="1200" height="675" loading="lazy" /></div>
-            <div class="card__body">
-              <span class="card__num">06</span>
-              <h3>Hudba &amp; zvuk</h3>
-              <p>Experimenty s mixom a zvukom — podklady pre vlastné projekty.</p>
-              <span class="card__link">Mám záujem →</span>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===================== VZDELANIE ===================== -->
-    <section class="section edu" id="vzdelanie">
-      <div class="wrap">
-        <div class="head">
-          <p class="sec-label reveal"><span>04</span> Vzdelanie &amp; kurzy</p>
-          <h2 class="h2 reveal">Kde sa <em>učím.</em></h2>
-        </div>
-
-        <ol class="timeline">
-          <li class="timeline__item reveal">
-            <span class="timeline__dot"></span>
-            <span class="timeline__year">Teraz</span>
-            <h3>Stredná škola</h3>
-            <p>Štúdium so zameraním na informatiku a technológie — programovanie, web a práca s dátami.</p>
-          </li>
-          <li class="timeline__item reveal">
-            <span class="timeline__dot"></span>
-            <span class="timeline__year">Priebežne</span>
-            <h3>Fotografia &amp; grafika</h3>
-            <p>Samovzdelávanie vo fotení áut, úprave fotiek a tvorbe vizuálu. Vlastné fotenia na dohodu.</p>
-          </li>
-          <li class="timeline__item reveal">
-            <span class="timeline__dot"></span>
-            <span class="timeline__year">Priebežne</span>
-            <h3>Video, zvuk &amp; 3D</h3>
-            <p>Strih videa, práca so zvukom, modelovanie a 3D tlač. Nástroje: CapCut, Blender, DJI.</p>
-          </li>
-          <li class="timeline__item reveal">
-            <span class="timeline__dot"></span>
-            <span class="timeline__year">Priebežne</span>
-            <h3>Web &amp; programovanie</h3>
-            <p>HTML, CSS a PHP — vlastné stránky a školské projekty. Neustále sa posúvam ďalej.</p>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- ===================== KONTAKT ===================== -->
-    <section class="section contact" id="kontakt">
-      <div class="wrap">
-        <div class="head">
-          <p class="sec-label reveal"><span>05</span> Kontakt</p>
-          <h2 class="h2 reveal">Poďme niečo<br /><em>vytvoriť.</em></h2>
-          <p class="lead reveal">Máš nápad, projekt alebo otázku? Napíš mi — ozvem sa čo najskôr.</p>
-        </div>
-
-        <div class="contact__grid">
-          <div class="contact__info reveal">
-            <a class="info" href="mailto:cizsamko@gmail.com">
-              <span>E-mail</span><b>cizsamko@gmail.com</b>
-            </a>
-            <a class="info" href="tel:+421910186170">
-              <span>Telefón</span><b>+421 910 186 170</b>
-            </a>
-            <a class="info" href="https://github.com/Samustang1" target="_blank" rel="noopener">
-              <span>GitHub</span><b>github.com/Samustang1</b>
-            </a>
-            <a class="info" href="https://samustang1.github.io/cizmar-photography/" target="_blank" rel="noopener">
-              <span>Fotoportfólio</span><b>Automobilová fotografia ↗</b>
-            </a>
-          </div>
-
-          <form class="form reveal" id="contactForm" action="https://formsubmit.co/cizsamko@gmail.com" method="POST">
-            <input type="hidden" name="_subject" value="Nová správa z portfólia" />
-            <input type="hidden" name="_template" value="table" />
-            <input type="hidden" name="_captcha" value="false" />
-            <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
-
-            <div class="form__row">
-              <div class="field">
-                <label for="f-name">Meno *</label>
-                <input type="text" id="f-name" name="Meno" required />
-              </div>
-              <div class="field">
-                <label for="f-email">E-mail *</label>
-                <input type="email" id="f-email" name="E-mail" required />
-              </div>
-            </div>
-            <div class="field">
-              <label for="f-subject">Predmet</label>
-              <input type="text" id="f-subject" name="Predmet" placeholder="Spolupráca, fotenie, web…" />
-            </div>
-            <div class="field">
-              <label for="f-message">Správa *</label>
-              <textarea id="f-message" name="Správa" rows="5" required placeholder="Napíš mi, čo máš na mysli…"></textarea>
-            </div>
-            <button class="btn btn--solid form__submit" type="submit">Odoslať správu</button>
-            <p class="form__note" id="formNote" role="status" aria-live="polite"></p>
-          </form>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===================== CTA ===================== -->
-    <section class="cta">
-      <div class="wrap cta__inner">
-        <div>
-          <p class="sec-label sec-label--plain reveal"><span>✦</span> Rád fotím</p>
-          <h2 class="h2 reveal">Nafotím aj <em>tvoje auto.</em></h2>
-        </div>
-        <a class="btn btn--solid reveal" href="https://samustang1.github.io/cizmar-photography/" target="_blank" rel="noopener" data-magnetic>Fotoportfólio ↗</a>
       </div>
     </section>
   </main>
 
-  <!-- ===================== FOOTER ===================== -->
-  <footer class="footer">
-    <div class="wrap footer__inner">
-      <span class="footer__mark">SČ<em>.</em></span>
-      <p class="footer__txt">Osobné portfólio — fotografia, grafika, video, 3D a technológie.</p>
-      <div class="footer__meta">
-        <span>© <span id="year"></span> Samuel Čižmár</span>
-        <a href="mailto:cizsamko@gmail.com">cizsamko@gmail.com</a>
-        <a href="https://github.com/Samustang1" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://samustang1.github.io/cizmar-photography/" target="_blank" rel="noopener">Fotoportfólio</a>
+  <!-- ================= PÄTA ================= -->
+  <footer class="site-footer" id="kontakt">
+    <div class="wrap site-footer__inner">
+
+      <div class="site-footer__brand">
+        <span class="brand__mark">S<em>Č</em></span>
+        <p>Osobné portfólio — projekty zo školy a vlastnej tvorby.</p>
       </div>
+
+      <nav class="site-footer__nav" aria-label="Pätičná navigácia">
+        <a href="#projekty">Projekty</a>
+        <a href="mailto:cizsamko@gmail.com">cizsamko@gmail.com</a>
+        <a href="tel:+421910186170">+421 910 186 170</a>
+        <a href="https://github.com/Samustang1" target="_blank" rel="noopener">GitHub ↗</a>
+        <a href="https://samustang1.github.io/cizmar-photography/" target="_blank" rel="noopener">Fotoportfólio ↗</a>
+      </nav>
+
+      <p class="site-footer__copy">© <span id="year">2026</span> Samuel Čižmár · Všetky práva vyhradené.</p>
     </div>
   </footer>
 
-  <button class="totop" id="totop" type="button" aria-label="Nahor">↑</button>
+  <button class="totop" id="totop" type="button" aria-label="Späť nahor">↑</button>
 
-  <script src="assets/js/main.js?v=3"></script>
+  <!-- ================= LIGHTBOX ================= -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Zväčšený obrázok" hidden>
+    <button class="lightbox__close" id="lightboxClose" type="button" aria-label="Zavrieť">✕</button>
+    <figure class="lightbox__figure">
+      <img id="lightboxImg" src="" alt="" />
+      <figcaption id="lightboxCap"></figcaption>
+    </figure>
+  </div>
+
+  <script src="assets/js/main.js?v=1"></script>
 </body>
 </html>

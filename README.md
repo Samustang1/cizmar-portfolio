@@ -1,54 +1,68 @@
-# Samuel Čižmár — Osobné portfólio
+# Samuel Čižmár — PROJEKTY
 
-Prémiová osobná webová stránka (statická — HTML + CSS + JS, bez servera).
-Beží na **GitHub Pages**.
+Statická webová stránka (HTML + CSS + JS, bez servera) so **semantickou štruktúrou**
+podľa zadania. Beží na **GitHub Pages**.
 
 - **Live:** https://samustang1.github.io/cizmar-portfolio/
 - **Fotoportfólio (druhá stránka):** https://samustang1.github.io/cizmar-photography/
 
-## Vizuálny koncept
+## Zadanie
 
-Dizajn vychádza z umeleckej filozofie **Velocity Cartography** (viď
-[`DESIGN-PHILOSOPHY.md`](DESIGN-PHILOSOPHY.md)) — pohyb ako terén, ktorý sa dá
-zmerať a zmapovať. Vizuály (hero, sekcia „O mne", dlaždice projektov) nie sú
-fotky z internetu; generuje ich vlastný skript aditívnym neonovým svetlom
-(glow + bloom) na takmer čiernom podklade.
+Stránka vychádza zo školského zadania (priečinok `Downloads`):
 
-- Typografia: **Big Shoulders Display** (nadpisy), **Inter** (text), **JetBrains Mono** (technické popisky)
-- Paleta: elektrická modrá → neónová tyrkysová → fialová na hlbokom pozadí
+- `Čižmár_projekty.docx` — texty projektov (Zadanie + Vypracovanie a hodnotenie)
+- `Čižmár_projekty_wireframe.png` — náčrt rozloženia
+- `Čižmár_projekty_semantika.zip` — `spg podstránka/podstranka.html` + obrázky projektov
 
-## Sekcie
-
-| Sekcia | Obsah |
-|---|---|
-| Domov | Veľký nadpis, hero vizuál, štatistiky |
-| O mne | Bio + zoznam zručností |
-| Zručnosti | 6 oblastí s ukazovateľmi |
-| Projekty | 6 dlaždíc s vlastnými vizuálmi |
-| Vzdelanie / Kurzy | Časová os |
-| Kontakt | Údaje + funkčný formulár |
-
-## Štruktúra
+Štruktúra podľa zadania:
 
 ```
-index.html                 # celá stránka
-assets/css/style.css       # dizajn
-assets/js/main.js          # interakcie, animácie, formulár
-assets/img/                # vygenerované vizuály (hero, about, tile-01..06) — WebP
-tools/generate_art.py      # generátor vizuálov (Pillow)
-tools/fonts/               # fonty pre generátor (OFL)
-DESIGN-PHILOSOPHY.md       # dizajnová filozofia
-.nojekyll                  # vypne Jekyll na Pages
+<header>   logo + navigačné menu + profil (obrázok + meno)
+<main>     <section class="projects">
+             <h1>PROJEKTY</h1>
+             <article class="project"> … obrázok + text (Zadanie / Vypracovanie a hodnotenie)
+             (5×, striedavo s triedou .reverse)
+<footer>   päta (kontakt, odkazy)
+```
+
+## Obsah — 5 projektov
+
+| # | Projekt | Obrázok |
+|---|---------|---------|
+| 01 | Kreatívny životopis | `assets/img/projekty/projekt-1.webp` |
+| 02 | Glow up effect | `assets/img/projekty/projekt-2.webp` |
+| 03 | Prvá webová stránka | `assets/img/projekty/projekt-3.webp` |
+| 04 | Webová stránka pre šikanu | `assets/img/projekty/projekt-4.webp` *(placeholder)* |
+| 05 | Web hosting z Raspberry Pi | `assets/img/projekty/projekt-5.webp` |
+
+> **Poznámka:** Zadanie neobsahovalo obrázok pre Projekt 4 ani profilovú fotku.
+> Projekt 4 má preto neutrálny placeholder — nahraď ho reálnym obrázkom
+> (ulož ho ako `assets/img/projekty/projekt-4.webp`). Profilový avatar
+> `assets/img/profil.webp` nahradíš svojou fotkou (napr. `profil.jpg`).
+
+## Štruktúra projektu
+
+```
+index.html                    # celá stránka
+assets/css/style.css          # dizajn (premium tmavá téma)
+assets/js/main.js             # navigácia, reveal, počítadlá, lightbox
+assets/img/profil.webp        # profilový avatar
+assets/img/og.webp            # náhľad pre sociálne siete
+assets/img/projekty/*.webp    # obrázky projektov
+tools/generate_art.py         # generátor vizuálov (Pillow)
+tools/page_assets.py          # konverzia obrázkov + avatar + placeholder + OG
+tools/fonts/                  # fonty pre generátor (OFL)
+DESIGN-PHILOSOPHY.md          # dizajnová filozofia
+.nojekyll                     # vypne Jekyll na Pages
 ```
 
 ## Ako upraviť obsah
 
-1. Texty prepíšeš v `index.html`.
+1. Texty projektov prepíšeš v `index.html` (v `article.project`).
 2. Farby v `assets/css/style.css` v časti `:root`.
-3. Vizuály prerobíš: `python tools/generate_art.py` (potrebuje `Pillow`).
-   Parametre žiary a farieb sú hore v skripte.
-4. Po zmene CSS/JS zvýš `?v=2` → `?v=3` v `index.html` (cache-busting).
-5. Nahraj zmenu:
+3. Obrázky: nahraď `assets/img/projekty/*.webp` (WebP, prípadne uprav `tools/page_assets.py`).
+4. Po zmene CSS/JS zvýš `?v=1` → `?v=2` v `index.html` (cache-busting).
+5. Nahraj:
 
 ```bash
 git add -A
@@ -58,7 +72,8 @@ git push
 
 GitHub Pages sa prebuildí automaticky do minúty.
 
-## Kontaktný formulár
+## Kontakt
 
-Formulár posiela správy cez **FormSubmit** do schránky `cizsamko@gmail.com`.
-Pri prvom odoslaní príde aktivačný e-mail — treba ho raz potvrdiť.
+- **E-mail:** cizsamko@gmail.com
+- **Telefón:** +421 910 186 170
+- **GitHub:** [Samustang1](https://github.com/Samustang1)
