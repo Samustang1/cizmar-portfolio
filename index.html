@@ -18,7 +18,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/style.css?v=1" />
+  <link rel="stylesheet" href="assets/css/style.css?v=2" />
+  <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 </head>
 
 <body id="top">
@@ -52,6 +53,10 @@
 
     <!-- ================= HERO ================= -->
     <section class="hero">
+      <span class="aurora aurora--1" aria-hidden="true"></span>
+      <span class="aurora aurora--2" aria-hidden="true"></span>
+      <span class="aurora aurora--3" aria-hidden="true"></span>
+
       <div class="wrap hero__grid">
 
         <div class="hero__text">
@@ -76,11 +81,11 @@
             <a class="btn btn--outline" href="#zrucnosti" data-magnet>Čo viem</a>
           </div>
 
-          <ul class="hero__badges reveal">
-            <li>17 rokov</li>
-            <li>IT študent</li>
-            <li>Slovensko</li>
-          </ul>
+          <dl class="hero__stats reveal">
+            <div><dt data-count="17">17</dt><dd>rokov</dd></div>
+            <div><dt data-count="6">6</dt><dd>oblastí tvorby</dd></div>
+            <div><dt data-count="100">100</dt><dd>% nasadenie</dd></div>
+          </dl>
         </div>
 
         <figure class="poster reveal" aria-label="Portfólio 2026">
@@ -96,6 +101,13 @@
             <li><b>06</b> Zvuk</li>
           </ul>
           <span class="poster__stamp">EST · 2026</span>
+          <span class="spin" aria-hidden="true">
+            <svg viewBox="0 0 100 100">
+              <defs><path id="spinpath" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0" /></defs>
+              <text><textPath href="#spinpath" startOffset="0">DOSTUPNÝ PRE PRAX · OPEN TO WORK ·&nbsp;</textPath></text>
+            </svg>
+            <b>↑</b>
+          </span>
         </figure>
       </div>
 
@@ -135,6 +147,13 @@
             <div><dt>Dostupnosť</dt><dd>brigáda · prax</dd></div>
           </dl>
         </div>
+      </div>
+    </section>
+
+    <!-- ================= STATEMENT ================= -->
+    <section class="statement">
+      <div class="wrap">
+        <p class="statement__text reveal">Rád robím veci <em>od nuly</em> — a dotiahnem ich do konca.</p>
       </div>
     </section>
 
@@ -293,6 +312,6 @@
 
   <button class="totop" id="totop" type="button" aria-label="Späť nahor">↑</button>
 
-  <script src="assets/js/main.js?v=1"></script>
+  <script src="assets/js/main.js?v=2"></script>
 </body>
 </html>

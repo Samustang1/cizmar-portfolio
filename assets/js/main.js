@@ -156,5 +156,26 @@
     });
   }
 
+  /* ---------- počítadlá ---------- */
+  var counters = $$("[data-count]");
+  if (counters.length && "IntersectionObserver" in window && !reduce) {
+    var cio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        var el = e.target;
+        var target = parseInt(el.getAttribute("data-count"), 10);
+        cio.unobserve(el);
+        if (isNaN(target)) return;
+        var start = performance.now(), dur = 1200;
+        (function step(now) {
+          var p = Math.min(1, (now - start) / dur);
+          el.textContent = String(Math.round(target * (1 - Math.pow(1 - p, 3))));
+          if (p < 1) requestAnimationFrame(step);
+        })(start);
+      });
+    }, { threshold: 0.5 });
+    counters.forEach(function (c) { cio.observe(c); });
+  }
+
   onScroll();
 })();
