@@ -214,14 +214,21 @@ button { font: inherit; color: inherit; }
 .poster__list b { color: var(--amber); font-size: .7rem; }
 .poster__stamp { position: absolute; right: 1.4rem; bottom: 1.2rem; color: rgba(243, 238, 227, .6); }
 
-/* ---- ribbon ---- */
+/* ---- ribbon ----
+   Text je v HTML zopakovaný 8× (--copies). Animácia posunie pás presne o jednu
+   kópiu (-100% / 8 = -12.5%), takže loop je plynulý a pás zostane vždy vyplnený
+   (7 kópií = ~4 300 px, čo pokryje akúkoľvek bežnú šírku obrazovky). */
 .ribbon { margin-top: clamp(3rem, 7vw, 5rem); background: var(--ink); border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink); overflow: hidden; }
-.ribbon__track { display: flex; width: max-content; animation: marquee 26s linear infinite; }
+.ribbon__track {
+  --copies: 8;
+  display: flex; width: max-content; will-change: transform;
+  animation: marquee 26s linear infinite;
+}
 .ribbon__track span {
   font-family: var(--font-display); font-size: 1.4rem; letter-spacing: .06em; text-transform: uppercase;
   color: var(--paper); padding: .7rem 0; white-space: nowrap;
 }
-@keyframes marquee { to { transform: translateX(-50%); } }
+@keyframes marquee { to { transform: translateX(calc(-100% / var(--copies))); } }
 
 /* ===================== sekcie ===================== */
 .section { padding: clamp(4rem, 10vw, 7rem) 0; }

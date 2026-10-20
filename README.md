@@ -100,8 +100,12 @@ tools/fonts/                   # fonty pre generátory (OFL)
 1. **Texty** prepíšeš v `index.html`.
 2. **Farby** v `assets/css/style.css` v časti `:root` (`--red`, `--blue`, `--amber`, …).
 3. **Rotujúce slová** v `assets/js/main.js` (pole `words`).
-4. Po zmene CSS/JS zvýš `?v=8` → `?v=9` v `index.html` (cache-busting).
-5. Nahraj:
+4. Po zmene CSS/JS zvýš `?v=9` → `?v=10` v `index.html` (cache-busting).
+5. **Bežiaci pás** („Fotografia ★ Grafika ★ …"): text je v `index.html` zopakovaný
+   **8×** a animácia ho posúva o presne jednu kópiu (`--copies: 8` v `.ribbon__track`).
+   Vďaka tomu je loop plynulý a pás nikdy nie je prázdny. Ak text zmeníš, prepíš ho
+   vo všetkých kópiách; ak zmeníš počet kópií, uprav aj `--copies` v CSS.
+6. Nahraj:
 
 ```bash
 git add -A
