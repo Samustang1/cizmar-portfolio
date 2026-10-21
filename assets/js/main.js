@@ -236,5 +236,27 @@
     });
   }
 
+  /* ---------- hover efekt na dotyk (tablet / mobil) ---------- */
+  var cardEls = $$(".card");
+  if (cardEls.length) {
+    var clearCards = function () {
+      cardEls.forEach(function (c) { c.classList.remove("is-hover"); });
+    };
+    cardEls.forEach(function (c) {
+      c.addEventListener("pointerdown", function (e) {
+        if (e.pointerType !== "touch" && e.pointerType !== "pen") return;
+        var wasOn = c.classList.contains("is-hover");
+        clearCards();
+        if (!wasOn) c.classList.add("is-hover");
+      });
+    });
+    // klik / tap mimo kariet efekt zruší
+    doc.addEventListener("pointerdown", function (e) {
+      var t = e.target;
+      if (!t || !t.closest || !t.closest(".card")) clearCards();
+    }, true);
+    window.addEventListener("scroll", clearCards, { passive: true });
+  }
+
   onScroll();
 })();

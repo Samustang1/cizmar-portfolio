@@ -120,14 +120,17 @@ tools/fonts/                   # fonty pre generátory (OFL)
 1. **Texty** prepíšeš v `index.html`.
 2. **Farby** v `assets/css/style.css` v časti `:root` (`--red`, `--blue`, `--amber`, …).
 3. **Rotujúce slová** v `assets/js/main.js` (pole `words`).
-4. Po zmene CSS/JS zvýš `?v=11` → `?v=12` v `index.html` (cache-busting).
+4. Po zmene CSS/JS zvýš `?v=12` → `?v=13` v `index.html` (cache-busting).
 5. **Pruhy zručností** — v sekcii Zručnosti v `index.html` zmeň `--w` v `<div class="bar"><i style="--w:88%"></i></div>`
    (teraz: Fotografia **88 %**, Grafika **82 %**, Web & kód **50 %**).
-6. **Bežiaci pás** („Fotografia ★ Grafika ★ …"): text je v `index.html` zopakovaný
+6. **Hover na kartách zručností** — efekt (nadvihnutie, hrubší pásik, farebný nadpis, vyplnené štítky)
+   je v `style.css` pri `.card:hover`. Ten istý efekt sa na **tablete/mobile** spustí po **tapnutí**
+   na kartu (triedu `is-hover` pridáva `main.js`), lebo dotykové zariadenia hover nemajú.
+7. **Bežiaci pás** („Fotografia ★ Grafika ★ …"): text je v `index.html` zopakovaný
    **8×** a animácia ho posúva o presne jednu kópiu (`--copies: 8` v `.ribbon__track`).
    Vďaka tomu je loop plynulý a pás nikdy nie je prázdny. Ak text zmeníš, prepíš ho
    vo všetkých kópiách; ak zmeníš počet kópií, uprav aj `--copies` v CSS.
-7. Nahraj:
+8. Nahraj:
 
 ```bash
 git add -A

@@ -250,20 +250,28 @@ button { font: inherit; color: inherit; }
   position: relative; padding: 1.6rem 1.4rem 1.4rem; background: var(--paper);
   border: 2px solid var(--ink); border-radius: var(--radius); box-shadow: var(--shadow-sm);
   transition: transform .2s var(--ease), box-shadow .2s var(--ease);
+  -webkit-tap-highlight-color: transparent;
 }
 .card::before {
   content: ""; position: absolute; top: 0; left: 0; right: 0; height: 7px;
   background: var(--tone, var(--red)); border-bottom: 2px solid var(--ink);
   transition: height .22s var(--ease);
 }
-/* hover musí mať vyššiu špecifickosť než .reveal.is-in { transform: none } */
-.cards .card:hover { transform: translate(-3px, -3px); box-shadow: 9px 9px 0 var(--ink); }
+/* hover musí mať vyššiu špecifickosť než .reveal.is-in { transform: none }
+   .is-hover = ten istý efekt, ale na dotyk (tablet / mobil, pridáva JS) */
+.cards .card:hover,
+.cards .card.is-hover { transform: translate(-3px, -3px); box-shadow: 9px 9px 0 var(--ink); }
 .cards .card:focus-visible { transform: translate(-3px, -3px); box-shadow: 9px 9px 0 var(--ink); }
-.card:hover::before { height: 12px; }
-.card:hover h3 { color: var(--tone, var(--red)); }
-.card:hover .card__num { transform: translateY(-1px); }
-.card:hover .chip li { background: var(--tone, var(--red)); color: var(--paper); }
-.card:hover .bar { border-color: var(--tone, var(--red)); }
+.card:hover::before,
+.card.is-hover::before { height: 12px; }
+.card:hover h3,
+.card.is-hover h3 { color: var(--tone, var(--red)); }
+.card:hover .card__num,
+.card.is-hover .card__num { transform: translateY(-1px); }
+.card:hover .chip li,
+.card.is-hover .chip li { background: var(--tone, var(--red)); color: var(--paper); }
+.card:hover .bar,
+.card.is-hover .bar { border-color: var(--tone, var(--red)); }
 .card--link { cursor: pointer; }
 .card__go {
   position: absolute; top: -.85rem; right: -.7rem; z-index: 3;
@@ -272,7 +280,8 @@ button { font: inherit; color: inherit; }
   font-family: var(--font-mono); font-weight: 700; font-size: .86rem;
   transition: transform .25s var(--ease), background .25s var(--ease), color .25s var(--ease);
 }
-.card--link:hover .card__go { background: var(--tone, var(--red)); color: var(--paper); transform: translate(2px, -2px) rotate(8deg); }
+.card--link:hover .card__go,
+.card--link.is-hover .card__go { background: var(--tone, var(--red)); color: var(--paper); transform: translate(2px, -2px) rotate(8deg); }
 .card__num { font-family: var(--font-mono); font-size: .72rem; font-weight: 700; color: var(--tone, var(--red)); display: inline-block; transition: transform .2s var(--ease); }
 .card h3 { font-family: var(--font-display); font-weight: 400; text-transform: uppercase; font-size: 1.5rem; letter-spacing: -.01em; margin: .3rem 0 .5rem; transition: color .2s var(--ease); }
 .card p { color: var(--muted); font-size: .95rem; }
