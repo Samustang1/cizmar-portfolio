@@ -176,12 +176,11 @@ button { font: inherit; color: inherit; }
 
 .hero__role { font-family: var(--font-mono); font-size: clamp(.95rem, 2vw, 1.15rem); margin-top: 1.6rem; color: var(--ink-soft); }
 .rotate {
-  display: inline-block; min-width: 9ch; font-weight: 700; color: var(--ink);
+  display: inline-block; font-weight: 700; color: var(--ink);
   background: linear-gradient(transparent 62%, var(--amber) 62%); padding: 0 .15em;
-  transition: opacity .3s var(--ease);
 }
-/* hotové slovo + žltý obdĺžnik zmiznú spolu (fade) a potom sa napíše nové */
-.rotate.is-out { opacity: 0; }
+/* keď je slovo vymazané, nech nezostane visieť ani kúsoček žltého obdĺžnika */
+.rotate:empty { background-image: none; }
 .rotate::after { content: "▍"; color: var(--red); animation: blink 1s steps(1) infinite; }
 @keyframes blink { 50% { opacity: 0; } }
 
@@ -433,7 +432,6 @@ a.info:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--ink
 @media (max-width: 560px) {
   .facts { grid-template-columns: 1fr; }
   .form__row { grid-template-columns: 1fr; gap: 0; }
-  .rotate { min-width: 0; }
   .hero__stats { gap: .8rem; }
   .spin { width: 78px; height: 78px; top: -22px; right: -14px; }
   .spin text { font-size: 8px; }
