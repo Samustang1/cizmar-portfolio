@@ -122,7 +122,7 @@ tools/fonts/                   # fonty pre generátory (OFL)
 3. **Rotujúce slová** v `assets/js/main.js` (pole `words`) — text sa píše **a aj maže písmeno po písmene**
    a žltý obdĺžnik sa pritom naťahuje / skracuje **presne spolu s ním** (nemá žiadnu pevnú šírku).
    Rýchlosť: `95` (písanie), `1500` (pauza), `45` (mazanie), `300` (pred ďalším slovom).
-4. Po zmene CSS/JS zvýš `?v=14` → `?v=15` v `index.html` (cache-busting).
+4. Po zmene CSS/JS zvýš `?v=15` → `?v=16` v `index.html` (cache-busting).
 5. **Pruhy zručností** — v sekcii Zručnosti v `index.html` zmeň `--w` v `<div class="bar"><i style="--w:88%"></i></div>`
    (teraz: Fotografia **88 %**, Grafika **82 %**, Web & kód **50 %**).
 6. **Hover na kartách zručností** — efekt (nadvihnutie, hrubší pásik, farebný nadpis, vyplnené štítky)

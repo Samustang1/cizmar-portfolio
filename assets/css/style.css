@@ -512,9 +512,11 @@ a.info:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--ink
 /* ===================== DETAIL PROJEKTU (modal) ===================== */
 
 .modal {
+  --mpad: clamp(1rem, 4vw, 2.5rem);
+  --mbox: calc(100vh - 2 * var(--mpad) - 6px); /* 6px = 2 × 3px rám boxu */
   position: fixed; inset: 0; z-index: 200;
   display: flex; align-items: center; justify-content: center;
-  padding: clamp(1rem, 4vw, 2.5rem);
+  padding: var(--mpad);
 }
 .modal[hidden] { display: none !important; }
 
@@ -526,16 +528,17 @@ a.info:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--ink
 
 .modal__box {
   position: relative; z-index: 1; width: 100%; max-width: 980px;
-  max-height: calc(100vh - 2 * clamp(1rem, 4vw, 2.5rem));
   display: grid; grid-template-columns: 1.1fr .9fr;
   background: var(--paper); border: 3px solid var(--ink); box-shadow: 10px 10px 0 var(--ink);
-  overflow: auto; animation: modalPop .28s var(--ease);
+  /* DÔLEŽITÉ: overflow musí byť visible, inak scrollovací box odreže ✕ v rohu.
+     Posúva sa preto len text (nižšie .modal__body), nie celý box. */
+  overflow: visible; animation: modalPop .28s var(--ease);
 }
 
 .modal__media { background: var(--paper-2); border-right: 2px solid var(--ink); min-height: clamp(220px, 30vh, 320px); }
 .modal__media img { display: block; width: 100%; height: 100%; object-fit: cover; }
 
-.modal__body { padding: clamp(1.3rem, 3.2vw, 2.2rem); }
+.modal__body { padding: clamp(1.3rem, 3.2vw, 2.2rem); max-height: var(--mbox); overflow: auto; }
 .modal__eyebrow {
   font-family: var(--font-mono); font-size: .68rem; font-weight: 700; letter-spacing: .14em;
   text-transform: uppercase; color: var(--muted);
@@ -563,9 +566,12 @@ html.is-locked { overflow: hidden; }
 @keyframes modalPop { from { opacity: 0; transform: translateY(16px) scale(.97); } }
 
 @media (max-width: 900px) {
-  .modal__box { grid-template-columns: 1fr; }
+  /* na užších obrazovkách je obsah pod sebou -> celý box sa posúva a ✕ ide dovnútra */
+  .modal__box { grid-template-columns: 1fr; max-height: calc(100vh - 2 * var(--mpad)); overflow: auto; }
   .modal__media { border-right: 0; border-bottom: 2px solid var(--ink); min-height: 0; }
   .modal__media img { aspect-ratio: 4 / 3; height: auto; }
+  .modal__body { max-height: none; overflow: visible; }
+  .modal__close { top: .7rem; right: .7rem; }
 }
 
 @media (max-width: 560px) {
