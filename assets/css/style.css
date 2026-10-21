@@ -178,7 +178,10 @@ button { font: inherit; color: inherit; }
 .rotate {
   display: inline-block; min-width: 9ch; font-weight: 700; color: var(--ink);
   background: linear-gradient(transparent 62%, var(--amber) 62%); padding: 0 .15em;
+  transition: opacity .3s var(--ease);
 }
+/* hotové slovo + žltý obdĺžnik zmiznú spolu (fade) a potom sa napíše nové */
+.rotate.is-out { opacity: 0; }
 .rotate::after { content: "▍"; color: var(--red); animation: blink 1s steps(1) infinite; }
 @keyframes blink { 50% { opacity: 0; } }
 

@@ -119,8 +119,10 @@ tools/fonts/                   # fonty pre generátory (OFL)
 
 1. **Texty** prepíšeš v `index.html`.
 2. **Farby** v `assets/css/style.css` v časti `:root` (`--red`, `--blue`, `--amber`, …).
-3. **Rotujúce slová** v `assets/js/main.js` (pole `words`).
-4. Po zmene CSS/JS zvýš `?v=12` → `?v=13` v `index.html` (cache-busting).
+3. **Rotujúce slová** v `assets/js/main.js` (pole `words`) — text sa píše písmeno po písmene,
+   po chvíli **celý zmizne (fade aj so žltým zvýraznením)** a napíše sa ďalšie slovo.
+   Rýchlosť: `95` (písanie), `1500` (pauza), `330` (fade), `240` (pred ďalším slovom).
+4. Po zmene CSS/JS zvýš `?v=13` → `?v=14` v `index.html` (cache-busting).
 5. **Pruhy zručností** — v sekcii Zručnosti v `index.html` zmeň `--w` v `<div class="bar"><i style="--w:88%"></i></div>`
    (teraz: Fotografia **88 %**, Grafika **82 %**, Web & kód **50 %**).
 6. **Hover na kartách zručností** — efekt (nadvihnutie, hrubší pásik, farebný nadpis, vyplnené štítky)

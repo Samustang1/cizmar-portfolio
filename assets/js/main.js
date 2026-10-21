@@ -88,15 +88,26 @@
     if (reduce) {
       rot.textContent = words[0];
     } else {
-      var wi = 0, ci = 0, deleting = false;
+      var wi = 0, ci = 0;
       (function tick() {
         var w = words[wi];
-        ci += deleting ? -1 : 1;
+        ci += 1;
         rot.textContent = w.slice(0, ci);
-        var delay = deleting ? 45 : 95;
-        if (!deleting && ci === w.length) { deleting = true; delay = 1500; }
-        else if (deleting && ci === 0) { deleting = false; wi = (wi + 1) % words.length; delay = 300; }
-        window.setTimeout(tick, delay);
+
+        // ešte nie je hotové -> píšeme ďalej
+        if (ci < w.length) { window.setTimeout(tick, 95); return; }
+
+        // slovo je hotové -> chvíľu počkať, potom text aj žltý obrázok zmiznú (fade)
+        window.setTimeout(function () {
+          rot.classList.add("is-out");
+          window.setTimeout(function () {
+            wi = (wi + 1) % words.length;
+            ci = 0;
+            rot.textContent = "";
+            rot.classList.remove("is-out");
+            window.setTimeout(tick, 240);
+          }, 330);
+        }, 1500);
       })();
     }
   }
