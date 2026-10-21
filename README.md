@@ -22,9 +22,9 @@ box-shadow), pestrou paletou a animovaným (aurora) pozadím.
 | — | Hero | meno, rotujúce povolanie, predstavenie, fotka, počítadlá, bežiaci pás |
 | 01 | O mne | krátke bio + fakty (vek, lokalita, zameranie, jazyky, dostupnosť) |
 | — | Statement | veľký tmavý pás s mottom |
-| 02 | Projekty | mriežka 6 fotiek |
+| 02 | Projekty | mriežka 6 fotiek — **klik na projekt otvorí detail s popisom** |
 | 03 | Zručnosti | 3 karty s animovanými pruhmi — **karta „Fotografia" je odkaz na fotoportfólio** |
-| 04 | Vzdelanie | časová os |
+| 04 | Vzdelanie | časová os (Súkromná SOŠ Poprad — grafika) |
 | 05 | Kontakt | e-mail, telefón, GitHub + kontaktný formulár |
 
 Tlačidlá **„Napíš mi"** vedú na kontaktný formulár (`#kontakt`), nie na mail.
@@ -56,9 +56,29 @@ assets/img/prace/prace-6.webp   →  Projekt 06
 Nahraď ich vlastnými fotkami (**rovnaký názov**, odporúčaný pomer **4 : 3**).
 Popisky („Projekt 01", „2026") prepíšeš v `index.html` v `<figcaption>`.
 
-Fotky v Projektoch **nie sú odkazy** — slúžia len ako ukážka.
-
 Ak chceš **viac alebo menej** projektov, skopíruj/uber `<figure class="work">` blok.
+
+## Popis projektu (klik na fotku)
+
+Každá fotka v Projektoch je **tlačidlo** — po kliknutí sa otvorí **detail projektu**
+(fotka + názov + popis + štítky s nástrojmi). Detail sa dá zavrieť tlačidlom **✕**,
+klávesou **Esc** alebo kliknutím mimo okna.
+
+Text detailu nájdeš v `index.html` úplne dole v sekcii Projekty — hľadaj `id="projekt-1"`
+až `id="projekt-6"`. Pri každom projekte prepíš tieto riadky:
+
+```html
+<div class="modal" id="projekt-1" …>
+  …
+      <p class="modal__eyebrow">Projekt 01 · 2026</p>          <!-- malý riadok hore -->
+      <h3 class="modal__title" id="projekt-1-title">Názov projektu</h3>
+      <p class="modal__text">Sem napíš popis projektu …</p>     <!-- popis projektu -->
+      <ul class="chip"><li>Photoshop</li><li>Illustrator</li></ul>  <!-- nástroje -->
+  …
+</div>
+```
+
+> Dôležité: `data-open="projekt-1"` na tlačidle musí sedieť s `id="projekt-1"` v okne detailu.
 
 ## Odkaz na fotoportfólio
 
@@ -100,7 +120,7 @@ tools/fonts/                   # fonty pre generátory (OFL)
 1. **Texty** prepíšeš v `index.html`.
 2. **Farby** v `assets/css/style.css` v časti `:root` (`--red`, `--blue`, `--amber`, …).
 3. **Rotujúce slová** v `assets/js/main.js` (pole `words`).
-4. Po zmene CSS/JS zvýš `?v=9` → `?v=10` v `index.html` (cache-busting).
+4. Po zmene CSS/JS zvýš `?v=10` → `?v=11` v `index.html` (cache-busting).
 5. **Bežiaci pás** („Fotografia ★ Grafika ★ …"): text je v `index.html` zopakovaný
    **8×** a animácia ho posúva o presne jednu kópiu (`--copies: 8` v `.ribbon__track`).
    Vďaka tomu je loop plynulý a pás nikdy nie je prázdny. Ak text zmeníš, prepíš ho

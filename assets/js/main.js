@@ -177,5 +177,64 @@
     counters.forEach(function (c) { cio.observe(c); });
   }
 
+  /* ---------- detail projektu (modal) ---------- */
+  var modals = $$(".modal");
+  if (modals.length) {
+    var openId = null;
+    var lastFocus = null;
+
+    var unlock = function () {
+      doc.documentElement.classList.remove("is-locked");
+    };
+
+    var closeModal = function () {
+      if (!openId) return;
+      var m = doc.getElementById(openId);
+      if (m) m.hidden = true;
+      openId = null;
+      unlock();
+      if (lastFocus && lastFocus.focus) lastFocus.focus();
+      lastFocus = null;
+    };
+
+    var openModal = function (m, trigger) {
+      if (openId) closeModal();
+      lastFocus = trigger || null;
+      m.hidden = false;
+      openId = m.id;
+      doc.documentElement.classList.add("is-locked");
+      var btn = $(".modal__close", m);
+      if (btn) btn.focus();
+    };
+
+    $$("[data-open]").forEach(function (t) {
+      t.addEventListener("click", function () {
+        var m = doc.getElementById(t.getAttribute("data-open"));
+        if (m) openModal(m, t);
+      });
+    });
+
+    modals.forEach(function (m) {
+      $$("[data-close]", m).forEach(function (c) {
+        c.addEventListener("click", closeModal);
+      });
+      m.addEventListener("click", function (e) { if (e.target === m) closeModal(); });
+    });
+
+    doc.addEventListener("keydown", function (e) {
+      if (!openId) return;
+      if (e.key === "Escape" || e.key === "Esc") { closeModal(); return; }
+      if (e.key !== "Tab") return;
+      var m = doc.getElementById(openId);
+      if (!m) return;
+      var f = $$("a[href], button, input, textarea, select, [tabindex]:not([tabindex='-1'])", m)
+        .filter(function (el) { return el.offsetWidth > 0 || el.offsetHeight > 0; });
+      if (!f.length) return;
+      var first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && doc.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && doc.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
+  }
+
   onScroll();
 })();

@@ -47,7 +47,7 @@ def main():
 
     # mono popisok
     d.text((186, 92), "PORTFÓLIO · 2026", font=f("GeistMono-Regular.ttf", 24), fill=(92, 98, 112), anchor="lm")
-    d.text((186, 124), "STUDENT IT & TVORCA", font=f("GeistMono-Bold.ttf", 22), fill=INK, anchor="lm")
+    d.text((186, 124), "ŠTUDENT GRAFIKY · TVORCA", font=f("GeistMono-Bold.ttf", 22), fill=INK, anchor="lm")
 
     # velke meno
     d.text((66, 300), "SAMUEL", font=f("BigShoulders-Bold.ttf", 190), fill=INK, anchor="lm")
