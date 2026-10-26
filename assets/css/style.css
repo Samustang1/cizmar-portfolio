@@ -5,12 +5,12 @@
    ============================================================ */
 
 :root {
-  --bg: #0a0a0a;
-  --bg-soft: #121212;
-  --ink: #f5f5f7;
-  --ink-soft: #a1a1aa;
-  --muted: #71717a;
-  --line: #27272a;
+  --bg: #f8fafc;
+  --bg-soft: #ffffff;
+  --ink: #0f172a;
+  --ink-soft: #475569;
+  --muted: #64748b;
+  --line: #e2e8f0;
 
   --red: #e2351f;
   --blue: #1d5bd6;
@@ -22,8 +22,8 @@
   --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
   --font-mono: "Space Mono", ui-monospace, monospace;
 
-  --shadow: 0 1px 3px rgba(0, 0, 0, .4), 0 8px 24px -8px rgba(0, 0, 0, .5);
-  --shadow-lg: 0 24px 56px -24px rgba(0, 0, 0, .5);
+  --shadow: 0 1px 3px rgba(0, 0, 0, .08), 0 8px 24px -8px rgba(0, 0, 0, .06);
+  --shadow-lg: 0 20px 48px -16px rgba(0, 0, 0, .12);
   --radius: 12px;
   --wrap: 1120px;
 
@@ -238,7 +238,7 @@ button { font: inherit; color: inherit; border: 0; background: none; cursor: poi
 
 /* ===================== sekcie ===================== */
 .section { padding: clamp(5rem, 10vw, 8rem) 0; }
-.sec-head { max-width: 720px; text-align: center; }
+.sec-head { max-width: 720px; text-align: left; }
 
 /* O mne */
 .about__grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: clamp(2rem, 6vw, 4rem); align-items: center; }
@@ -423,9 +423,9 @@ html.is-locked { overflow: hidden; }
 .biglink:hover span { color: var(--muted); }
 .contact__meta { font-size: .82rem; color: var(--muted); margin-top: .4rem; }
 
-.form { padding: clamp(1.4rem, 3.2vw, 2.2rem); background: var(--bg-soft); border: 1px solid var(--line); border-radius: var(--radius-lg); box-shadow: var(--shadow); }
-.form__row { display: grid; grid-template-columns: 1fr 1fr; gap: .9rem; }
-.field { display: flex; flex-direction: column; gap: .35rem; margin-bottom: .9rem; }
+.form { padding: clamp(1.6rem, 3.2vw, 2.2rem); background: var(--bg-soft); border: 1px solid var(--line); border-radius: var(--radius-lg); box-shadow: var(--shadow); }
+.form__row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: .4rem; }
+.field { display: flex; flex-direction: column; gap: .4rem; margin-bottom: .9rem; }
 .field label { font-size: .78rem; font-weight: 600; color: var(--ink-soft); }
 .field input, .field textarea {
   font: inherit; font-size: .97rem; padding: .75rem .9rem; color: var(--ink);
@@ -434,13 +434,13 @@ html.is-locked { overflow: hidden; }
   transition: background .2s, border-color .2s, box-shadow .2s;
 }
 .field input::placeholder, .field textarea::placeholder { color: var(--muted); }
-.field input:hover, .field textarea:hover { background: rgba(255, 255, 255, .03); }
+.field input:hover, .field textarea:hover { background: #f1f5f9; }
 .field input:focus, .field textarea:focus {
   outline: none; background: var(--bg-soft); border-color: var(--amber);
   box-shadow: 0 0 0 4px rgba(240, 163, 46, .15);
 }
 .hp { position: absolute; left: -9999px; }
-.form__submit { width: 100%; margin-top: .3rem; }
+.form__submit { width: auto; padding: .78rem 1.6rem; margin-top: .4rem; grid-column: 1 / -1; }
 .form__note { font-size: .85rem; margin-top: .8rem; min-height: 1.1em; color: var(--ink-soft); }
 .form__note.is-ok { color: var(--green); }
 .form__note.is-err { color: var(--red); }
@@ -495,7 +495,7 @@ html.is-locked { overflow: hidden; }
 @media (max-width: 680px) {
   .works__grid { grid-template-columns: 1fr; }
   .stack__groups { grid-template-columns: 1fr; }
-  .form__row { grid-template-columns: 1fr; gap: 0; }
+  .form__row { grid-template-columns: 1fr; gap: .8rem; }
 }
 
 @media (max-width: 560px) {
