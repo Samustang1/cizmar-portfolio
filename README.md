@@ -19,7 +19,7 @@ box-shadow), pestrou paletou a animovaným (aurora) pozadím.
 
 | # | Sekcia | Obsah |
 |---|--------|-------|
-| — | Hero | meno, rotujúce povolanie, predstavenie, fotka, počítadlá, bežiaci pás |
+| — | Hero | meno, rotujúce povolanie, predstavenie, fotka, počítadlá |
 | 01 | O mne | krátke bio + fakty (vek, lokalita, zameranie, jazyky, dostupnosť) |
 | — | Statement | veľký tmavý pás s mottom |
 | 02 | Projekty | mriežka 6 fotiek — **klik na projekt otvorí detail s popisom** |
@@ -122,17 +122,13 @@ tools/fonts/                   # fonty pre generátory (OFL)
 3. **Rotujúce slová** v `assets/js/main.js` (pole `words`) — text sa píše **a aj maže písmeno po písmene**
    a žltý obdĺžnik sa pritom naťahuje / skracuje **presne spolu s ním** (nemá žiadnu pevnú šírku).
    Rýchlosť: `95` (písanie), `1500` (pauza), `45` (mazanie), `300` (pred ďalším slovom).
-4. Po zmene CSS/JS zvýš `?v=15` → `?v=16` v `index.html` (cache-busting).
+4. Po zmene CSS/JS zvýš `?v=16` → `?v=17` v `index.html` (cache-busting).
 5. **Pruhy zručností** — v sekcii Zručnosti v `index.html` zmeň `--w` v `<div class="bar"><i style="--w:88%"></i></div>`
    (teraz: Fotografia **88 %**, Grafika **82 %**, Web & kód **50 %**).
 6. **Hover na kartách zručností** — efekt (nadvihnutie, hrubší pásik, farebný nadpis, vyplnené štítky)
    je v `style.css` pri `.card:hover`. Ten istý efekt sa na **tablete/mobile** spustí po **tapnutí**
    na kartu (triedu `is-hover` pridáva `main.js`), lebo dotykové zariadenia hover nemajú.
-7. **Bežiaci pás** („Fotografia ★ Grafika ★ …"): text je v `index.html` zopakovaný
-   **8×** a animácia ho posúva o presne jednu kópiu (`--copies: 8` v `.ribbon__track`).
-   Vďaka tomu je loop plynulý a pás nikdy nie je prázdny. Ak text zmeníš, prepíš ho
-   vo všetkých kópiách; ak zmeníš počet kópií, uprav aj `--copies` v CSS.
-8. Nahraj:
+7. Nahraj:
 
 ```bash
 git add -A
