@@ -8,24 +8,27 @@
   <meta name="description" content="Portfólio Samuela Čižmára — študent grafiky a tvorca. Grafika, fotografia, web. Dostupné pre prax a spoluprácu." />
 
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://samustang1.github.io/cizmar-portfolio/" />
+  <meta property="og:site_name" content="Samuel Čižmár" />
   <meta property="og:title" content="Samuel Čižmár — Portfólio" />
   <meta property="og:description" content="Študent grafiky a tvorca — grafika, fotografia, web." />
   <meta property="og:image" content="assets/img/og.webp" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23e2351f'/%3E%3Ctext x='32' y='46' font-family='Arial,sans-serif' font-size='34' font-weight='900' fill='%23f3eee3' text-anchor='middle'%3ESC%3C/text%3E%3C/svg%3E" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23e2351f'/%3E%3Ctext x='32' y='44' font-family='Arial,sans-serif' font-size='32' font-weight='900' fill='%23f3eee3' text-anchor='middle'%3ESC%3C/text%3E%3C/svg%3E" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/style.css?v=16" />
+  <link rel="stylesheet" href="assets/css/style.css?v=20" />
   <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 </head>
 
 <body id="top">
 
   <a class="skip" href="#main">Preskočiť na obsah</a>
-  <div class="progress" id="progress" aria-hidden="true"></div>
 
   <!-- ================= HLAVIČKA ================= -->
   <header class="header" id="header">
@@ -41,14 +44,29 @@
         <a href="#zrucnosti">Zručnosti</a>
         <a href="#vzdelanie">Vzdelanie</a>
         <a href="#kontakt">Kontakt</a>
-        <a class="btn btn--sm" href="#kontakt">Napíš mi</a>
       </nav>
 
-      <button class="burger" id="burger" type="button" aria-label="Otvoriť menu" aria-expanded="false" aria-controls="nav">
+      <a class="btn btn--sm" href="#kontakt">Napíš mi</a>
+
+      <button class="burger" id="burger" type="button" aria-label="Otvoriť menu" aria-expanded="false" aria-controls="menu">
         <span></span><span></span><span></span>
       </button>
     </div>
   </header>
+
+  <div class="menu" id="menu" hidden>
+    <nav class="menu__nav" aria-label="Menu">
+      <a href="#o-mne">O mne</a>
+      <a href="#projekty">Projekty</a>
+      <a href="#zrucnosti">Zručnosti</a>
+      <a href="#vzdelanie">Vzdelanie</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+    <div class="menu__foot">
+      <a href="mailto:cizsamko@gmail.com">cizsamko@gmail.com</a>
+      <a href="tel:+421910186170">+421 910 186 170</a>
+    </div>
+  </div>
 
   <main id="main">
 
@@ -59,9 +77,9 @@
       <span class="aurora aurora--3" aria-hidden="true"></span>
 
       <div class="wrap hero__grid">
-
         <div class="hero__text">
           <span class="tag reveal"><i></i> Dostupné pre prax &amp; spoluprácu</span>
+
           <h1 class="hero__name reveal">
             <span>Samuel</span>
             <span class="hero__name--accent">Čižmár</span>
@@ -161,7 +179,7 @@
           <figure class="work reveal">
             <button class="work__shot" type="button" data-open="projekt-1" aria-label="Otvoriť detail — Projekt 01">
               <img src="assets/img/prace/prace-1.webp" alt="Projekt 01" width="1200" height="900" loading="lazy" />
-              <span class="work__go" aria-hidden="true">+</span>
+              <span class="work__go" aria-hidden="true">＋</span>
             </button>
             <figcaption><b>Projekt 01</b><span>2026</span></figcaption>
           </figure>
@@ -169,7 +187,7 @@
           <figure class="work reveal">
             <button class="work__shot" type="button" data-open="projekt-2" aria-label="Otvoriť detail — Projekt 02">
               <img src="assets/img/prace/prace-2.webp" alt="Projekt 02" width="1200" height="900" loading="lazy" />
-              <span class="work__go" aria-hidden="true">+</span>
+              <span class="work__go" aria-hidden="true">＋</span>
             </button>
             <figcaption><b>Projekt 02</b><span>2026</span></figcaption>
           </figure>
@@ -177,7 +195,7 @@
           <figure class="work reveal">
             <button class="work__shot" type="button" data-open="projekt-3" aria-label="Otvoriť detail — Projekt 03">
               <img src="assets/img/prace/prace-3.webp" alt="Projekt 03" width="1200" height="900" loading="lazy" />
-              <span class="work__go" aria-hidden="true">+</span>
+              <span class="work__go" aria-hidden="true">＋</span>
             </button>
             <figcaption><b>Projekt 03</b><span>2026</span></figcaption>
           </figure>
@@ -185,7 +203,7 @@
           <figure class="work reveal">
             <button class="work__shot" type="button" data-open="projekt-4" aria-label="Otvoriť detail — Projekt 04">
               <img src="assets/img/prace/prace-4.webp" alt="Projekt 04" width="1200" height="900" loading="lazy" />
-              <span class="work__go" aria-hidden="true">+</span>
+              <span class="work__go" aria-hidden="true">＋</span>
             </button>
             <figcaption><b>Projekt 04</b><span>2026</span></figcaption>
           </figure>
@@ -193,7 +211,7 @@
           <figure class="work reveal">
             <button class="work__shot" type="button" data-open="projekt-5" aria-label="Otvoriť detail — Projekt 05">
               <img src="assets/img/prace/prace-5.webp" alt="Projekt 05" width="1200" height="900" loading="lazy" />
-              <span class="work__go" aria-hidden="true">+</span>
+              <span class="work__go" aria-hidden="true">＋</span>
             </button>
             <figcaption><b>Projekt 05</b><span>2026</span></figcaption>
           </figure>
@@ -201,18 +219,14 @@
           <figure class="work reveal">
             <button class="work__shot" type="button" data-open="projekt-6" aria-label="Otvoriť detail — Projekt 06">
               <img src="assets/img/prace/prace-6.webp" alt="Projekt 06" width="1200" height="900" loading="lazy" />
-              <span class="work__go" aria-hidden="true">+</span>
+              <span class="work__go" aria-hidden="true">＋</span>
             </button>
             <figcaption><b>Projekt 06</b><span>2026</span></figcaption>
           </figure>
         </div>
       </div>
 
-      <!-- ============================================================
-           DETAILY PROJEKTOV — tu si prepíš názov a popis projektu.
-           Fotku meníš v assets/img/prace/ (rovnaký názov súboru).
-           ============================================================ -->
-
+      <!-- ================= DETAILY PROJEKTOV (modálne okná) ================= -->
       <div class="modal" id="projekt-1" role="dialog" aria-modal="true" aria-labelledby="projekt-1-title" hidden>
         <div class="modal__backdrop" data-close></div>
         <div class="modal__box">
@@ -333,7 +347,7 @@
       <div class="wrap">
         <div class="sec-head">
           <p class="label reveal" data-tone="blue"><span>03</span> Zručnosti</p>
-          <h2 class="h2 reveal">S čím viem<br /><em>pracovať.</em></h2>
+          <h2 class="h2 reveal">S čím viem <em>pracovať.</em></h2>
           <p class="lead reveal">Tri oblasti, ktoré ovládam — od zámku fotoaparátu po riadok kódu.</p>
         </div>
 
@@ -371,7 +385,7 @@
       <div class="wrap edu__grid">
         <div class="edu__head">
           <p class="label reveal" data-tone="amber"><span>04</span> Vzdelanie &amp; smerovanie</p>
-          <h2 class="h2 reveal">Kde sa<br /><em>posúvam.</em></h2>
+          <h2 class="h2 reveal">Kde sa <em>posúvam.</em></h2>
         </div>
 
         <ol class="timeline">
@@ -439,6 +453,7 @@
         </div>
       </div>
     </section>
+
   </main>
 
   <!-- ================= PÄTA ================= -->
@@ -458,6 +473,6 @@
 
   <button class="totop" id="totop" type="button" aria-label="Späť nahor">↑</button>
 
-  <script src="assets/js/main.js?v=16"></script>
+  <script src="assets/js/main.js?v=20"></script>
 </body>
 </html>
