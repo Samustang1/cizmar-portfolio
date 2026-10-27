@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#0a0a0a" />
+  <meta name="theme-color" content="#f3eee3" />
   <title>Samuel Čižmár — Portfólio</title>
   <meta name="description" content="Portfólio Samuela Čižmára — študent grafiky a tvorca. Grafika, fotografia, web. Dostupné pre prax a spoluprácu." />
 
@@ -21,8 +21,8 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/style.css?v=23" />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css?v=25" />
   <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 </head>
 
@@ -41,7 +41,7 @@
       <nav class="nav" id="nav" aria-label="Hlavná navigácia">
         <a href="#o-mne">O mne</a>
         <a href="#projekty">Projekty</a>
-        <a href="#stack">Zručnosti</a>
+        <a href="#zrucnosti">Zručnosti</a>
         <a href="#vzdelanie">Vzdelanie</a>
         <a href="#kontakt">Kontakt</a>
       </nav>
@@ -49,7 +49,7 @@
       <a class="btn btn--sm" href="#kontakt">Napíš mi</a>
 
       <button class="burger" id="burger" type="button" aria-label="Otvoriť menu" aria-expanded="false" aria-controls="menu">
-        <span></span><span></span>
+        <span></span><span></span><span></span>
       </button>
     </div>
   </header>
@@ -58,7 +58,7 @@
     <nav class="menu__nav" aria-label="Menu">
       <a href="#o-mne">O mne</a>
       <a href="#projekty">Projekty</a>
-      <a href="#stack">Zručnosti</a>
+      <a href="#zrucnosti">Zručnosti</a>
       <a href="#vzdelanie">Vzdelanie</a>
       <a href="#kontakt">Kontakt</a>
     </nav>
@@ -72,34 +72,48 @@
 
     <!-- ================= HERO ================= -->
     <section class="hero" id="hero">
+      <span class="hero__blob hero__blob--1" aria-hidden="true"></span>
+      <span class="hero__blob hero__blob--2" aria-hidden="true"></span>
+      <span class="hero__blob hero__blob--3" aria-hidden="true"></span>
+
       <div class="wrap hero__grid">
         <div class="hero__copy">
-          <p class="hero__kicker reveal">Dostupné pre prax &amp; spoluprácu</p>
+          <span class="hero__kicker reveal">Dostupné pre prax &amp; spoluprácu</span>
 
           <h1 class="hero__name reveal">
-            Samuel
-            <span class="hero__name--last">Čižmár.</span>
+            <span>Samuel</span>
+            <span class="hero__name--accent">Čižmár</span>
           </h1>
 
-          <p class="hero__role reveal">Študent grafiky a tvorca — web, fotografia, dizajn.</p>
+          <p class="hero__role reveal">
+            Som <span class="rotate" id="rotate" aria-live="polite"></span>
+          </p>
+
+          <p class="hero__lead reveal">
+            Mám 17 rokov, študujem grafiku a tvorím — fotím, upravujem fotky, robím grafiku
+            a učím sa programovať weby. Hľadám prvú prax alebo brigádu, kde to všetko využijem.
+          </p>
 
           <div class="hero__actions reveal">
-            <a class="btn" href="#kontakt">Napíš mi</a>
-            <a class="btn btn--outline" href="#projekty">Pozri práce</a>
+            <a class="btn" href="#kontakt" data-magnet>Napíš mi</a>
+            <a class="btn btn--outline" href="#projekty" data-magnet>Pozri práce</a>
           </div>
+
+          <dl class="hero__stats reveal">
+            <div><dt data-count="17">17</dt><dd>rokov</dd></div>
+            <div><dt data-count="3">3</dt><dd>oblasti tvorby</dd></div>
+            <div><dt data-count="100">100</dt><dd>% nasadenie</dd></div>
+          </dl>
         </div>
 
         <div class="hero__photo reveal">
-          <img src="assets/img/foto.webp" alt="Samuel Čižmár" width="900" height="1200" />
+          <div class="photo__frame">
+            <img src="assets/img/foto.webp" alt="Samuel Čižmár" width="900" height="1200" />
+          </div>
+          <span class="photo__tag">PORTFÓLIO · 2026</span>
+          <span class="photo__chip"><b>Samuel Čižmár</b><i>17 · Slovensko</i></span>
+          <span class="photo__badge" aria-hidden="true">↑</span>
         </div>
-      </div>
-
-      <div class="wrap hero__stats reveal">
-        <dl>
-          <div><dt data-count="17">17</dt><dd>rokov</dd></div>
-          <div><dt data-count="3">3</dt><dd>oblasti tvorby</dd></div>
-          <div><dt data-count="100">100</dt><dd>% nasadenie</dd></div>
-        </dl>
       </div>
     </section>
 
@@ -107,7 +121,7 @@
     <section class="section about" id="o-mne">
       <div class="wrap about__grid">
         <div class="about__head reveal">
-          <p class="eyebrow reveal"><span>01</span> O mne</p>
+          <p class="eyebrow reveal" data-tone="red"><span>01</span> O mne</p>
           <h2 class="h2 reveal">Tvorím veci,<br /><em>ktoré majú hlavu a päť.</em></h2>
         </div>
 
@@ -143,121 +157,69 @@
       </div>
     </section>
 
+    <!-- ================= STATEMENT ================= -->
+    <section class="statement">
+      <div class="wrap">
+        <p class="statement__text reveal">Rád robím veci <em>od nuly</em> — a dotiahnem ich do konca.</p>
+      </div>
+    </section>
+
     <!-- ================= PROJEKTY ================= -->
     <section class="section works" id="projekty">
       <div class="wrap">
         <div class="sec-head reveal">
-          <p class="eyebrow reveal"><span>02</span> Projekty</p>
-          <h2 class="h2 reveal">Vybrané <em>práce.</em></h2>
+          <p class="eyebrow reveal" data-tone="green"><span>02</span> Projekty</p>
+          <h2 class="h2 reveal">Miesto pre moje <em>práce.</em></h2>
+          <p class="lead reveal">Šesť projektov — klikni na ktorýkoľvek a otvorí sa detail s popisom.</p>
         </div>
 
         <div class="works__grid">
           <article class="work reveal">
-            <div class="work__head">
-              <span class="work__num">001</span>
-              <span class="work__status work__status--done">hotové</span>
-            </div>
             <button class="work__shot" type="button" data-open="projekt-1" aria-label="Otvoriť detail — Projekt 01">
               <img src="assets/img/prace/prace-1.webp" alt="Projekt 01" width="1200" height="900" loading="lazy" />
-              <span class="work__open">Zobraziť ↗</span>
+              <span class="work__badge">+</span>
             </button>
-            <div class="work__body">
-              <h3 class="work__title">Projekt 01</h3>
-              <p class="work__year">2026</p>
-              <ul class="work__tech">
-                <li>Photoshop</li><li>Illustrator</li>
-              </ul>
-            </div>
+            <figcaption><b>Projekt 01</b><span>2026</span></figcaption>
           </article>
 
           <article class="work reveal">
-            <div class="work__head">
-              <span class="work__num">002</span>
-              <span class="work__status work__status--done">hotové</span>
-            </div>
             <button class="work__shot" type="button" data-open="projekt-2" aria-label="Otvoriť detail — Projekt 02">
               <img src="assets/img/prace/prace-2.webp" alt="Projekt 02" width="1200" height="900" loading="lazy" />
-              <span class="work__open">Zobraziť ↗</span>
+              <span class="work__badge">+</span>
             </button>
-            <div class="work__body">
-              <h3 class="work__title">Projekt 02</h3>
-              <p class="work__year">2026</p>
-              <ul class="work__tech">
-                <li>Photoshop</li><li>Illustrator</li>
-              </ul>
-            </div>
+            <figcaption><b>Projekt 02</b><span>2026</span></figcaption>
           </article>
 
           <article class="work reveal">
-            <div class="work__head">
-              <span class="work__num">003</span>
-              <span class="work__status work__status--done">hotové</span>
-            </div>
             <button class="work__shot" type="button" data-open="projekt-3" aria-label="Otvoriť detail — Projekt 03">
               <img src="assets/img/prace/prace-3.webp" alt="Projekt 03" width="1200" height="900" loading="lazy" />
-              <span class="work__open">Zobraziť ↗</span>
+              <span class="work__badge">+</span>
             </button>
-            <div class="work__body">
-              <h3 class="work__title">Projekt 03</h3>
-              <p class="work__year">2026</p>
-              <ul class="work__tech">
-                <li>Photoshop</li><li>Illustrator</li>
-              </ul>
-            </div>
+            <figcaption><b>Projekt 03</b><span>2026</span></figcaption>
           </article>
 
           <article class="work reveal">
-            <div class="work__head">
-              <span class="work__num">004</span>
-              <span class="work__status work__status--wip">vývoji</span>
-            </div>
             <button class="work__shot" type="button" data-open="projekt-4" aria-label="Otvoriť detail — Projekt 04">
               <img src="assets/img/prace/prace-4.webp" alt="Projekt 04" width="1200" height="900" loading="lazy" />
-              <span class="work__open">Zobraziť ↗</span>
+              <span class="work__badge">+</span>
             </button>
-            <div class="work__body">
-              <h3 class="work__title">Projekt 04</h3>
-              <p class="work__year">2026</p>
-              <ul class="work__tech">
-                <li>Photoshop</li><li>Illustrator</li>
-              </ul>
-            </div>
+            <figcaption><b>Projekt 04</b><span>2026</span></figcaption>
           </article>
 
           <article class="work reveal">
-            <div class="work__head">
-              <span class="work__num">005</span>
-              <span class="work__status work__status--wip">vývoji</span>
-            </div>
             <button class="work__shot" type="button" data-open="projekt-5" aria-label="Otvoriť detail — Projekt 05">
               <img src="assets/img/prace/prace-5.webp" alt="Projekt 05" width="1200" height="900" loading="lazy" />
-              <span class="work__open">Zobraziť ↗</span>
+              <span class="work__badge">+</span>
             </button>
-            <div class="work__body">
-              <h3 class="work__title">Projekt 05</h3>
-              <p class="work__year">2026</p>
-              <ul class="work__tech">
-                <li>Photoshop</li><li>Illustrator</li>
-              </ul>
-            </div>
+            <figcaption><b>Projekt 05</b><span>2026</span></figcaption>
           </article>
 
           <article class="work reveal">
-            <div class="work__head">
-              <span class="work__num">006</span>
-              <span class="work__status work__status--idea">nápad</span>
-            </div>
             <button class="work__shot" type="button" data-open="projekt-6" aria-label="Otvoriť detail — Projekt 06">
               <img src="assets/img/prace/prace-6.webp" alt="Projekt 06" width="1200" height="900" loading="lazy" />
-              <span class="work__open">Zobraziť ↗</span>
+              <span class="work__badge">+</span>
             </button>
-            <div class="work__body">
-              <h3 class="work__title">Projekt 06</h3>
-              <p class="work__year">2026</p>
-              <ul class="work__tech">
-                <li>Photoshop</li><li>Illustrator</li>
-              </ul>
-            </div>
+            <figcaption><b>Projekt 06</b><span>2026</span></figcaption>
           </article>
         </div>
       </div>
@@ -378,44 +340,41 @@
       </div>
     </section>
 
-    <!-- ================= ZRUČNOSTI / STACK ================= -->
-    <section class="section stack" id="stack">
+    <!-- ================= ZRUČNOSTI ================= -->
+    <section class="section skills" id="zrucnosti">
       <div class="wrap">
         <div class="sec-head reveal">
-          <p class="eyebrow reveal"><span>03</span> Zručnosti</p>
+          <p class="eyebrow reveal" data-tone="blue"><span>03</span> Zručnosti</p>
           <h2 class="h2 reveal">S čím viem <em>pracovať.</em></h2>
+          <p class="lead reveal">Tri oblasti, ktoré ovládam — od zámku fotoaparátu po riadok kódu.</p>
         </div>
 
-        <div class="stack__groups reveal">
-          <div class="stack__group">
-            <p class="stack__group-title">Fotografia</p>
-            <ul class="stack__list">
-              <li><span>Lightroom</span><span class="stack__level stack__level--advanced">Advanced</span></li>
-              <li><span>Kompozícia</span><span class="stack__level stack__level--advanced">Advanced</span></li>
-              <li><span>Práca so svetlom</span><span class="stack__level stack__level--intermediate">Intermediate</span></li>
-            </ul>
-          </div>
+        <div class="cards">
+          <a class="card card--link reveal" data-tone="red" href="https://samustang1.github.io/cizmar-photography/" target="_blank" rel="noopener" aria-label="Fotografia — otvoriť fotoportfólio">
+            <span class="card__num">01</span>
+            <h3>Fotografia</h3>
+            <p>Fotenie áut a atmosférických záberov, kompozícia a práca so svetlom.</p>
+            <ul class="chip"><li>Lightroom</li><li>Kompozícia</li></ul>
+            <div class="bar"><i style="--w:88%"></i></div>
+            <span class="card__go" aria-hidden="true">↗</span>
+          </a>
 
-          <div class="stack__group">
-            <p class="stack__group-title">Grafika &amp; dizajn</p>
-            <ul class="stack__list">
-              <li><span>Photoshop</span><span class="stack__level stack__level--intermediate">Intermediate</span></li>
-              <li><span>Illustrator</span><span class="stack__level stack__level--intermediate">Intermediate</span></li>
-              <li><span>Vektorová grafika</span><span class="stack__level stack__level--familiar">Familiar</span></li>
-            </ul>
-          </div>
+          <article class="card reveal" data-tone="blue">
+            <span class="card__num">02</span>
+            <h3>Grafika &amp; dizajn</h3>
+            <p>Grafický dizajn, vektorová grafika, úprava fotiek a retuš — farby, kompozícia a vizuál.</p>
+            <ul class="chip"><li>Photoshop</li><li>Illustrator</li></ul>
+            <div class="bar"><i style="--w:82%"></i></div>
+          </article>
 
-          <div class="stack__group">
-            <p class="stack__group-title">Web &amp; kód</p>
-            <ul class="stack__list">
-              <li><span>HTML</span><span class="stack__level stack__level--intermediate">Intermediate</span></li>
-              <li><span>CSS</span><span class="stack__level stack__level--intermediate">Intermediate</span></li>
-              <li><span>PHP</span><span class="stack__level stack__level--familiar">Familiar</span></li>
-            </ul>
-          </div>
+          <article class="card reveal" data-tone="violet">
+            <span class="card__num">03</span>
+            <h3>Web &amp; kód</h3>
+            <p>Základy tvorby webov — štruktúra, dizajn a neustále učenie sa nových vecí.</p>
+            <ul class="chip"><li>HTML</li><li>CSS</li><li>PHP</li></ul>
+            <div class="bar"><i style="--w:50%"></i></div>
+          </article>
         </div>
-
-        <p class="stack__note reveal">Odkaz na moje fotoportfólio nájdete v karte „Fotografia" v sekcii Zručnosti.</p>
       </div>
     </section>
 
@@ -423,31 +382,29 @@
     <section class="section edu" id="vzdelanie">
       <div class="wrap edu__grid">
         <div class="edu__head reveal">
-          <p class="eyebrow reveal"><span>04</span> Vzdelanie</p>
+          <p class="eyebrow reveal" data-tone="amber"><span>04</span> Vzdelanie</p>
           <h2 class="h2 reveal">Kde sa <em>posúvam.</em></h2>
         </div>
 
-        <div class="edu__cards reveal">
-          <article class="edu__card edu__card--now">
-            <span class="edu__tag">Teraz</span>
+        <ol class="timeline">
+          <li class="timeline__item reveal">
+            <span class="timeline__year">Teraz</span>
             <h3>Súkromná stredná odborná škola — grafika</h3>
             <p>Ul. 29. augusta 4812, 058 01 Poprad. Štúdium zamerané na grafiku — spracovanie
               grafiky na počítači, dizajn a digitálne médiá.</p>
-          </article>
-
-          <article class="edu__card">
-            <span class="edu__tag">Priebežne</span>
+          </li>
+          <li class="timeline__item reveal">
+            <span class="timeline__year">Priebežne</span>
             <h3>Fotografia &amp; grafika</h3>
             <p>Samovzdelávanie vo fotení a úprave fotiek, vektorová grafika a tvorba vizuálu —
               Photoshop a Illustrator.</p>
-          </article>
-
-          <article class="edu__card">
-            <span class="edu__tag">Priebežne</span>
+          </li>
+          <li class="timeline__item reveal">
+            <span class="timeline__year">Priebežne</span>
             <h3>Web &amp; kód</h3>
             <p>HTML, CSS a PHP — stavba vlastných stránok a neustále učenie sa nových vecí.</p>
-          </article>
-        </div>
+          </li>
+        </ol>
       </div>
     </section>
 
@@ -455,15 +412,15 @@
     <section class="section contact" id="kontakt">
       <div class="wrap">
         <div class="sec-head reveal">
-          <p class="eyebrow reveal"><span>05</span> Kontakt</p>
-          <h2 class="h2 reveal">Poďme niečo <em>spraviť.</em></h2>
+          <p class="eyebrow reveal" data-tone="blue"><span>05</span> Kontakt</p>
+          <h2 class="h2 reveal">Poďme niečo<br /><em>spraviť.</em></h2>
         </div>
 
         <div class="contact__grid reveal">
           <div class="contact__info">
-            <a class="info" href="mailto:cizsamko@gmail.com"><span>E-mail</span>cizsamko@gmail.com</a>
-            <a class="info" href="tel:+421910186170"><span>Telefón</span>+421 910 186 170</a>
-            <a class="info" href="https://github.com/Samustang1" target="_blank" rel="noopener"><span>GitHub</span>github.com/Samustang1 ↗</a>
+            <a class="info" href="mailto:cizsamko@gmail.com"><span>E-mail</span><b>cizsamko@gmail.com</b></a>
+            <a class="info" href="tel:+421910186170"><span>Telefón</span><b>+421 910 186 170</b></a>
+            <a class="info" href="https://github.com/Samustang1" target="_blank" rel="noopener"><span>GitHub</span><b>github.com/Samustang1 ↗</b></a>
             <p class="contact__meta">Slovensko · dostupný pre prax a spoluprácu</p>
           </div>
 
@@ -503,7 +460,7 @@
       <nav class="footer__nav" aria-label="Pätičná navigácia">
         <a href="#o-mne">O mne</a>
         <a href="#projekty">Projekty</a>
-        <a href="#stack">Zručnosti</a>
+        <a href="#zrucnosti">Zručnosti</a>
         <a href="#vzdelanie">Vzdelanie</a>
         <a href="#kontakt">Kontakt</a>
       </nav>
@@ -513,6 +470,6 @@
 
   <button class="totop" id="totop" type="button" aria-label="Späť nahor">↑</button>
 
-  <script src="assets/js/main.js?v=23"></script>
+  <script src="assets/js/main.js?v=25"></script>
 </body>
 </html>
