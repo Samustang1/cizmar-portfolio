@@ -1,10 +1,6 @@
 /* ============================================================
-   Samuel Čižmár — Portfólio · main.js (v26, štýl Filip Glemba)
-   Pravidlá:
-   - CSS transitions pre hover / stlačenie
-   - IntersectionObserver pre reveal (vstup, ease-out)
-   - prefers-reduced-motion vždy s animáciou
-   - symetrický vstup / výstup modálnych okien
+   Samuel Čižmár — Portfólio · main.js (v33, štýl cizmar-photography)
+   Čistý, minimalistický JavaScript.
    ============================================================ */
 (function () {
   "use strict";

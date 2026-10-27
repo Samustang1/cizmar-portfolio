@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#ffffff" />
+  <meta name="theme-color" content="#0a0a0a" />
   <title>Samuel Čižmár — Portfólio</title>
   <meta name="description" content="Portfólio Samuela Čižmára — študent grafiky a tvorca. Grafika, fotografia, web. Dostupné pre prax a spoluprácu." />
 
@@ -21,8 +21,8 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/style.css?v=32" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css?v=33" />
   <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 </head>
 
@@ -46,10 +46,7 @@
         <a href="#kontakt">Kontakt</a>
       </nav>
 
-      <div class="header__contact">
-        <a class="header__contact-item" href="mailto:cizsamko@gmail.com">cizsamko@gmail.com</a>
-        <a class="header__contact-item" href="tel:+421910186170">+421 910 186 170</a>
-      </div>
+      <a class="btn btn--sm" href="#kontakt">Napíš mi</a>
 
       <button class="burger" id="burger" type="button" aria-label="Otvoriť menu" aria-expanded="false" aria-controls="menu">
         <span></span><span></span>
@@ -143,57 +140,111 @@
 
         <div class="works__grid">
           <article class="work reveal">
+            <div class="work__head">
+              <span class="work__num">001</span>
+              <span class="work__status work__status--done">hotové</span>
+            </div>
             <button class="work__shot" type="button" data-open="projekt-1" aria-label="Otvoriť detail — Projekt 01">
               <img src="assets/img/prace/prace-1.webp" alt="Projekt 01" width="1200" height="900" loading="lazy" />
-              <span class="work__badge">01</span>
               <span class="work__open">Zobraziť →</span>
             </button>
-            <figcaption><b>Projekt 01</b><span>2026</span></figcaption>
+            <div class="work__body">
+              <h3 class="work__title">Projekt 01</h3>
+              <p class="work__year">2026</p>
+              <ul class="work__tech">
+                <li>Photoshop</li><li>Illustrator</li>
+              </ul>
+            </div>
           </article>
 
           <article class="work reveal">
+            <div class="work__head">
+              <span class="work__num">002</span>
+              <span class="work__status work__status--done">hotové</span>
+            </div>
             <button class="work__shot" type="button" data-open="projekt-2" aria-label="Otvoriť detail — Projekt 02">
               <img src="assets/img/prace/prace-2.webp" alt="Projekt 02" width="1200" height="900" loading="lazy" />
-              <span class="work__badge">02</span>
               <span class="work__open">Zobraziť →</span>
             </button>
-            <figcaption><b>Projekt 02</b><span>2026</span></figcaption>
+            <div class="work__body">
+              <h3 class="work__title">Projekt 02</h3>
+              <p class="work__year">2026</p>
+              <ul class="work__tech">
+                <li>Photoshop</li><li>Illustrator</li>
+              </ul>
+            </div>
           </article>
 
           <article class="work reveal">
+            <div class="work__head">
+              <span class="work__num">003</span>
+              <span class="work__status work__status--done">hotové</span>
+            </div>
             <button class="work__shot" type="button" data-open="projekt-3" aria-label="Otvoriť detail — Projekt 03">
               <img src="assets/img/prace/prace-3.webp" alt="Projekt 03" width="1200" height="900" loading="lazy" />
-              <span class="work__badge">03</span>
               <span class="work__open">Zobraziť →</span>
             </button>
-            <figcaption><b>Projekt 03</b><span>2026</span></figcaption>
+            <div class="work__body">
+              <h3 class="work__title">Projekt 03</h3>
+              <p class="work__year">2026</p>
+              <ul class="work__tech">
+                <li>Photoshop</li><li>Illustrator</li>
+              </ul>
+            </div>
           </article>
 
           <article class="work reveal">
+            <div class="work__head">
+              <span class="work__num">004</span>
+              <span class="work__status work__status--wip">vývoji</span>
+            </div>
             <button class="work__shot" type="button" data-open="projekt-4" aria-label="Otvoriť detail — Projekt 04">
               <img src="assets/img/prace/prace-4.webp" alt="Projekt 04" width="1200" height="900" loading="lazy" />
-              <span class="work__badge">04</span>
               <span class="work__open">Zobraziť →</span>
             </button>
-            <figcaption><b>Projekt 04</b><span>2026</span></figcaption>
+            <div class="work__body">
+              <h3 class="work__title">Projekt 04</h3>
+              <p class="work__year">2026</p>
+              <ul class="work__tech">
+                <li>Photoshop</li><li>Illustrator</li>
+              </ul>
+            </div>
           </article>
 
           <article class="work reveal">
+            <div class="work__head">
+              <span class="work__num">005</span>
+              <span class="work__status work__status--wip">vývoji</span>
+            </div>
             <button class="work__shot" type="button" data-open="projekt-5" aria-label="Otvoriť detail — Projekt 05">
               <img src="assets/img/prace/prace-5.webp" alt="Projekt 05" width="1200" height="900" loading="lazy" />
-              <span class="work__badge">05</span>
               <span class="work__open">Zobraziť →</span>
             </button>
-            <figcaption><b>Projekt 05</b><span>2026</span></figcaption>
+            <div class="work__body">
+              <h3 class="work__title">Projekt 05</h3>
+              <p class="work__year">2026</p>
+              <ul class="work__tech">
+                <li>Photoshop</li><li>Illustrator</li>
+              </ul>
+            </div>
           </article>
 
           <article class="work reveal">
+            <div class="work__head">
+              <span class="work__num">006</span>
+              <span class="work__status work__status--idea">nápad</span>
+            </div>
             <button class="work__shot" type="button" data-open="projekt-6" aria-label="Otvoriť detail — Projekt 06">
               <img src="assets/img/prace/prace-6.webp" alt="Projekt 06" width="1200" height="900" loading="lazy" />
-              <span class="work__badge">06</span>
               <span class="work__open">Zobraziť →</span>
             </button>
-            <figcaption><b>Projekt 06</b><span>2026</span></figcaption>
+            <div class="work__body">
+              <h3 class="work__title">Projekt 06</h3>
+              <p class="work__year">2026</p>
+              <ul class="work__tech">
+                <li>Photoshop</li><li>Illustrator</li>
+              </ul>
+            </div>
           </article>
         </div>
       </div>
@@ -454,6 +505,6 @@
 
   <button class="totop" id="totop" type="button" aria-label="Späť nahor">↑</button>
 
-  <script src="assets/js/main.js?v=32"></script>
+  <script src="assets/js/main.js?v=33"></script>
 </body>
 </html>

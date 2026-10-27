@@ -1,40 +1,38 @@
 /* ============================================================
-   Samuel Čižmár — Portfólio (v30, štýl cizmar-photography)
-   Čistý minimálny dizajn: veľký hrdina, číslované sekcie,
-   projektové karty, jemné oddeľovače.
+   Samuel Čižmár — Portfólio (v33, štýl cizmar-photography)
+   Čistý, tmavý, minimalistický dizajn ako photography portfólio.
    ============================================================ */
 
 :root {
-  --bg: #0f0f0f;
-  --bg-soft: #1a1a1a;
+  --bg: #0a0a0a;
+  --bg-soft: #141414;
   --ink: #f5f5f7;
   --ink-soft: #a1a1aa;
   --muted: #71717a;
   --line: #27272a;
 
-  --red: #ff3b30;
-  --blue: #0071e3;
-  --amber: #ff9500;
-  --green: #34c759;
-  --violet: #af52de;
+  --red: #e2351f;
+  --blue: #1d5bd6;
+  --amber: #f0a32e;
+  --green: #17a673;
+  --violet: #6c4bd6;
 
   --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
   --font-mono: "Space Mono", ui-monospace, monospace;
 
-  --shadow: 0 1px 3px rgba(0, 0, 0, .5), 0 12px 32px -16px rgba(0, 0, 0, .6);
+  --shadow: 0 1px 3px rgba(0, 0, 0, .5), 0 8px 24px -8px rgba(0, 0, 0, .5);
   --shadow-lg: 0 24px 56px -24px rgba(0, 0, 0, .55);
-  --radius: 10px;
+  --radius: 8px;
   --wrap: 1120px;
 
   --ease-out: cubic-bezier(.16, 1, .3, 1);
-  --ease-spring: cubic-bezier(.34, 1.56, .64, 1);
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 72px;
+  scroll-padding-top: 64px;
   overflow-x: hidden;
   -webkit-text-size-adjust: 100%;
 }
@@ -77,14 +75,14 @@ button { font: inherit; color: inherit; border: 0; background: none; cursor: poi
 .header {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   height: 64px;
-  background: rgba(15, 15, 15, .8);
+  background: rgba(10, 10, 10, .8);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   backdrop-filter: saturate(180%) blur(20px);
   border-bottom: 1px solid var(--line);
   transition: background .3s var(--ease-out);
 }
 .header.is-scrolled {
-  background: rgba(15, 15, 15, .95);
+  background: rgba(10, 10, 10, .95);
   box-shadow: 0 8px 26px -18px rgba(0, 0, 0, .4);
 }
 .header__inner { display: flex; align-items: center; gap: 1rem; padding-top: .6rem; padding-bottom: .6rem; height: 100%; }
@@ -129,7 +127,7 @@ button { font: inherit; color: inherit; border: 0; background: none; cursor: poi
 
 .menu {
   position: fixed; inset: 0; z-index: 110;
-  background: rgba(15, 15, 15, .98);
+  background: rgba(10, 10, 10, .98);
   -webkit-backdrop-filter: saturate(180%) blur(24px);
   backdrop-filter: saturate(180%) blur(24px);
   display: none; flex-direction: column;
@@ -186,14 +184,14 @@ button { font: inherit; color: inherit; border: 0; background: none; cursor: poi
   display: inline-flex; align-items: center; justify-content: center; gap: .4rem;
   font-family: var(--font-mono); font-weight: 600; font-size: .875rem;
   letter-spacing: -.01em;
-  padding: .78rem 1.5rem; border: 1px solid var(--line); border-radius: var(--radius);
-  background: var(--bg-soft); color: var(--ink);
+  padding: .78rem 1.5rem; border: 1px solid var(--ink); border-radius: var(--radius);
+  background: var(--ink); color: #fff;
   box-shadow: var(--shadow);
   transform: var(--press, scale(1));
   transition: transform .2s var(--ease-out), background .2s, border-color .3s, box-shadow .2s;
   will-change: transform; -webkit-tap-highlight-color: transparent;
 }
-.btn:hover { background: var(--ink); color: #fff; border-color: var(--ink); box-shadow: var(--shadow-lg); }
+.btn:hover { background: #000; box-shadow: var(--shadow-lg); }
 .btn:active { --press: scale(.96); transition-duration: .1s; }
 .btn--outline { background: transparent; color: var(--ink); box-shadow: none; }
 .btn--outline:hover { background: var(--ink); color: #fff; }
@@ -256,10 +254,26 @@ button { font: inherit; color: inherit; border: 0; background: none; cursor: poi
 .works__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1rem, 2.5vw, 1.6rem); margin-top: clamp(2.5rem, 5vw, 3.5rem); }
 
 .work { margin: 0; }
+.work__head {
+  display: flex; align-items: baseline; justify-content: space-between; margin-bottom: .9rem;
+}
+.work__num {
+  font-variant-numeric: tabular-nums; font-weight: 600; color: var(--ink);
+  font-size: 1.1rem;
+}
+.work__status {
+  font-family: var(--font-mono); font-size: .68rem; font-weight: 600;
+  letter-spacing: .05em; text-transform: uppercase;
+  padding: .28rem .6rem; border-radius: 999px;
+}
+.work__status--done { background: rgba(23, 166, 115, .15); color: var(--green); border: 1px solid rgba(23, 166, 115, .35); }
+.work__status--wip { background: rgba(240, 163, 46, .15); color: var(--amber); border: 1px solid rgba(240, 163, 46, .35); }
+.work__status--idea { background: rgba(108, 75, 214, .15); color: var(--violet); border: 1px solid rgba(108, 75, 214, .35); }
+
 .work__shot {
   position: relative; display: block; width: 100%; padding: 0; margin: 0;
   font: inherit; text-align: left; cursor: pointer;
-  background: var(--bg); border: 1px solid var(--line);
+  background: var(--bg-soft); border: 1px solid var(--line);
   border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow);
   scroll-snap-align: center;
   transition: transform .4s var(--ease-out), border-color .4s var(--ease-out), box-shadow .4s var(--ease-out);
@@ -289,7 +303,7 @@ button { font: inherit; color: inherit; border: 0; background: none; cursor: poi
 .work__shot:hover .work__open { opacity: 1; transform: translateY(-4px); }
 
 .work figcaption { display: flex; justify-content: space-between; gap: 1rem; align-items: baseline; margin-top: .85rem; padding: 0 .2rem; }
-.work figcaption b { font-weight: 600; letter-spacing: -.015em; line-height: 1.2; }
+.work figcaption b { font-weight: 600; letter-spacing: -.015em; line-height: 1.2; color: var(--ink); }
 .work figcaption span { font-size: .8rem; color: var(--muted); }
 
 /* celoobrazovkový detail projektu */
@@ -502,6 +516,6 @@ html.is-locked { overflow: hidden; }
 }
 
 @media (prefers-contrast: more) {
-  :root { --muted: #a1a1aa; --line: rgba(0, 0, 0, .3); }
+  :root { --muted: #a1a1aa; --line: rgba(255, 255, 255, .3); }
   .work__shot, .stack__group, .edu__card, .form, .info { border-color: var(--line); }
 }
