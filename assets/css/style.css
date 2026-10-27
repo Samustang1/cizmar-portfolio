@@ -5,11 +5,12 @@
    ============================================================ */
 
 :root {
-  --bg: #ffffff;
-  --ink: #0a0a0a;
-  --ink-soft: #4a4a4a;
-  --muted: #8a8a8a;
-  --line: #e5e5e5;
+  --bg: #f0f0f0;
+  --bg-soft: #e5e5e5;
+  --ink: #1a1a1a;
+  --ink-soft: #525252;
+  --muted: #737373;
+  --line: #d4d4d4;
 
   --red: #e2351f;
   --blue: #1d5bd6;
@@ -20,8 +21,8 @@
   --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
   --font-mono: "Space Mono", ui-monospace, monospace;
 
-  --shadow: 0 1px 3px rgba(0, 0, 0, .08), 0 8px 24px -8px rgba(0, 0, 0, .06);
-  --shadow-lg: 0 20px 48px -16px rgba(0, 0, 0, .12);
+  --shadow: 0 1px 3px rgba(0, 0, 0, .1), 0 8px 24px -8px rgba(0, 0, 0, .08);
+  --shadow-lg: 0 20px 48px -16px rgba(0, 0, 0, .14);
   --radius: 8px;
   --wrap: 1120px;
 
