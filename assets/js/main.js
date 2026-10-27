@@ -1,11 +1,10 @@
 /* ============================================================
-   Samuel Čižmár — Portfólio · main.js (v24, WOW)
+   Samuel Čižmár — Portfólio · main.js (v26, štýl Filip Glemba)
    Pravidlá:
    - CSS transitions pre hover / stlačenie
    - IntersectionObserver pre reveal (vstup, ease-out)
-   - Rotujúce slovo písmeno po písmene
-   - Symetrický vstup / výstup modálnych okien
-   - Hover efekt na dotyk (tablet / mobil)
+   - prefers-reduced-motion vždy s animáciou
+   - symetrický vstup / výstup modálnych okien
    ============================================================ */
 (function () {
   "use strict";
@@ -88,26 +87,6 @@
     revealEls.forEach(function (el) { el.classList.add("is-in"); });
   }
 
-  /* ---------- rotujúce povolanie ---------- */
-  var rot = $("#rotate");
-  if (rot) {
-    var words = ["fotograf.", "kreatívec.", "retušér.", "webový nadšenec."];
-    if (reduce) {
-      rot.textContent = words[0];
-    } else {
-      var wi = 0, ci = 0, deleting = false;
-      (function tick() {
-        var w = words[wi];
-        ci += deleting ? -1 : 1;
-        rot.textContent = w.slice(0, ci);
-        var delay = deleting ? 45 : 95;
-        if (!deleting && ci === w.length) { deleting = true; delay = 1500; }
-        else if (deleting && ci === 0) { deleting = false; wi = (wi + 1) % words.length; delay = 300; }
-        win.setTimeout(tick, delay);
-      })();
-    }
-  }
-
   /* ---------- počítadlá ---------- */
   var counters = $$("[data-count]");
   if (counters.length && "IntersectionObserver" in win && !reduce) {
@@ -127,36 +106,6 @@
       });
     }, { threshold: 0.5 });
     counters.forEach(function (c) { cio.observe(c); });
-  }
-
-  /* ---------- progress bars zručností ---------- */
-  var bars = $$(".bar");
-  if (bars.length && "IntersectionObserver" in win && !reduce) {
-    var bio = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) { e.target.classList.add("is-anim"); bio.unobserve(e.target); }
-      });
-    }, { threshold: 0.4 });
-    bars.forEach(function (b) { bio.observe(b); });
-  } else {
-    bars.forEach(function (b) { b.classList.add("is-anim"); });
-  }
-
-  /* ---------- magnetické tlačidlá ---------- */
-  if (!reduce && win.matchMedia("(hover: hover)").matches) {
-    $$("[data-magnet]").forEach(function (el) {
-      el.addEventListener("mousemove", function (e) {
-        var r = el.getBoundingClientRect();
-        var x = (e.clientX - r.left - r.width / 2) / r.width;
-        var y = (e.clientY - r.top - r.height / 2) / r.height;
-        el.style.setProperty("--mx", (x * 6).toFixed(1) + "px");
-        el.style.setProperty("--my", (y * 6).toFixed(1) + "px");
-      });
-      el.addEventListener("mouseleave", function () {
-        el.style.removeProperty("--mx");
-        el.style.removeProperty("--my");
-      });
-    });
   }
 
   /* ---------- kontaktný formulár (AJAX) ---------- */
@@ -187,7 +136,7 @@
     });
   }
 
-  /* ---------- scrollspy ---------- */
+  /* ---------- scrollspy pre hlavičku ---------- */
   var anchors = $$('#nav a[href^="#"]:not(.btn)');
   var sections = anchors.map(function (a) { return doc.getElementById(a.getAttribute("href").slice(1)); }).filter(Boolean);
   if ("IntersectionObserver" in win && sections.length) {
@@ -260,27 +209,6 @@
       if (e.shiftKey && doc.activeElement === first) { e.preventDefault(); last.focus(); }
       else if (!e.shiftKey && doc.activeElement === last) { e.preventDefault(); first.focus(); }
     });
-  }
-
-  /* ---------- hover efekt na dotyk (tablet / mobil) ---------- */
-  var cardEls = $$(".card");
-  if (cardEls.length) {
-    var clearCards = function () {
-      cardEls.forEach(function (c) { c.classList.remove("is-hover"); });
-    };
-    cardEls.forEach(function (c) {
-      c.addEventListener("pointerdown", function (e) {
-        if (e.pointerType !== "touch" && e.pointerType !== "pen") return;
-        var wasOn = c.classList.contains("is-hover");
-        clearCards();
-        if (!wasOn) c.classList.add("is-hover");
-      });
-    });
-    doc.addEventListener("pointerdown", function (e) {
-      var t = e.target;
-      if (!t || !t.closest || !t.closest(".card")) clearCards();
-    }, true);
-    win.addEventListener("scroll", clearCards, { passive: true });
   }
 
 })();
