@@ -1,6 +1,11 @@
 /* ============================================================
-   Samuel Čižmár — Portfólio · main.js (v34, štýl filipglemba)
-   Čistý, minimalistický JavaScript.
+   Samuel Čižmár — Portfólio · main.js (v1, Apple dizajn)
+   Pravidlá:
+   - CSS transitions pre hover / stlačenie (najlacnejší nástroj)
+   - IntersectionObserver pre reveal (vstup, ease-out)
+   - WAAPI len pre počítadlá
+   - prefers-reduced-motion vždy s animáciou
+   - symetrický vstup / výstup modálnych okien
    ============================================================ */
 (function () {
   "use strict";
@@ -83,7 +88,27 @@
     revealEls.forEach(function (el) { el.classList.add("is-in"); });
   }
 
-  /* ---------- počítadlá ---------- */
+  /* ---------- rotujúce povolanie (letter-by-letter) ---------- */
+  var rot = $("#rotate");
+  if (rot) {
+    var words = ["fotograf.", "kreatívec.", "retušér.", "webový nadšenec."];
+    if (reduce) {
+      rot.textContent = words[0];
+    } else {
+      var wi = 0, ci = 0, deleting = false;
+      (function tick() {
+        var w = words[wi];
+        ci += deleting ? -1 : 1;
+        rot.textContent = w.slice(0, ci);
+        var delay = deleting ? 45 : 95;
+        if (!deleting && ci === w.length) { deleting = true; delay = 1500; }
+        else if (deleting && ci === 0) { deleting = false; wi = (wi + 1) % words.length; delay = 300; }
+        win.setTimeout(tick, delay);
+      })();
+    }
+  }
+
+  /* ---------- počítadlá (WAAPI) ---------- */
   var counters = $$("[data-count]");
   if (counters.length && "IntersectionObserver" in win && !reduce) {
     var cio = new IntersectionObserver(function (entries) {
@@ -102,6 +127,19 @@
       });
     }, { threshold: 0.5 });
     counters.forEach(function (c) { cio.observe(c); });
+  }
+
+  /* ---------- progresový prúžok zručností ---------- */
+  var bars = $$(".bar");
+  if (bars.length && "IntersectionObserver" in win && !reduce) {
+    var bio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add("is-anim"); bio.unobserve(e.target); }
+      });
+    }, { threshold: 0.4 });
+    bars.forEach(function (b) { bio.observe(b); });
+  } else {
+    bars.forEach(function (b) { b.classList.add("is-anim"); });
   }
 
   /* ---------- kontaktný formulár (AJAX) ---------- */
@@ -146,7 +184,7 @@
     sections.forEach(function (s) { spy.observe(s); });
   }
 
-  /* ---------- modálne okná projektov ---------- */
+  /* ---------- modálne okná projektov (symetrický vstup / výstup) ---------- */
   var viewers = $$(".modal");
   if (viewers.length) {
     var openId = null;
@@ -205,6 +243,27 @@
       if (e.shiftKey && doc.activeElement === first) { e.preventDefault(); last.focus(); }
       else if (!e.shiftKey && doc.activeElement === last) { e.preventDefault(); first.focus(); }
     });
+  }
+
+  /* ---------- hover efekt na dotyk (tablet / mobil) ---------- */
+  var cardEls = $$(".card");
+  if (cardEls.length) {
+    var clearCards = function () {
+      cardEls.forEach(function (c) { c.classList.remove("is-hover"); });
+    };
+    cardEls.forEach(function (c) {
+      c.addEventListener("pointerdown", function (e) {
+        if (e.pointerType !== "touch" && e.pointerType !== "pen") return;
+        var wasOn = c.classList.contains("is-hover");
+        clearCards();
+        if (!wasOn) c.classList.add("is-hover");
+      });
+    });
+    doc.addEventListener("pointerdown", function (e) {
+      var t = e.target;
+      if (!t || !t.closest || !t.closest(".card")) clearCards();
+    }, true);
+    win.addEventListener("scroll", clearCards, { passive: true });
   }
 
 })();
