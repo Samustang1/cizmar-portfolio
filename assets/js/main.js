@@ -1,5 +1,5 @@
 /* ============================================================
-   Samuel Čižmár — Portfólio · main.js (v33, štýl cizmar-photography)
+   Samuel Čižmár — Portfólio · main.js (v34, štýl filipglemba)
    Čistý, minimalistický JavaScript.
    ============================================================ */
 (function () {
