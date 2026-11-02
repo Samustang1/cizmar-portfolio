@@ -3,26 +3,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#ffffff" />
-  <title>Samuel Čižmár — Portfólio</title>
-  <meta name="description" content="Portfólio Samuela Čižmára — študent grafiky a tvorca. Grafika, fotografia, web. Dostupné pre prax a spoluprácu." />
+  <meta name="theme-color" content="#0a0a0c" />
+  <title>Samuel Čižmár — Fotografia &amp; dizajn</title>
+  <meta name="description" content="Portfólio Samuela Čižmára — fotografia, grafika a web. Vybrané práce, zručnosti a kontakt. Dostupné pre prax a spoluprácu." />
+  <link rel="canonical" href="https://samustang1.github.io/cizmar-portfolio/" />
 
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://samustang1.github.io/cizmar-portfolio/" />
   <meta property="og:site_name" content="Samuel Čižmár" />
-  <meta property="og:title" content="Samuel Čižmár — Portfólio" />
-  <meta property="og:description" content="Študent grafiky a tvorca — grafika, fotografia, web." />
-  <meta property="og:image" content="assets/img/og.webp" />
+  <meta property="og:title" content="Samuel Čižmár — Fotografia &amp; dizajn" />
+  <meta property="og:description" content="Fotografia, grafika a web. Vybrané práce a kontakt." />
+  <meta property="og:image" content="https://samustang1.github.io/cizmar-portfolio/assets/img/og.webp" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Samuel Čižmár — portfólio fotografie a dizajnu" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Samuel Čižmár — Fotografia &amp; dizajn" />
+  <meta name="twitter:description" content="Fotografia, grafika a web. Vybrané práce a kontakt." />
+  <meta name="twitter:image" content="https://samustang1.github.io/cizmar-portfolio/assets/img/og.webp" />
 
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230a0a0a'/%3E%3Ctext x='32' y='45' font-family='Arial,sans-serif' font-size='30' font-weight='700' fill='%23ffffff' text-anchor='middle'%3ESC%3C/text%3E%3C/svg%3E" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230a0a0c'/%3E%3Ccircle cx='32' cy='32' r='23' fill='none' stroke='%23d7b36a' stroke-width='1.5'/%3E%3Ctext x='32' y='40' font-family='Arial,sans-serif' font-size='20' font-weight='600' fill='%23d7b36a' text-anchor='middle'%3ES%C4%8C%3C/text%3E%3C/svg%3E" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/style.css?v=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Instrument+Serif:ital@0;1&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css?v=36" />
   <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 </head>
 
@@ -32,21 +37,23 @@
 
   <!-- ================= HLAVIČKA ================= -->
   <header class="header" id="header">
-    <div class="header__inner wrap">
+    <div class="wrap header__inner">
       <a class="brand" href="#top" aria-label="Samuel Čižmár — domov">
         <span class="brand__mark">SČ</span>
-        <span class="brand__name">Samuel Čižmár</span>
+        <span class="brand__text">
+          <span class="brand__name">Samuel Čižmár</span>
+          <span class="brand__role">Fotografia &amp; dizajn</span>
+        </span>
       </a>
 
       <nav class="nav" id="nav" aria-label="Hlavná navigácia">
+        <a href="#prace">Práce</a>
         <a href="#o-mne">O mne</a>
-        <a href="#projekty">Projekty</a>
         <a href="#zrucnosti">Zručnosti</a>
         <a href="#vzdelanie">Vzdelanie</a>
-        <a href="#kontakt">Kontakt</a>
       </nav>
 
-      <a class="btn btn--sm" href="#kontakt">Napíš mi</a>
+      <a class="btn btn--ghost btn--sm header__cta" href="#kontakt">Napíš mi <span class="btn__arrow" aria-hidden="true">↓</span></a>
 
       <button class="burger" id="burger" type="button" aria-label="Otvoriť menu" aria-expanded="false" aria-controls="menu">
         <span></span><span></span><span></span>
@@ -56,15 +63,16 @@
 
   <div class="menu" id="menu" hidden>
     <nav class="menu__nav" aria-label="Menu">
-      <a href="#o-mne">O mne</a>
-      <a href="#projekty">Projekty</a>
-      <a href="#zrucnosti">Zručnosti</a>
-      <a href="#vzdelanie">Vzdelanie</a>
-      <a href="#kontakt">Kontakt</a>
+      <a href="#prace" style="--i:0"><span>01</span> Práce</a>
+      <a href="#o-mne" style="--i:1"><span>02</span> O mne</a>
+      <a href="#zrucnosti" style="--i:2"><span>03</span> Zručnosti</a>
+      <a href="#vzdelanie" style="--i:3"><span>04</span> Vzdelanie</a>
+      <a href="#kontakt" style="--i:4"><span>05</span> Kontakt</a>
     </nav>
     <div class="menu__foot">
       <a href="mailto:cizsamko@gmail.com">cizsamko@gmail.com</a>
       <a href="tel:+421910186170">+421 910 186 170</a>
+      <span>Poprad, Slovensko</span>
     </div>
   </div>
 
@@ -72,262 +80,167 @@
 
     <!-- ================= HERO ================= -->
     <section class="hero" id="hero">
+      <div class="hero__glow" aria-hidden="true"></div>
+
       <div class="wrap hero__grid">
         <div class="hero__copy">
-          <span class="hero__kicker reveal">Dostupné pre prax &amp; spoluprácu</span>
+          <p class="hero__status"><span class="status-dot" aria-hidden="true"></span> Dostupné pre prax &amp; spoluprácu</p>
 
-          <h1 class="hero__name reveal">
+          <h1 class="hero__title">
             Samuel
-            <span class="hero__name--last">Čižmár.</span>
+            <span class="hero__title-last">Čižmár<span class="hero__dot">.</span></span>
           </h1>
 
-          <p class="hero__role reveal">
-            Som <span class="rotate" id="rotate" aria-live="polite"></span>
+          <p class="hero__lead">
+            Fotograf a grafik z Popradu. Zachytávam svetlo, tvar a moment —
+            a premieňam ich na vizuál, ktorý si pamätáš.
           </p>
 
-          <p class="hero__lead reveal">
-            Mám 17 rokov, študujem grafiku a tvorím — fotím, upravujem fotky, robím grafiku
-            a učím sa programovať weby. Hľadám prvú prax alebo brigádu, kde to všetko využijem.
-          </p>
+          <p class="hero__rotate" aria-hidden="true">Fotím <span class="rotate"><span id="rotate">portréty.</span></span></p>
+          <p class="sr-only">Fotím portréty, krajinu, svetlo, detail a momenty.</p>
 
-          <div class="hero__actions reveal">
-            <a class="btn" href="#kontakt">Napíš mi</a>
-            <a class="btn btn--outline" href="#projekty">Pozri práce</a>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#prace">Vybrané práce <span class="btn__arrow" aria-hidden="true">↓</span></a>
+            <a class="btn btn--ghost" href="#kontakt">Napíš mi</a>
           </div>
 
-          <dl class="hero__stats reveal">
-            <div><dt data-count="17">17</dt><dd>rokov</dd></div>
-            <div><dt data-count="3">3</dt><dd>oblasti tvorby</dd></div>
-            <div><dt data-count="100">100</dt><dd>% nasadenie</dd></div>
-          </dl>
+          <div class="hero__info">
+            <div><span>Lokalita</span><strong>Poprad, SK</strong></div>
+            <div><span>Zameranie</span><strong>Fotografia &amp; grafika</strong></div>
+            <div><span>Dostupnosť</span><strong>Brigáda · prax</strong></div>
+          </div>
         </div>
 
-        <div class="hero__photo reveal">
-          <img src="assets/img/foto.webp" alt="Samuel Čižmár" width="900" height="1200" />
-          <span class="hero__badge">PORTFÓLIO · 2026</span>
-        </div>
+        <figure class="hero__media">
+          <div class="hero__frame">
+            <img src="assets/img/foto.webp" alt="Samuel Čižmár — úvodná fotografia" width="900" height="1200" fetchpriority="high" />
+            <span class="hero__tag"><span class="status-dot status-dot--gold" aria-hidden="true"></span> Vybraná fotografia</span>
+          </div>
+          <figcaption class="hero__caption">
+            <span>Portrét &amp; svetlo</span>
+            <span>Poprad · 2026</span>
+          </figcaption>
+        </figure>
+      </div>
+
+      <div class="wrap hero__scroll" aria-hidden="true">
+        <span class="hero__scroll-line"></span>
+        Skroluj
       </div>
     </section>
 
-    <!-- ================= O MNE ================= -->
-    <section class="section about" id="o-mne">
-      <div class="wrap about__grid">
-        <div class="about__head reveal">
-          <p class="eyebrow reveal"><span>01</span> O mne</p>
-          <h2 class="h2 reveal">Tvorím veci,<br /><em>ktoré majú hlavu a päť.</em></h2>
+    <!-- ================= VYBRANÉ PRÁCE ================= -->
+    <section class="section gallery" id="prace">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow reveal"><span>01</span> Vybrané práce</p>
+          <div class="section-head__row">
+            <h2 class="h2 reveal" style="--i:1">Fotky, ktoré si<br /><em>zapamätáš.</em></h2>
+            <p class="section-head__lead reveal" style="--i:2">
+              Šesť vybraných prác — fotografia, svetlo a detail.
+              Klikni na ktorúkoľvek a otvorí sa celý príbeh.
+            </p>
+          </div>
         </div>
 
-        <div class="about__body reveal">
-          <p>
-            Volám sa Samuel Čižmár, mám 17 rokov a študujem grafiku na Súkromnej strednej
-            odbornej škole v Poprade. K tvorbe som sa dostal cez fotografiu — dnes fotím,
-            upravujem fotky, robím grafiku a učím sa programovať weby.
-          </p>
-          <p>
-            Baví ma robiť veci poriadne. Keď ma niečo chytí, chcem to pochopiť do hĺbky a
-            dotiahnuť do konca — od prvého nápadu po hotový výsledok.
-          </p>
-        </div>
+        <div class="gallery__grid">
+          <figure class="work work--wide reveal" style="--i:0">
+            <button class="work__btn" type="button" data-open="projekt-1" aria-label="Otvoriť detail — Projekt 01">
+              <img src="assets/img/prace/prace-1.webp" alt="Projekt 01" width="1200" height="900" loading="lazy" />
+              <span class="work__index">01</span>
+              <span class="work__open" aria-hidden="true">↗</span>
+            </button>
+            <figcaption class="work__caption"><span class="work__name">Projekt 01</span><span class="work__tag">Portrét</span></figcaption>
+          </figure>
 
-        <div class="about__facts reveal">
-          <div class="fact">
-            <dt>Vek</dt><dd>17 rokov</dd>
-          </div>
-          <div class="fact">
-            <dt>Lokalita</dt><dd>Slovensko</dd>
-          </div>
-          <div class="fact">
-            <dt>Zameranie</dt><dd>Grafika &amp; fotografia</dd>
-          </div>
-          <div class="fact">
-            <dt>Jazyky</dt><dd>SK · EN</dd>
-          </div>
-          <div class="fact">
-            <dt>Dostupnosť</dt><dd>brigáda · prax</dd>
-          </div>
+          <figure class="work work--narrow reveal" style="--i:1">
+            <button class="work__btn" type="button" data-open="projekt-2" aria-label="Otvoriť detail — Projekt 02">
+              <img src="assets/img/prace/prace-2.webp" alt="Projekt 02" width="1200" height="900" loading="lazy" />
+              <span class="work__index">02</span>
+              <span class="work__open" aria-hidden="true">↗</span>
+            </button>
+            <figcaption class="work__caption"><span class="work__name">Projekt 02</span><span class="work__tag">Krajina</span></figcaption>
+          </figure>
+
+          <figure class="work work--narrow reveal" style="--i:2">
+            <button class="work__btn" type="button" data-open="projekt-3" aria-label="Otvoriť detail — Projekt 03">
+              <img src="assets/img/prace/prace-3.webp" alt="Projekt 03" width="1200" height="900" loading="lazy" />
+              <span class="work__index">03</span>
+              <span class="work__open" aria-hidden="true">↗</span>
+            </button>
+            <figcaption class="work__caption"><span class="work__name">Projekt 03</span><span class="work__tag">Detail</span></figcaption>
+          </figure>
+
+          <figure class="work work--wide reveal" style="--i:3">
+            <button class="work__btn" type="button" data-open="projekt-4" aria-label="Otvoriť detail — Projekt 04">
+              <img src="assets/img/prace/prace-4.webp" alt="Projekt 04" width="1200" height="900" loading="lazy" />
+              <span class="work__index">04</span>
+              <span class="work__open" aria-hidden="true">↗</span>
+            </button>
+            <figcaption class="work__caption"><span class="work__name">Projekt 04</span><span class="work__tag">Svetlo</span></figcaption>
+          </figure>
+
+          <figure class="work work--wide reveal" style="--i:4">
+            <button class="work__btn" type="button" data-open="projekt-5" aria-label="Otvoriť detail — Projekt 05">
+              <img src="assets/img/prace/prace-5.webp" alt="Projekt 05" width="1200" height="900" loading="lazy" />
+              <span class="work__index">05</span>
+              <span class="work__open" aria-hidden="true">↗</span>
+            </button>
+            <figcaption class="work__caption"><span class="work__name">Projekt 05</span><span class="work__tag">Mesto</span></figcaption>
+          </figure>
+
+          <figure class="work work--narrow reveal" style="--i:5">
+            <button class="work__btn" type="button" data-open="projekt-6" aria-label="Otvoriť detail — Projekt 06">
+              <img src="assets/img/prace/prace-6.webp" alt="Projekt 06" width="1200" height="900" loading="lazy" />
+              <span class="work__index">06</span>
+              <span class="work__open" aria-hidden="true">↗</span>
+            </button>
+            <figcaption class="work__caption"><span class="work__name">Projekt 06</span><span class="work__tag">Séria</span></figcaption>
+          </figure>
         </div>
       </div>
     </section>
 
     <!-- ================= STATEMENT ================= -->
     <section class="statement">
-      <div class="wrap">
-        <p class="statement__text reveal">Rád robím veci <em>od nuly</em> — a dotiahnem ich do konca.</p>
+      <div class="wrap statement__inner">
+        <p class="eyebrow eyebrow--center reveal"><span>—</span> Prístup</p>
+        <blockquote class="statement__quote reveal" style="--i:1">Fotím to, čo by inak <em>zmizlo.</em></blockquote>
+        <p class="statement__note reveal" style="--i:2">Svetlo, kompozícia a moment. Nič navyše.</p>
       </div>
     </section>
 
-    <!-- ================= PROJEKTY ================= -->
-    <section class="section works" id="projekty">
-      <div class="wrap">
-        <div class="sec-head reveal">
-          <p class="eyebrow reveal"><span>02</span> Projekty</p>
-          <h2 class="h2 reveal">Miesto pre moje <em>práce.</em></h2>
-          <p class="lead reveal">Šesť projektov — klikni na ktorýkoľvek a otvorí sa detail s popisom.</p>
-        </div>
+    <!-- ================= O MNE ================= -->
+    <section class="section about" id="o-mne">
+      <div class="wrap about__grid">
+        <aside class="about__aside">
+          <p class="eyebrow reveal"><span>02</span> O mne</p>
+          <p class="about__monogram reveal" style="--i:1" aria-hidden="true">SČ</p>
+          <p class="about__meta reveal" style="--i:2">17 rokov · Poprad<br />Grafika &amp; fotografia</p>
+        </aside>
 
-        <div class="works__grid">
-          <figure class="work reveal">
-            <button class="work__shot" type="button" data-open="projekt-1" aria-label="Otvoriť detail — Projekt 01">
-              <img src="assets/img/prace/prace-1.webp" alt="Projekt 01" width="1200" height="900" loading="lazy" />
-              <span class="work__open">Zobraziť →</span>
-            </button>
-            <figcaption><b>Projekt 01</b><span>2026</span></figcaption>
-          </figure>
+        <div class="about__body">
+          <h2 class="h2 reveal">Tvorím veci, ktoré<br />majú <em>zmysel.</em></h2>
 
-          <figure class="work reveal">
-            <button class="work__shot" type="button" data-open="projekt-2" aria-label="Otvoriť detail — Projekt 02">
-              <img src="assets/img/prace/prace-2.webp" alt="Projekt 02" width="1200" height="900" loading="lazy" />
-              <span class="work__open">Zobraziť →</span>
-            </button>
-            <figcaption><b>Projekt 02</b><span>2026</span></figcaption>
-          </figure>
-
-          <figure class="work reveal">
-            <button class="work__shot" type="button" data-open="projekt-3" aria-label="Otvoriť detail — Projekt 03">
-              <img src="assets/img/prace/prace-3.webp" alt="Projekt 03" width="1200" height="900" loading="lazy" />
-              <span class="work__open">Zobraziť →</span>
-            </button>
-            <figcaption><b>Projekt 03</b><span>2026</span></figcaption>
-          </figure>
-
-          <figure class="work reveal">
-            <button class="work__shot" type="button" data-open="projekt-4" aria-label="Otvoriť detail — Projekt 04">
-              <img src="assets/img/prace/prace-4.webp" alt="Projekt 04" width="1200" height="900" loading="lazy" />
-              <span class="work__open">Zobraziť →</span>
-            </button>
-            <figcaption><b>Projekt 04</b><span>2026</span></figcaption>
-          </figure>
-
-          <figure class="work reveal">
-            <button class="work__shot" type="button" data-open="projekt-5" aria-label="Otvoriť detail — Projekt 05">
-              <img src="assets/img/prace/prace-5.webp" alt="Projekt 05" width="1200" height="900" loading="lazy" />
-              <span class="work__open">Zobraziť →</span>
-            </button>
-            <figcaption><b>Projekt 05</b><span>2026</span></figcaption>
-          </figure>
-
-          <figure class="work reveal">
-            <button class="work__shot" type="button" data-open="projekt-6" aria-label="Otvoriť detail — Projekt 06">
-              <img src="assets/img/prace/prace-6.webp" alt="Projekt 06" width="1200" height="900" loading="lazy" />
-              <span class="work__open">Zobraziť →</span>
-            </button>
-            <figcaption><b>Projekt 06</b><span>2026</span></figcaption>
-          </figure>
-        </div>
-      </div>
-
-      <!-- ================= DETAILY PROJEKTOV ================= -->
-      <div class="modal" id="projekt-1" role="dialog" aria-modal="true" aria-labelledby="projekt-1-title" hidden>
-        <div class="modal__backdrop" data-close></div>
-        <div class="modal__box">
-          <button class="modal__close" type="button" data-close aria-label="Zavrieť detail projektu">✕</button>
-          <div class="modal__media">
-            <img src="assets/img/prace/prace-1.webp" alt="Projekt 01" width="1200" height="900" />
-          </div>
-          <div class="modal__body">
-            <p class="modal__eyebrow">Projekt 01 · 2026</p>
-            <h3 class="modal__title" id="projekt-1-title">Názov projektu</h3>
-            <p class="modal__text">
-              Sem napíš popis projektu — čo to bolo, akú úlohu si mal, aké nástroje a postupy
-              si použil a čo si sa naučil.
+          <div class="about__text">
+            <p class="reveal" style="--i:1">
+              Volám sa Samuel Čižmár, mám 17 rokov a študujem grafiku na Súkromnej
+              strednej odbornej škole v Poprade. K tvorbe som sa dostal cez fotografiu —
+              dnes fotím, upravujem fotky, robím grafiku a učím sa programovať weby.
             </p>
-            <ul class="chip"><li>Photoshop</li><li>Illustrator</li></ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="modal" id="projekt-2" role="dialog" aria-modal="true" aria-labelledby="projekt-2-title" hidden>
-        <div class="modal__backdrop" data-close></div>
-        <div class="modal__box">
-          <button class="modal__close" type="button" data-close aria-label="Zavrieť detail projektu">✕</button>
-          <div class="modal__media">
-            <img src="assets/img/prace/prace-2.webp" alt="Projekt 02" width="1200" height="900" />
-          </div>
-          <div class="modal__body">
-            <p class="modal__eyebrow">Projekt 02 · 2026</p>
-            <h3 class="modal__title" id="projekt-2-title">Názov projektu</h3>
-            <p class="modal__text">
-              Sem napíš popis projektu — čo to bolo, akú úlohu si mal, aké nástroje a postupy
-              si použil a čo si sa naučil.
+            <p class="reveal" style="--i:2">
+              Baví ma robiť veci poriadne. Keď ma niečo chytí, chcem to pochopiť do hĺbky
+              a dotiahnuť do konca — od prvého nápadu po hotový výsledok.
             </p>
-            <ul class="chip"><li>Photoshop</li><li>Illustrator</li></ul>
           </div>
-        </div>
-      </div>
 
-      <div class="modal" id="projekt-3" role="dialog" aria-modal="true" aria-labelledby="projekt-3-title" hidden>
-        <div class="modal__backdrop" data-close></div>
-        <div class="modal__box">
-          <button class="modal__close" type="button" data-close aria-label="Zavrieť detail projektu">✕</button>
-          <div class="modal__media">
-            <img src="assets/img/prace/prace-3.webp" alt="Projekt 03" width="1200" height="900" />
-          </div>
-          <div class="modal__body">
-            <p class="modal__eyebrow">Projekt 03 · 2026</p>
-            <h3 class="modal__title" id="projekt-3-title">Názov projektu</h3>
-            <p class="modal__text">
-              Sem napíš popis projektu — čo to bolo, akú úlohu si mal, aké nástroje a postupy
-              si použil a čo si sa naučil.
-            </p>
-            <ul class="chip"><li>Photoshop</li><li>Illustrator</li></ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="modal" id="projekt-4" role="dialog" aria-modal="true" aria-labelledby="projekt-4-title" hidden>
-        <div class="modal__backdrop" data-close></div>
-        <div class="modal__box">
-          <button class="modal__close" type="button" data-close aria-label="Zavrieť detail projektu">✕</button>
-          <div class="modal__media">
-            <img src="assets/img/prace/prace-4.webp" alt="Projekt 04" width="1200" height="900" />
-          </div>
-          <div class="modal__body">
-            <p class="modal__eyebrow">Projekt 04 · 2026</p>
-            <h3 class="modal__title" id="projekt-4-title">Názov projektu</h3>
-            <p class="modal__text">
-              Sem napíš popis projektu — čo to bolo, akú úlohu si mal, aké nástroje a postupy
-              si použil a čo si sa naučil.
-            </p>
-            <ul class="chip"><li>Photoshop</li><li>Illustrator</li></ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="modal" id="projekt-5" role="dialog" aria-modal="true" aria-labelledby="projekt-5-title" hidden>
-        <div class="modal__backdrop" data-close></div>
-        <div class="modal__box">
-          <button class="modal__close" type="button" data-close aria-label="Zavrieť detail projektu">✕</button>
-          <div class="modal__media">
-            <img src="assets/img/prace/prace-5.webp" alt="Projekt 05" width="1200" height="900" />
-          </div>
-          <div class="modal__body">
-            <p class="modal__eyebrow">Projekt 05 · 2026</p>
-            <h3 class="modal__title" id="projekt-5-title">Názov projektu</h3>
-            <p class="modal__text">
-              Sem napíš popis projektu — čo to bolo, akú úlohu si mal, aké nástroje a postupy
-              si použil a čo si sa naučil.
-            </p>
-            <ul class="chip"><li>Photoshop</li><li>Illustrator</li></ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="modal" id="projekt-6" role="dialog" aria-modal="true" aria-labelledby="projekt-6-title" hidden>
-        <div class="modal__backdrop" data-close></div>
-        <div class="modal__box">
-          <button class="modal__close" type="button" data-close aria-label="Zavrieť detail projektu">✕</button>
-          <div class="modal__media">
-            <img src="assets/img/prace/prace-6.webp" alt="Projekt 06" width="1200" height="900" />
-          </div>
-          <div class="modal__body">
-            <p class="modal__eyebrow">Projekt 06 · 2026</p>
-            <h3 class="modal__title" id="projekt-6-title">Názov projektu</h3>
-            <p class="modal__text">
-              Sem napíš popis projektu — čo to bolo, akú úlohu si mal, aké nástroje a postupy
-              si použil a čo si sa naučil.
-            </p>
-            <ul class="chip"><li>Photoshop</li><li>Illustrator</li></ul>
-          </div>
+          <dl class="about__facts reveal" style="--i:3">
+            <div><dt>Vek</dt><dd>17 rokov</dd></div>
+            <div><dt>Lokalita</dt><dd>Poprad, SK</dd></div>
+            <div><dt>Zameranie</dt><dd>Fotografia &amp; grafika</dd></div>
+            <div><dt>Jazyky</dt><dd>SK · EN</dd></div>
+            <div><dt>Dostupnosť</dt><dd>Brigáda · prax</dd></div>
+          </dl>
         </div>
       </div>
     </section>
@@ -335,69 +248,95 @@
     <!-- ================= ZRUČNOSTI ================= -->
     <section class="section skills" id="zrucnosti">
       <div class="wrap">
-        <div class="sec-head reveal">
+        <div class="section-head">
           <p class="eyebrow reveal"><span>03</span> Zručnosti</p>
-          <h2 class="h2 reveal">S čím viem <em>pracovať.</em></h2>
-          <p class="lead reveal">Tri oblasti, ktoré ovládam — od zámku fotoaparátu po riadok kódu.</p>
+          <div class="section-head__row">
+            <h2 class="h2 reveal" style="--i:1">S čím viem<br /><em>pracovať.</em></h2>
+            <p class="section-head__lead reveal" style="--i:2">
+              Nástroje, ktoré používam každý deň — od fotky po hotový web.
+            </p>
+          </div>
         </div>
 
-        <div class="cards">
-          <a class="card card--link reveal" data-tone="red" href="https://samustang1.github.io/cizmar-photography/" target="_blank" rel="noopener" aria-label="Fotografia — otvoriť fotoportfólio">
-            <span class="card__num">01</span>
+        <div class="skills__grid">
+          <a class="skill skill--link reveal" style="--i:0" data-num="01"
+             href="https://samustang1.github.io/cizmar-photography/" target="_blank" rel="noopener"
+             aria-label="Fotografia — otvoriť fotoportfólio">
+            <span class="skill__top">
+              <span class="skill__num">01 / Fotografia</span>
+              <span class="skill__go" aria-hidden="true">↗</span>
+            </span>
             <h3>Fotografia</h3>
-            <p>Fotenie áut a atmosférických záberov, kompozícia a práca so svetlom.</p>
-            <ul class="chip"><li>Lightroom</li><li>Kompozícia</li></ul>
-            <div class="bar"><i style="--w:88%"></i></div>
-            <span class="card__go">↗</span>
+            <p>Fotenie, kompozícia a úprava. Hľadám svetlo a moment, ktorý stojí za to.</p>
+            <ul class="chips"><li>Lightroom</li><li>Kompozícia</li><li>Svetlo</li></ul>
+            <span class="skill__hint">Otvoriť fotoportfólio <span aria-hidden="true">↗</span></span>
+            <span class="skill__bar">
+              <span class="skill__bar-label"><span>Úroveň</span><span class="skill__pct">88 %</span></span>
+              <span class="bar"><i style="--w:88%"></i></span>
+            </span>
           </a>
 
-          <article class="card reveal" data-tone="blue">
-            <span class="card__num">02</span>
+          <article class="skill reveal" style="--i:1" data-num="02">
+            <span class="skill__top">
+              <span class="skill__num">02 / Grafika &amp; dizajn</span>
+            </span>
             <h3>Grafika &amp; dizajn</h3>
-            <p>Grafický dizajn, vektorová grafika, úprava fotiek a retuš — farby, kompozícia a vizuál.</p>
-            <ul class="chip"><li>Photoshop</li><li>Illustrator</li></ul>
-            <div class="bar"><i style="--w:82%"></i></div>
+            <p>Vizuálna identita, plagáty a digitálna grafika. Od nápadu po export.</p>
+            <ul class="chips"><li>Photoshop</li><li>Illustrator</li><li>Vektor</li></ul>
+            <span class="skill__bar">
+              <span class="skill__bar-label"><span>Úroveň</span><span class="skill__pct">82 %</span></span>
+              <span class="bar"><i style="--w:82%"></i></span>
+            </span>
           </article>
 
-          <article class="card reveal" data-tone="violet">
-            <span class="card__num">03</span>
+          <article class="skill reveal" style="--i:2" data-num="03">
+            <span class="skill__top">
+              <span class="skill__num">03 / Web &amp; kód</span>
+            </span>
             <h3>Web &amp; kód</h3>
-            <p>Základy tvorby webov — štruktúra, dizajn a neustále učenie sa nových vecí.</p>
-            <ul class="chip"><li>HTML</li><li>CSS</li><li>PHP</li></ul>
-            <div class="bar"><i style="--w:50%"></i></div>
+            <p>Stavba stránok od nuly. HTML, CSS a základy PHP.</p>
+            <ul class="chips"><li>HTML</li><li>CSS</li><li>PHP</li></ul>
+            <span class="skill__bar">
+              <span class="skill__bar-label"><span>Úroveň</span><span class="skill__pct">50 %</span></span>
+              <span class="bar"><i style="--w:50%"></i></span>
+            </span>
           </article>
         </div>
       </div>
     </section>
 
     <!-- ================= VZDELANIE ================= -->
-    <section class="section edu" id="vzdelanie">
-      <div class="wrap edu__grid">
-        <div class="edu__head reveal">
+    <section class="section education" id="vzdelanie">
+      <div class="wrap education__grid">
+        <div class="education__head">
           <p class="eyebrow reveal"><span>04</span> Vzdelanie</p>
-          <h2 class="h2 reveal">Kde sa <em>posúvam.</em></h2>
+          <h2 class="h2 reveal" style="--i:1">Kde sa<br /><em>posúvam.</em></h2>
+          <p class="section-head__lead reveal" style="--i:2">
+            Škola mi dáva základ. Zvyšok si dopĺňam sám — fotením, tvorbou a kódom.
+          </p>
         </div>
 
-        <div class="edu__cards reveal">
-          <article class="edu__card edu__card--now">
-            <span class="edu__tag">Teraz</span>
-            <h3>Súkromná stredná odborná škola — grafika</h3>
-            <p>Ul. 29. augusta 4812, 058 01 Poprad. Štúdium zamerané na grafiku — spracovanie
-              grafiky na počítači, dizajn a digitálne médiá.</p>
+        <div class="education__list">
+          <article class="edu edu--main reveal">
+            <div class="edu__meta"><span class="edu__tag">Teraz</span><span>Aktuálne štúdium</span></div>
+            <h3>Súkromná stredná odborná škola</h3>
+            <p class="edu__place">Ul. 29. augusta 4812, 058 01 Poprad</p>
+            <p>Grafika, dizajn a digitálne médiá. Spracovanie grafiky na počítači a práca s vizuálom.</p>
           </article>
 
-          <article class="edu__card">
-            <span class="edu__tag">Priebežne</span>
-            <h3>Fotografia &amp; grafika</h3>
-            <p>Samovzdelávanie vo fotení a úprave fotiek, vektorová grafika a tvorba vizuálu —
-              Photoshop a Illustrator.</p>
-          </article>
+          <div class="edu__small-grid">
+            <article class="edu reveal" style="--i:1">
+              <div class="edu__meta"><span class="edu__tag">Priebežne</span><span>Samovzdelávanie</span></div>
+              <h3>Fotografia &amp; grafika</h3>
+              <p>Fotenie, úprava fotiek, vektorová grafika — Photoshop a Illustrator.</p>
+            </article>
 
-          <article class="edu__card">
-            <span class="edu__tag">Priebežne</span>
-            <h3>Web &amp; kód</h3>
-            <p>HTML, CSS a PHP — stavba vlastných stránok a neustále učenie sa nových vecí.</p>
-          </article>
+            <article class="edu reveal" style="--i:2">
+              <div class="edu__meta"><span class="edu__tag">Priebežne</span><span>Samovzdelávanie</span></div>
+              <h3>Web &amp; kód</h3>
+              <p>HTML, CSS a PHP. Vlastné stránky a neustále učenie sa nových vecí.</p>
+            </article>
+          </div>
         </div>
       </div>
     </section>
@@ -405,21 +344,35 @@
     <!-- ================= KONTAKT ================= -->
     <section class="section contact" id="kontakt">
       <div class="wrap">
-        <div class="sec-head reveal">
+        <div class="contact__top">
           <p class="eyebrow reveal"><span>05</span> Kontakt</p>
-          <h2 class="h2 reveal">Poďme niečo <em>spraviť.</em></h2>
-          <p class="lead reveal">Hľadáš brigádnika, praktikanta alebo parťáka na projekt? Napíš mi — ozvem sa čo najskôr.</p>
+          <h2 class="h2 reveal" style="--i:1">Poďme niečo<br /><em>spraviť.</em></h2>
+          <p class="contact__lead reveal" style="--i:2">
+            Máš nápad, projekt alebo len otázku? Napíš mi — ozvem sa čo najskôr.
+          </p>
         </div>
 
-        <div class="contact__grid reveal">
-          <div class="contact__info">
-            <a class="info" href="mailto:cizsamko@gmail.com"><span>E-mail</span><b>cizsamko@gmail.com</b></a>
-            <a class="info" href="tel:+421910186170"><span>Telefón</span><b>+421 910 186 170</b></a>
-            <a class="info" href="https://github.com/Samustang1" target="_blank" rel="noopener"><span>GitHub</span><b>github.com/Samustang1 ↗</b></a>
-            <p class="contact__meta">Slovensko · dostupný pre prax a spoluprácu</p>
+        <div class="contact__grid">
+          <div class="contact__info reveal">
+            <a class="contact__link" href="mailto:cizsamko@gmail.com">
+              <span class="contact__label">E-mail</span>
+              <span class="contact__arrow" aria-hidden="true">↗</span>
+              <strong>cizsamko@gmail.com</strong>
+            </a>
+            <a class="contact__link" href="tel:+421910186170">
+              <span class="contact__label">Telefón</span>
+              <span class="contact__arrow" aria-hidden="true">↗</span>
+              <strong>+421 910 186 170</strong>
+            </a>
+            <a class="contact__link" href="https://github.com/Samustang1" target="_blank" rel="noopener">
+              <span class="contact__label">GitHub</span>
+              <span class="contact__arrow" aria-hidden="true">↗</span>
+              <strong>github.com/Samustang1</strong>
+            </a>
+            <p class="contact__availability"><span class="status-dot" aria-hidden="true"></span> Slovensko · dostupný pre prax a spoluprácu</p>
           </div>
 
-          <form class="form reveal" id="contactForm" action="https://formsubmit.co/cizsamko@gmail.com" method="POST">
+          <form class="form reveal" style="--i:1" id="contactForm" action="https://formsubmit.co/cizsamko@gmail.com" method="POST">
             <input type="hidden" name="_subject" value="Nová správa z portfólia" />
             <input type="hidden" name="_template" value="table" />
             <input type="hidden" name="_captcha" value="false" />
@@ -428,18 +381,18 @@
             <div class="form__row">
               <div class="field">
                 <label for="f-name">Meno *</label>
-                <input type="text" id="f-name" name="Meno" required />
+                <input type="text" id="f-name" name="Meno" required autocomplete="name" />
               </div>
               <div class="field">
                 <label for="f-email">E-mail *</label>
-                <input type="email" id="f-email" name="E-mail" required />
+                <input type="email" id="f-email" name="E-mail" required autocomplete="email" />
               </div>
             </div>
             <div class="field">
               <label for="f-msg">Správa *</label>
               <textarea id="f-msg" name="Správa" rows="5" required placeholder="Napíš mi, čo máš na mysli…"></textarea>
             </div>
-            <button class="btn btn--wide" type="submit">Odoslať správu</button>
+            <button class="btn btn--primary form__submit" type="submit">Odoslať správu</button>
             <p class="form__note" id="formNote" role="status" aria-live="polite"></p>
           </form>
         </div>
@@ -450,22 +403,137 @@
 
   <!-- ================= PÄTA ================= -->
   <footer class="footer">
-    <div class="wrap footer__inner">
-      <span class="footer__mark">SČ</span>
-      <nav class="footer__nav" aria-label="Pätičná navigácia">
-        <a href="#o-mne">O mne</a>
-        <a href="#projekty">Projekty</a>
-        <a href="#zrucnosti">Zručnosti</a>
-        <a href="#vzdelanie">Vzdelanie</a>
-        <a href="#kontakt">Kontakt</a>
-      </nav>
-      <a class="footer__top" href="#top">↑</a>
-      <p class="footer__copy">© <span id="year">2026</span> Samuel Čižmár · Vytvorené od nuly — HTML, CSS &amp; JavaScript.</p>
+    <div class="wrap">
+      <div class="footer__top">
+        <a class="brand" href="#top" aria-label="Samuel Čižmár — domov">
+          <span class="brand__mark">SČ</span>
+          <span class="brand__text"><span class="brand__name">Samuel Čižmár</span><span class="brand__role">Fotografia &amp; dizajn</span></span>
+        </a>
+
+        <nav class="footer__nav" aria-label="Pätičná navigácia">
+          <a href="#prace">Práce</a>
+          <a href="#o-mne">O mne</a>
+          <a href="#zrucnosti">Zručnosti</a>
+          <a href="#vzdelanie">Vzdelanie</a>
+          <a href="#kontakt">Kontakt</a>
+        </nav>
+
+        <a class="footer__mail" href="mailto:cizsamko@gmail.com">cizsamko@gmail.com</a>
+      </div>
+
+      <div class="footer__bottom">
+        <p>© <span id="year">2026</span> Samuel Čižmár</p>
+        <p>Vytvorené od nuly — HTML, CSS &amp; JavaScript.</p>
+        <a href="#top">Späť nahor ↑</a>
+      </div>
     </div>
   </footer>
 
   <button class="totop" id="totop" type="button" aria-label="Späť nahor">↑</button>
 
-  <script src="assets/js/main.js?v=1"></script>
+  <!-- ================= DETAILY PROJEKTOV ================= -->
+  <div class="modal" id="projekt-1" role="dialog" aria-modal="true" aria-labelledby="projekt-1-title" hidden>
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__panel">
+      <button class="modal__close" type="button" data-close aria-label="Zavrieť detail projektu">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+      </button>
+      <div class="modal__media"><img src="assets/img/prace/prace-1.webp" alt="Projekt 01" width="1200" height="900" /></div>
+      <div class="modal__body">
+        <p class="modal__eyebrow">01 / Portrét · 2026</p>
+        <h3 class="modal__title" id="projekt-1-title">Projekt 01</h3>
+        <p class="modal__text">Sem napíš popis projektu — čo to bolo, akú úlohu si mal, aké nástroje a postupy si použil a čo si sa naučil.</p>
+        <ul class="chips"><li>Lightroom</li><li>Photoshop</li></ul>
+        <div class="modal__foot"><span>Samuel Čižmár</span><span>Portfólio 2026</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="projekt-2" role="dialog" aria-modal="true" aria-labelledby="projekt-2-title" hidden>
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__panel">
+      <button class="modal__close" type="button" data-close aria-label="Zavrieť detail projektu">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+      </button>
+      <div class="modal__media"><img src="assets/img/prace/prace-2.webp" alt="Projekt 02" width="1200" height="900" /></div>
+      <div class="modal__body">
+        <p class="modal__eyebrow">02 / Krajina · 2026</p>
+        <h3 class="modal__title" id="projekt-2-title">Projekt 02</h3>
+        <p class="modal__text">Sem napíš popis projektu — čo to bolo, akú úlohu si mal, aké nástroje a postupy si použil a čo si sa naučil.</p>
+        <ul class="chips"><li>Lightroom</li><li>Photoshop</li></ul>
+        <div class="modal__foot"><span>Samuel Čižmár</span><span>Portfólio 2026</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="projekt-3" role="dialog" aria-modal="true" aria-labelledby="projekt-3-title" hidden>
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__panel">
+      <button class="modal__close" type="button" data-close aria-label="Zavrieť detail projektu">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+      </button>
+      <div class="modal__media"><img src="assets/img/prace/prace-3.webp" alt="Projekt 03" width="1200" height="900" /></div>
+      <div class="modal__body">
+        <p class="modal__eyebrow">03 / Detail · 2026</p>
+        <h3 class="modal__title" id="projekt-3-title">Projekt 03</h3>
+        <p class="modal__text">Sem napíš popis projektu — čo to bolo, akú úlohu si mal, aké nástroje a postupy si použil a čo si sa naučil.</p>
+        <ul class="chips"><li>Lightroom</li><li>Photoshop</li></ul>
+        <div class="modal__foot"><span>Samuel Čižmár</span><span>Portfólio 2026</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="projekt-4" role="dialog" aria-modal="true" aria-labelledby="projekt-4-title" hidden>
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__panel">
+      <button class="modal__close" type="button" data-close aria-label="Zavrieť detail projektu">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+      </button>
+      <div class="modal__media"><img src="assets/img/prace/prace-4.webp" alt="Projekt 04" width="1200" height="900" /></div>
+      <div class="modal__body">
+        <p class="modal__eyebrow">04 / Svetlo · 2026</p>
+        <h3 class="modal__title" id="projekt-4-title">Projekt 04</h3>
+        <p class="modal__text">Sem napíš popis projektu — čo to bolo, akú úlohu si mal, aké nástroje a postupy si použil a čo si sa naučil.</p>
+        <ul class="chips"><li>Lightroom</li><li>Photoshop</li></ul>
+        <div class="modal__foot"><span>Samuel Čižmár</span><span>Portfólio 2026</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="projekt-5" role="dialog" aria-modal="true" aria-labelledby="projekt-5-title" hidden>
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__panel">
+      <button class="modal__close" type="button" data-close aria-label="Zavrieť detail projektu">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+      </button>
+      <div class="modal__media"><img src="assets/img/prace/prace-5.webp" alt="Projekt 05" width="1200" height="900" /></div>
+      <div class="modal__body">
+        <p class="modal__eyebrow">05 / Mesto · 2026</p>
+        <h3 class="modal__title" id="projekt-5-title">Projekt 05</h3>
+        <p class="modal__text">Sem napíš popis projektu — čo to bolo, akú úlohu si mal, aké nástroje a postupy si použil a čo si sa naučil.</p>
+        <ul class="chips"><li>Lightroom</li><li>Photoshop</li></ul>
+        <div class="modal__foot"><span>Samuel Čižmár</span><span>Portfólio 2026</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="projekt-6" role="dialog" aria-modal="true" aria-labelledby="projekt-6-title" hidden>
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__panel">
+      <button class="modal__close" type="button" data-close aria-label="Zavrieť detail projektu">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+      </button>
+      <div class="modal__media"><img src="assets/img/prace/prace-6.webp" alt="Projekt 06" width="1200" height="900" /></div>
+      <div class="modal__body">
+        <p class="modal__eyebrow">06 / Séria · 2026</p>
+        <h3 class="modal__title" id="projekt-6-title">Projekt 06</h3>
+        <p class="modal__text">Sem napíš popis projektu — čo to bolo, akú úlohu si mal, aké nástroje a postupy si použil a čo si sa naučil.</p>
+        <ul class="chips"><li>Lightroom</li><li>Photoshop</li></ul>
+        <div class="modal__foot"><span>Samuel Čižmár</span><span>Portfólio 2026</span></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/main.js?v=36"></script>
 </body>
 </html>

@@ -1,14 +1,15 @@
 # -*- coding: utf-8 -*-
 """
-Vygeneruje neutralne placeholdery:
-  assets/img/foto.webp          (900x1200)  - miesto na tvoju fotku v hero
-  assets/img/prace/prace-1..6.webp (1200x900) - miesto na obrazky projektov
+Vygeneruje tmavé placeholdery, ktoré sedia s dizajnom stránky:
+  assets/img/foto.webp              (900x1200)  - miesto na úvodnú fotku
+  assets/img/prace/prace-1..6.webp  (1200x900)  - miesto na fotky projektov
 
-Tieto subory si nahradis vlastnymi (rovnake meno a idealne rovnaky pomer stran).
-Spustaj:  python tools/make_placeholders.py
+Tieto súbory nahraď vlastnými (rovnaké meno, ideálne rovnaký pomer strán).
+Spúšťaj:  python tools/make_placeholders.py
 """
 import os
-from PIL import Image, ImageDraw, ImageFont
+import random
+from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
 BASE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(BASE)
@@ -16,71 +17,116 @@ IMG = os.path.join(REPO, "assets", "img")
 PRACE = os.path.join(IMG, "prace")
 FONTS = os.path.join(BASE, "fonts")
 
-PAPER = (243, 238, 227)
-INK = (20, 24, 31)
-NAVY = (20, 33, 61)
-RED = (226, 53, 31)
-BLUE = (29, 91, 214)
-AMBER = (240, 163, 46)
-GREEN = (23, 166, 115)
-VIOLET = (108, 75, 214)
-TONES = [RED, BLUE, AMBER, GREEN, VIOLET, RED]
+GOLD = (215, 179, 106)
+INK = (245, 245, 247)
+MUTED = (142, 142, 147)
 
 
 def f(name, size):
     return ImageFont.truetype(os.path.join(FONTS, name), size)
 
 
-def dots(d, w, h, step=20, color=(216, 208, 190)):
-    for y in range(0, h, step):
-        for x in range(0, w, step):
-            d.point((x, y), fill=color)
+def gradient(w, h, top, bottom):
+    img = Image.new("RGB", (w, h), bottom)
+    d = ImageDraw.Draw(img)
+    for y in range(h):
+        t = y / max(1, h - 1)
+        col = tuple(int(top[i] + (bottom[i] - top[i]) * t) for i in range(3))
+        d.line([(0, y), (w, y)], fill=col)
+    return img
+
+
+def glow(img, cx, cy, rx, ry, color, strength=1.0):
+    layer = Image.new("RGBA", img.size, (0, 0, 0, 0))
+    d = ImageDraw.Draw(layer)
+    d.ellipse([cx - rx, cy - ry, cx + rx, cy + ry], fill=color + (int(70 * strength),))
+    layer = layer.filter(ImageFilter.GaussianBlur(max(rx, ry) // 2))
+    return Image.alpha_composite(img.convert("RGBA"), layer)
+
+
+def grain(img, amount=9):
+    noise = Image.effect_noise(img.size, amount).convert("L")
+    noise_rgb = Image.merge("RGB", (noise, noise, noise))
+    base = img.convert("RGB")
+    return Image.blend(base, noise_rgb, 0.035).convert("RGBA")
+
+
+def frame(img, inset, color):
+    layer = Image.new("RGBA", img.size, (0, 0, 0, 0))
+    d = ImageDraw.Draw(layer)
+    w, h = img.size
+    d.rounded_rectangle(
+        [inset, inset, w - inset, h - inset],
+        radius=4,
+        outline=color + (55,),
+        width=1,
+    )
+    return Image.alpha_composite(img, layer)
 
 
 def make_foto():
     W, H = 900, 1200
-    img = Image.new("RGB", (W, H), PAPER)
-    d = ImageDraw.Draw(img)
-    dots(d, W, H)
+    img = gradient(W, H, (22, 21, 24), (8, 8, 10))
+    img = glow(img, int(W * 0.68), int(H * 0.24), 420, 420, (198, 156, 88), 1.0)
+    img = glow(img, int(W * 0.18), int(H * 0.78), 320, 320, (80, 86, 110), 0.6)
+    img = grain(img, 10)
 
-    d.rounded_rectangle([46, 46, W - 46, H - 46], radius=10, fill=NAVY, outline=INK, width=5)
-    # farebne pruhy hore
-    d.rectangle([46, 46, W - 46, 84], fill=RED)
-    d.rectangle([46, H - 84, W - 46, H - 46], fill=BLUE)
-
-    d.text((W / 2, H / 2 - 60), "TVOJA", font=f("BigShoulders-Bold.ttf", 150), fill=PAPER, anchor="mm")
-    d.text((W / 2, H / 2 + 70), "FOTKA", font=f("BigShoulders-Bold.ttf", 150), fill=AMBER, anchor="mm")
-    d.text((W / 2, H / 2 + 190), "NAHRAĎ  assets/img/foto.webp", font=f("GeistMono-Regular.ttf", 22),
-           fill=(200, 210, 230), anchor="mm")
-    d.text((W / 2, H / 2 + 230), "odporúčaný pomer  3 : 4", font=f("GeistMono-Regular.ttf", 20),
-           fill=(150, 165, 195), anchor="mm")
+    layer = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    d = ImageDraw.Draw(layer)
+    d.text((W / 2, H / 2 - 30), "SČ", font=f("Outfit-Bold.ttf", 330),
+           fill=(255, 255, 255, 12), anchor="mm")
+    d.text((W / 2, H - 176), "TVOJA FOTKA", font=f("GeistMono-Bold.ttf", 30),
+           fill=GOLD + (220,), anchor="mm")
+    d.text((W / 2, H - 128), "NAHRAĎ  assets/img/foto.webp", font=f("GeistMono-Regular.ttf", 19),
+           fill=(200, 200, 205, 130), anchor="mm")
+    d.text((W / 2, H - 96), "ODPORÚČANÝ POMER  3 : 4", font=f("GeistMono-Regular.ttf", 17),
+           fill=(120, 120, 128, 190), anchor="mm")
+    img = Image.alpha_composite(img, layer)
+    img = frame(img, 34, GOLD)
 
     os.makedirs(IMG, exist_ok=True)
     out = os.path.join(IMG, "foto.webp")
-    img.save(out, "WEBP", quality=88, method=6)
+    img.convert("RGB").save(out, "WEBP", quality=90, method=6)
     print("ulozene:", out, os.path.getsize(out) // 1024, "KB")
+
+
+GLOWS = [
+    (0.72, 0.20, 430, 360),
+    (0.24, 0.30, 380, 420),
+    (0.78, 0.70, 420, 380),
+    (0.18, 0.74, 400, 360),
+    (0.64, 0.30, 460, 400),
+    (0.30, 0.24, 380, 380),
+]
 
 
 def make_prace():
     W, H = 1200, 900
     os.makedirs(PRACE, exist_ok=True)
     for i in range(1, 7):
-        tone = TONES[(i - 1) % len(TONES)]
-        img = Image.new("RGB", (W, H), PAPER)
-        d = ImageDraw.Draw(img)
-        dots(d, W, H)
+        random.seed(100 + i)
+        img = gradient(W, H, (20, 19, 22), (7, 7, 9))
+        gx, gy, grx, gry = GLOWS[i - 1]
+        img = glow(img, int(W * gx), int(H * gy), grx, gry, (198, 156, 88), 0.85)
+        img = glow(img, int(W * (1 - gx)), int(H * (1 - gy)), 300, 300, (75, 80, 100), 0.45)
+        img = grain(img, 11)
 
-        d.rounded_rectangle([40, 40, W - 40, H - 40], radius=10, fill=None, outline=INK, width=5)
-        d.rectangle([40, 40, W - 40, 84], fill=tone)
-
-        d.text((W / 2, H / 2 - 40), "%02d" % i, font=f("BigShoulders-Bold.ttf", 300), fill=tone, anchor="mm")
-        d.text((W / 2, H / 2 + 150), "SEM PRIDAJ FOTKU PROJEKTU", font=f("GeistMono-Regular.ttf", 26),
-               fill=(92, 98, 112), anchor="mm")
-        d.text((W / 2, H / 2 + 190), "assets/img/prace/prace-%d.webp" % i, font=f("GeistMono-Regular.ttf", 20),
-               fill=(150, 155, 168), anchor="mm")
+        layer = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+        d = ImageDraw.Draw(layer)
+        d.text((W / 2, H / 2 - 24), "%02d" % i, font=f("Outfit-Bold.ttf", 430),
+               fill=(255, 255, 255, 7), stroke_width=1,
+               stroke_fill=(215, 179, 106, 34), anchor="mm")
+        d.text((64, H - 96), "FOTO %02d" % i, font=f("GeistMono-Bold.ttf", 24),
+               fill=GOLD + (210,), anchor="ls")
+        d.text((64, H - 64), "NAHRAĎ  assets/img/prace/prace-%d.webp" % i,
+               font=f("GeistMono-Regular.ttf", 17), fill=(200, 200, 205, 105), anchor="ls")
+        d.text((W - 64, H - 64), "SAMUEL ČIŽMÁR · 2026",
+               font=f("GeistMono-Regular.ttf", 15), fill=(120, 120, 128, 150), anchor="rs")
+        img = Image.alpha_composite(img, layer)
+        img = frame(img, 30, GOLD)
 
         out = os.path.join(PRACE, "prace-%d.webp" % i)
-        img.save(out, "WEBP", quality=86, method=6)
+        img.convert("RGB").save(out, "WEBP", quality=89, method=6)
         print("ulozene:", out, os.path.getsize(out) // 1024, "KB")
 
 
