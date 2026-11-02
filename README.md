@@ -25,7 +25,6 @@ sklenená hlavička, tlmená zlatá (`#d7b36a`) a veľa priestoru pre fotky.
 |---|--------|-------|
 | — | Hero | veľká fotka, meno, rotujúce slovo, predstavenie, CTA |
 | 01 | Vybrané práce | 6 klikateľných fotiek — detail s popisom sa otvorí v modáli |
-| — | Prístup | krátky textový pás s mottom |
 | 02 | O mne | krátke bio + fakty (vek, lokalita, zameranie, jazyky, dostupnosť) |
 | 03 | Zručnosti | 3 karty s pruhmi — **Fotografia, Grafika & dizajn, Web & kód** |
 | 04 | Vzdelanie | Súkromná SOŠ, Ul. 29. augusta 4812, Poprad — grafika |
@@ -155,7 +154,7 @@ tools/fonts/                   # fonty pre generátory (OFL)
 1. **Texty** prepíšeš v `index.html`.
 2. **Farby** v `assets/css/style.css` v `:root` (`--gold`, `--bg`, `--surface`…).
 3. Po zmene CSS alebo JS **zvýš verziu** v `index.html`:
-   `assets/css/style.css?v=36` a `assets/js/main.js?v=36` → `?v=37`.
+   `assets/css/style.css?v=37` a `assets/js/main.js?v=37` → `?v=38`.
    Bez toho môže prehliadač zobraziť starú verziu z cache.
 4. Nahraj:
 
